@@ -102,7 +102,7 @@ Misto, decidido por projeto:
 - **Tipografia:**
   - **Display: Instrument Serif** (Google Fonts, regular + italic) — confirmado
   - **Corpo: Inter** (sans premium neutra)
-- **Detalhe assinatura:** linhas verticais finas brancas com baixa opacidade (~10-20%) em momentos chave (metáfora do prumo). Continua sendo elemento de marca.
+- **Detalhe assinatura (revisado 2026-05-20):** linhas verticais finas brancas foram tentadas no hero (posições 16/50/84%) mas o cliente rejeitou — visualmente competiam com o título e o video de fundo. O componente `PrumoLines` está mantido na base (pode ser usado em outras seções com posicionamento mais sutil, ex.: uma única linha lateral como divisor) mas **NÃO é elemento padrão do hero**. A metáfora do prumo agora se sustenta no copy ("Tudo começa por uma linha reta.") + na tipografia, não em linhas decorativas.
 - **Motion:** cinematic **mas controlado**.
   - Hero: vídeo de fundo em loop com sistema custom de fade (500ms requestAnimationFrame fade-in no load/loop start, fade-out quando faltam 0.55s pro fim — não usar CSS transitions pra isso, usar JS)
   - Resto do site: motion sutil (reveals on-scroll fade-up, hovers refinados, <300ms)

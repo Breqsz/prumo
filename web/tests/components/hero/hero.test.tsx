@@ -11,9 +11,9 @@ describe("Hero", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders decorative prumo lines", () => {
+  it("does not render decorative prumo lines in the hero", () => {
     const { container } = render(<Hero />);
-    expect(container.querySelectorAll(".prumo-line").length).toBeGreaterThanOrEqual(3);
+    expect(container.querySelectorAll(".prumo-line").length).toBe(0);
   });
 
   it("renders a <video> element when videoSrc is provided", () => {
