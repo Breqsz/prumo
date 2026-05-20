@@ -5,8 +5,8 @@ import { LiquidGlass } from "@/components/ui/liquid-glass";
 export function HeroContent() {
   return (
     <section className="relative z-10 flex flex-1 -translate-y-[6%] flex-col items-center justify-center px-6 py-12 text-center">
-      <p className="mb-8 text-xs tracking-[0.3em] text-white/40 uppercase">
-        Estúdio digital · Brasil
+      <p className="mb-8 text-xs tracking-[0.3em] text-white uppercase">
+        Precisão em forma de site.
       </p>
 
       <h1 className="font-display mb-8 max-w-5xl text-5xl leading-[1.05] tracking-tight md:text-7xl lg:text-[5.5rem]">
@@ -34,12 +34,14 @@ export function HeroContent() {
         </Link>
       </div>
 
-      <div className="flex items-center gap-6 text-[11px] tracking-widest text-white/35 uppercase">
-        <span>Next.js</span>
-        <span className="h-1 w-1 rounded-full bg-white/30" />
-        <span>Framer</span>
-        <span className="h-1 w-1 rounded-full bg-white/30" />
-        <span>Webflow</span>
+      <div className="flex items-center gap-6 text-[11px] tracking-widest text-white/55 uppercase">
+        <span>Estratégia</span>
+        <span className="h-1 w-1 rounded-full bg-white/40" />
+        <span>Design</span>
+        <span className="h-1 w-1 rounded-full bg-white/40" />
+        <span>Construção</span>
+        <span className="h-1 w-1 rounded-full bg-white/40" />
+        <span>Performance</span>
       </div>
     </section>
   );
