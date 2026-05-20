@@ -1,0 +1,21 @@
+# Next.js / Node — everything inside web/
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/next-env.d.ts
+web/coverage/
+web/.turbo/
+
+# Env files
+web/.env*.local
+.env*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+*.tsbuildinfo
+.claude/

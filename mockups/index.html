@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prumo — Comparador de paletas (Hero)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; background: #0c0c0c; color: #fff; }
+  .font-display { font-family: 'Instrument Serif', serif; }
+  iframe { border: 0; width: 100%; aspect-ratio: 16/10; background: #000; }
+</style>
+</head>
+<body class="min-h-screen p-6 md:p-10">
+  <header class="mb-8 max-w-6xl mx-auto">
+    <div class="flex items-center gap-2 mb-2">
+      <span aria-hidden class="inline-block w-[2px] h-5 bg-white/80"></span>
+      <span class="font-display text-2xl">Prumo</span>
+      <span class="text-xs uppercase tracking-widest text-white/40 ml-3">Comparador de paletas — Hero</span>
+    </div>
+    <p class="text-sm text-white/55 max-w-2xl">
+      Os três mockups abaixo mostram o mesmo hero com apenas a paleta accent diferente.
+      Frase âncora: <em>"Tudo começa por uma linha reta."</em>
+      Avalie peso visual, hierarquia, sensação geral. Clique em cada um pra abrir em tela cheia.
+    </p>
+  </header>
+
+  <main class="max-w-6xl mx-auto grid gap-10">
+    <section>
+      <div class="flex items-baseline justify-between mb-3">
+        <div>
+          <h2 class="font-display text-2xl">Paleta A — Branco puro</h2>
+          <p class="text-sm text-white/50">Único accent é o branco. Sobriedade máxima, linha Apple/Linear dark.</p>
+        </div>
+        <a href="hero-branco.html" target="_blank" class="text-sm text-white/70 hover:text-white">Abrir em tela cheia →</a>
+      </div>
+      <iframe src="hero-branco.html" loading="lazy"></iframe>
+    </section>
+
+    <section>
+      <div class="flex items-baseline justify-between mb-3">
+        <div>
+          <h2 class="font-display text-2xl">Paleta B — Azul elétrico</h2>
+          <p class="text-sm text-white/50">Pop sutil de azul claro (~#7DA3D9) em detalhes. Ainda premium, mais diferenciado.</p>
+        </div>
+        <a href="hero-azul.html" target="_blank" class="text-sm text-white/70 hover:text-white">Abrir em tela cheia →</a>
+      </div>
+      <iframe src="hero-azul.html" loading="lazy"></iframe>
+    </section>
+
+    <section>
+      <div class="flex items-baseline justify-between mb-3">
+        <div>
+          <h2 class="font-display text-2xl">Paleta C — Neutro absoluto</h2>
+          <p class="text-sm text-white/50">Zero cor adicional. Linhas verticais brancas marcadas como elemento gráfico principal.</p>
+        </div>
+        <a href="hero-neutro.html" target="_blank" class="text-sm text-white/70 hover:text-white">Abrir em tela cheia →</a>
+      </div>
+      <iframe src="hero-neutro.html" loading="lazy"></iframe>
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/10 text-xs text-white/40">
+    <p>Mockups estáticos. O vídeo de fundo está substituído por gradient escuro placeholder. A decisão final do vídeo (arquitetônico/geométrico, alinhado à metáfora do prumo) fica pra depois.</p>
+  </footer>
+</body>
+</html>
