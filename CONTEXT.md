@@ -181,7 +181,10 @@ Ordem de preferência a verificar quando for fazer deploy:
 4. **Listar** cases reais que ele tem (pessoais + profissionais) pra montar seção de trabalhos.
 5. **Foto profissional** + bio curta dele pra seção "Quem está por trás".
 6. ~~Frase âncora do hero~~ → **DECIDIDA:** "Tudo começa por uma linha reta." (sub: "Sites, estratégia e presença digital para marcas que valorizam precisão.")
-7. **Vídeo de fundo do hero** — escolher um clip arquitetônico/geométrico (puxando metáfora prumo). NÃO genérico de "cidade tech".
+7. **Vídeo de fundo do hero** — escolher um clip arquitetônico/geométrico (puxando metáfora prumo). NÃO genérico de "cidade tech". Drop em `web/public/hero.mp4` e setar `videoSrc="/hero.mp4"` em `web/app/page.tsx`.
+8. **Calendly URL real** — atualmente CTA aponta pra `https://cal.com/` placeholder.
+9. **Perfis de WhatsApp / Instagram / LinkedIn reais** — hrefs ainda são stubs.
+10. **Mobile visual review** — checar em DevTools a 375 / 414 / 768px e ajustar se necessário.
 
 ---
 

@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prumo — web
 
-## Getting Started
+Next.js 16 + Tailwind 4 + TypeScript app for the Prumo studio site.
+Project source of truth lives at the repo root: `../CONTEXT.md`.
 
-First, run the development server:
+## Develop
 
 ```bash
+cd web
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Test
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm test          # one-off
+npm run test:watch
+npm run test:ui
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build
 
-## Learn More
+```bash
+npm run build     # Turbopack (default in Next 16)
+npm run start     # production server
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js 16.2 + React 19.2 (App Router, Turbopack)
+- TypeScript 5, strict
+- Tailwind CSS 4 (CSS-first `@theme` config in `app/globals.css`)
+- Vitest 4 + Testing Library + happy-dom
+- `lucide-react` for utility icons; brand icons inlined in `components/hero/hero-social.tsx`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project layout (web/)
 
-## Deploy on Vercel
+```
+app/
+  layout.tsx     ← html shell, fonts, base metadata
+  page.tsx       ← home (renders <Hero />)
+  globals.css    ← Tailwind + design tokens + liquid-glass + prumo-line
+  fonts.ts       ← Instrument Serif + Inter via next/font/google
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+components/
+  ui/
+    liquid-glass.tsx   ← polymorphic glass wrapper
+    prumo-lines.tsx    ← decorative vertical lines (brand element)
+  hero/
+    hero.tsx           ← composes the hero
+    hero-video.tsx     ← optional bg video + custom rAF fade
+    hero-nav.tsx       ← glass-capsule navbar
+    hero-content.tsx   ← heading + tagline + CTAs + stack chips
+    hero-social.tsx    ← inline-SVG brand icons in glass circles
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+lib/hooks/
+  use-video-fade.ts    ← rAF-based fade-in/out for looping <video>
+
+public/
+  README.md            ← drop hero video here (see file)
+
+tests/
+  setup.ts
+  components/{ui,hero}/...
+  lib/use-video-fade.test.ts
+```
+
+## Deploy to Vercel
+
+Project root in the Vercel dashboard must be set to `web` (since the git repo root is one level up).
+
+```bash
+# From E:\Projetos\Prumo\
+cd web
+npx vercel link        # link to your Vercel account, name the project "prumo"
+npx vercel             # preview deploy
+npx vercel --prod      # production deploy
+```
+
+Set environment variables (when added) under Project → Settings → Environment Variables.
+
+## Pending
+
+- Drop the real background video at `public/hero.mp4` and pass `videoSrc="/hero.mp4"` in `app/page.tsx`.
+- Wire real Calendly URL on the "Agendar conversa" CTA (currently `https://cal.com/`).
+- Replace placeholder WhatsApp / Instagram / LinkedIn href stubs with real profile URLs.
+- Mobile breakpoint visual review at 375 / 414 / 768px in real browser DevTools.
