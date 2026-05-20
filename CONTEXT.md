@@ -161,14 +161,17 @@ Ordem de preferência a verificar quando for fazer deploy:
 ## 11. Status atual
 
 - [x] Brainstorming e definições estratégicas
-- [ ] **Aprovação final do design proposto** ← AQUI
-- [ ] Spec/plano de implementação (skill `writing-plans`)
-- [ ] Setup do projeto Next.js
-- [ ] Identidade visual final (paleta accent, logo simples, sistema de tipografia)
-- [ ] Implementação das seções
+- [x] Design proposto e aprovado
+- [x] Spec/plano de implementação (`docs/superpowers/plans/2026-05-20-prumo-foundation-hero.md`)
+- [x] Setup do projeto Next.js 16 + Tailwind 4 + Vitest (em `web/`)
+- [x] Identidade visual final (paleta dark, accent branco, Instrument Serif + Inter)
+- [x] **Plano 1 executado: Foundation + Hero** — 20/20 testes passando, `npm run build` (Turbopack) verde, Hero composto (vídeo opcional + linhas prumo + navbar glass + content + social)
+- [ ] Deploy preview no Vercel ← próximo passo manual (`cd web && npx vercel`)
+- [ ] Plano 2: Home sections (3 objetivos, processo, cases, planos resumo, FAQ, footer)
+- [ ] Plano 3: Páginas internas (`/planos`, `/sobre`, `/contato`, `/trabalhos`)
+- [ ] Plano 4: i18n PT/EN + analytics + polish prod
 - [ ] Conteúdo (copy final, fotos, cases reais)
 - [ ] Compra de domínio
-- [ ] Deploy + analytics
 - [ ] Reunião com cliente sobre objetivo de marca/empresa (cliente pediu marcar)
 
 ---
