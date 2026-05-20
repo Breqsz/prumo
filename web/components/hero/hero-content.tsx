@@ -1,0 +1,46 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { LiquidGlass } from "@/components/ui/liquid-glass";
+
+export function HeroContent() {
+  return (
+    <section className="relative z-10 flex flex-1 -translate-y-[6%] flex-col items-center justify-center px-6 py-12 text-center">
+      <p className="mb-8 text-xs tracking-[0.3em] text-white/40 uppercase">
+        Estúdio digital · Brasil
+      </p>
+
+      <h1 className="font-display mb-8 max-w-5xl text-5xl leading-[1.05] tracking-tight md:text-7xl lg:text-[5.5rem]">
+        Tudo começa por <em className="font-display italic">uma linha reta.</em>
+      </h1>
+
+      <p className="mb-10 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
+        Sites, estratégia e presença digital para marcas que valorizam precisão.
+      </p>
+
+      <div className="mb-16 flex flex-col items-center gap-3 sm:flex-row">
+        <LiquidGlass
+          as="a"
+          href="https://cal.com/"
+          className="group flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium text-white"
+        >
+          Agendar conversa
+          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </LiquidGlass>
+        <Link
+          href="/trabalhos"
+          className="rounded-full px-8 py-3.5 text-sm font-medium text-white/70 transition-colors hover:text-white"
+        >
+          Ver trabalhos →
+        </Link>
+      </div>
+
+      <div className="flex items-center gap-6 text-[11px] tracking-widest text-white/35 uppercase">
+        <span>Next.js</span>
+        <span className="h-1 w-1 rounded-full bg-white/30" />
+        <span>Framer</span>
+        <span className="h-1 w-1 rounded-full bg-white/30" />
+        <span>Webflow</span>
+      </div>
+    </section>
+  );
+}
