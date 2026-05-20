@@ -5,21 +5,28 @@ import { useVideoFade } from "@/lib/hooks/use-video-fade";
 type HeroVideoProps = {
   /** When omitted, only the black background and vignette render. */
   src?: string;
-  /** Vertical translate applied to the video to crop top portion. Default 17%. */
+  /**
+   * Vertical translate applied to the video as a centering nudge.
+   * Default 0% — relies on object-cover to fill. Use small positive
+   * value to bias the visible crop downward, negative to bias upward.
+   */
   translateY?: string;
 };
 
-export function HeroVideo({ src, translateY = "17%" }: HeroVideoProps) {
+export function HeroVideo({ src, translateY = "0%" }: HeroVideoProps) {
   const setRef = useVideoFade();
   return (
     <div className="absolute inset-0 overflow-hidden bg-black">
       {src ? (
+        // NOTE: no `loop` attribute on purpose — native loop bypasses our
+        // `onEnded` handler in useVideoFade, which drives the fade-out/in
+        // across the loop boundary. Letting `ended` fire is what reactivates
+        // the rAF fade cycle.
         <video
           ref={setRef}
           src={src}
           autoPlay
           muted
-          loop
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
           style={{ transform: `translateY(${translateY})`, opacity: 0 }}
