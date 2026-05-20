@@ -3,8 +3,13 @@
 import { useVideoFade } from "@/lib/hooks/use-video-fade";
 
 type HeroVideoProps = {
-  /** When omitted, only the black background and vignette render. */
-  src?: string;
+  /**
+   * Ordered video sources. When the playlist has more than one entry,
+   * the hero advances to the next clip when the current one ends
+   * (wrapping back to the first). When omitted or empty, only the
+   * black background and vignette render.
+   */
+  srcs?: string[];
   /**
    * Vertical translate applied to the video as a centering nudge.
    * Default 0% — relies on object-cover to fill. Use small positive
@@ -13,18 +18,18 @@ type HeroVideoProps = {
   translateY?: string;
 };
 
-export function HeroVideo({ src, translateY = "0%" }: HeroVideoProps) {
-  const setRef = useVideoFade();
+export function HeroVideo({ srcs, translateY = "0%" }: HeroVideoProps) {
+  const setRef = useVideoFade({ srcs });
+  const hasSrc = !!srcs && srcs.length > 0;
   return (
     <div className="absolute inset-0 overflow-hidden bg-black">
-      {src ? (
+      {hasSrc ? (
         // NOTE: no `loop` attribute on purpose — native loop bypasses our
         // `onEnded` handler in useVideoFade, which drives the fade-out/in
-        // across the loop boundary. Letting `ended` fire is what reactivates
-        // the rAF fade cycle.
+        // across both single-clip reset and playlist advance.
+        // src is set by setRef from `srcs[0]`, then mutated on `ended`.
         <video
           ref={setRef}
-          src={src}
           autoPlay
           muted
           playsInline

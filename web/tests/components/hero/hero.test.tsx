@@ -16,13 +16,18 @@ describe("Hero", () => {
     expect(container.querySelectorAll(".prumo-line").length).toBe(0);
   });
 
-  it("renders a <video> element when videoSrc is provided", () => {
-    const { container } = render(<Hero videoSrc="/sample.mp4" />);
+  it("renders a <video> element when videoSrcs has entries", () => {
+    const { container } = render(<Hero videoSrcs={["/sample.mp4"]} />);
     expect(container.querySelector("video")).toBeTruthy();
   });
 
-  it("renders without <video> when videoSrc is omitted", () => {
+  it("renders without <video> when videoSrcs is omitted", () => {
     const { container } = render(<Hero />);
+    expect(container.querySelector("video")).toBeNull();
+  });
+
+  it("renders without <video> when videoSrcs is empty", () => {
+    const { container } = render(<Hero videoSrcs={[]} />);
     expect(container.querySelector("video")).toBeNull();
   });
 });
