@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useVideoFade } from "@/lib/hooks/use-video-fade";
+import { Spotlight } from "@/components/ambient/spotlight";
 
 type AmbientVideoProps = {
   /**
@@ -16,12 +17,17 @@ type AmbientVideoProps = {
    * have transparent backgrounds so the video shows through.
    */
   children: ReactNode;
+  /**
+   * Adds a breathing cinematic spotlight on top of the video/black layers.
+   * Opt-in so the home stays untouched.
+   */
+  spotlight?: boolean;
 };
 
 const GRAIN_SVG =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")";
 
-export function AmbientVideo({ srcs, children }: AmbientVideoProps) {
+export function AmbientVideo({ srcs, children, spotlight = false }: AmbientVideoProps) {
   const setRef = useVideoFade({ srcs });
 
   return (
@@ -30,12 +36,16 @@ export function AmbientVideo({ srcs, children }: AmbientVideoProps) {
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-black"
       >
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <div className="sticky top-0 h-dvh w-full overflow-hidden">
           <video
             ref={setRef}
+            src={srcs[0]}
             autoPlay
             muted
             playsInline
+            preload="auto"
+            disablePictureInPicture
+            {...({ "webkit-playsinline": "true" } as Record<string, string>)}
             className="absolute inset-0 h-full w-full object-cover"
             style={{
               opacity: 0,
@@ -51,6 +61,7 @@ export function AmbientVideo({ srcs, children }: AmbientVideoProps) {
           />
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
+          {spotlight && <Spotlight />}
         </div>
       </div>
       {children}

@@ -133,10 +133,14 @@ export function useVideoFade({
       videoRef.current = el;
       if (el) {
         el.style.opacity = "0";
-        const list = srcsRef.current;
-        if (list && list.length > 0 && !el.src) {
-          indexRef.current = 0;
-          el.src = list[0];
+        // iOS Safari only respects the `autoplay` attribute when the src is
+        // present at first render. We render <video src={srcs[0]} ...> in JSX
+        // and only nudge play() here as a safety net for restored visibility
+        // (tab switch, low-power mode, etc.).
+        el.muted = true;
+        const playPromise = el.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {});
         }
         el.addEventListener("loadeddata", onLoaded);
         el.addEventListener("timeupdate", onTimeUpdate);

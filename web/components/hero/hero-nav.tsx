@@ -11,12 +11,20 @@ const NAV = [
 
 export function HeroNav() {
   return (
-    <nav className="relative z-20 px-6 py-6">
-      <LiquidGlass className="mx-auto grid max-w-5xl grid-cols-3 items-center rounded-full px-6 py-3">
-        <Link href="/" aria-label="Prumo, página inicial" className="text-white">
-          <Logo />
-        </Link>
-        <ul className="hidden items-center justify-center gap-6 text-sm font-bold text-white md:flex">
+    <nav className="relative z-20 px-4 py-4 md:px-6 md:py-6">
+      <LiquidGlass className="mx-auto flex max-w-5xl flex-col items-stretch gap-3 rounded-3xl px-4 py-3 md:grid md:grid-cols-3 md:items-center md:gap-0 md:rounded-full md:px-6">
+        <div className="flex items-center justify-between md:contents">
+          <Link href="/" aria-label="Prumo, página inicial" className="text-white">
+            <Logo />
+          </Link>
+          <Link
+            href="https://cal.com/"
+            className="rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium text-white md:hidden"
+          >
+            Agendar
+          </Link>
+        </div>
+        <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-bold text-white md:gap-6">
           {NAV.map(({ href, label }) => (
             <li key={href}>
               <Link
@@ -32,7 +40,7 @@ export function HeroNav() {
             </li>
           ))}
         </ul>
-        <div className="flex justify-end">
+        <div className="hidden justify-end md:flex">
           <LiquidGlass
             as="a"
             href="https://cal.com/"

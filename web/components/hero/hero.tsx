@@ -13,7 +13,7 @@ type HeroProps = {
 
 export function Hero({ videoSrcs }: HeroProps) {
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden bg-black">
+    <div className="relative flex min-h-dvh flex-col overflow-hidden bg-black">
       <HeroVideo srcs={videoSrcs} />
       <HeroNav />
       <HeroContent />

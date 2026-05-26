@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/reveal";
 export function SobreHero() {
   return (
     <section
-      className="relative flex min-h-screen items-start justify-center px-6 pt-32 pb-24 md:pt-40 md:pb-32"
+      className="relative flex min-h-dvh items-start justify-center px-6 pt-28 pb-24 md:pt-40 md:pb-32"
       aria-labelledby="sobre-hero-heading"
     >
       <Reveal className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
@@ -25,7 +25,7 @@ export function SobreHero() {
       <a
         href="#manifesto"
         aria-label="Rolar para o manifesto"
-        className="prumo-scroll-hint absolute bottom-32 left-1/2 -translate-x-1/2 text-white/55 transition-colors hover:text-white md:bottom-40"
+        className="prumo-scroll-hint absolute bottom-10 left-1/2 -translate-x-1/2 text-white/55 transition-colors hover:text-white md:bottom-40"
       >
         <ChevronDown className="h-5 w-5" strokeWidth={1.5} />
       </a>

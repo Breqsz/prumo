@@ -6,7 +6,7 @@ export function PlanosTeaser() {
   return (
     <section
       id="planos"
-      className="relative px-6 py-32 md:py-40"
+      className="relative flex min-h-dvh items-center justify-center px-6 py-24 md:py-40"
       aria-labelledby="planos-teaser-heading"
     >
       <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">

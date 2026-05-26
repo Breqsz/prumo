@@ -30,9 +30,15 @@ export function HeroVideo({ srcs, translateY = "0%" }: HeroVideoProps) {
         // src is set by setRef from `srcs[0]`, then mutated on `ended`.
         <video
           ref={setRef}
+          src={srcs![0]}
           autoPlay
           muted
           playsInline
+          preload="auto"
+          disablePictureInPicture
+          // iOS-only attribute; React doesn't type it but it's required for
+          // older webkit autoplay-inline behavior. Cast keeps TS strict happy.
+          {...({ "webkit-playsinline": "true" } as Record<string, string>)}
           className="absolute inset-0 h-full w-full object-cover"
           style={{ transform: `translateY(${translateY})`, opacity: 0 }}
         />
