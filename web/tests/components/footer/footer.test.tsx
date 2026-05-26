@@ -1,0 +1,47 @@
+import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import { Footer } from "@/components/footer/footer";
+
+describe("Footer", () => {
+  it("renders the Prumo wordmark linking home", () => {
+    render(<Footer />);
+    const home = screen.getByRole("link", { name: /prumo/i });
+    expect(home).toHaveAttribute("href", "/");
+  });
+
+  it("renders the tagline", () => {
+    render(<Footer />);
+    expect(
+      screen.getByText(
+        /Sites, estratégia e presença digital para marcas que valorizam precisão\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("renders the three nav column headings", () => {
+    render(<Footer />);
+    expect(
+      screen.getByRole("heading", { level: 4, name: /estúdio/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 4, name: /conversar/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 4, name: /geral/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders the Cal.com link in the Conversar column", () => {
+    render(<Footer />);
+    const cal = screen.getByRole("link", { name: /agendar conversa/i });
+    expect(cal).toHaveAttribute("href", expect.stringContaining("cal.com"));
+  });
+
+  it("renders the current year in the copyright", () => {
+    render(<Footer />);
+    const year = new Date().getFullYear().toString();
+    expect(
+      screen.getByText(new RegExp(`©\\s*${year}\\s+Prumo`)),
+    ).toBeInTheDocument();
+  });
+});
