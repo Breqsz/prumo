@@ -8,12 +8,12 @@ export function Manifesto() {
       aria-labelledby="manifesto-heading"
     >
       <Reveal className="mx-auto max-w-3xl">
-        <span
+        <h2
           id="manifesto-heading"
-          className="text-[11px] tracking-[0.3em] text-white/55 uppercase"
+          className="text-[11px] font-normal tracking-[0.3em] text-white/55 uppercase"
         >
           Manifesto
-        </span>
+        </h2>
         {/* TODO: copy final do manifesto (dono refina) */}
         <div className="mt-8 space-y-8 text-xl leading-relaxed text-white/80 md:text-2xl md:leading-relaxed">
           <p>
