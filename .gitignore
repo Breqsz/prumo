@@ -19,3 +19,7 @@ Thumbs.db
 *.log
 *.tsbuildinfo
 .claude/
+
+# Tool session state (skills internal scratch — never commit)
+.superpowers/
+web/.impeccable/
