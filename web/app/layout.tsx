@@ -3,7 +3,7 @@ import { instrumentSerif, inter } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Prumo — Sites, estratégia e presença digital",
+  title: "Prumo · Sites, estratégia e presença digital",
   description:
     "Estúdio digital. Sites sob medida, planos de manutenção e parceria contínua.",
 };
