@@ -1,0 +1,59 @@
+"use client";
+
+import type { ReactNode } from "react";
+import { useVideoFade } from "@/lib/hooks/use-video-fade";
+
+type AmbientVideoProps = {
+  /**
+   * Ordered playlist of background video sources. The same fade pattern as
+   * the hero applies: 500ms fade-in on load, fade-out 550ms before the clip
+   * ends, advance to next src, wrap on the last clip. See `useVideoFade`.
+   */
+  srcs: string[];
+  /**
+   * Sections to render on top of the ambient background. The bg is a sticky
+   * full-viewport layer behind these children; sections themselves should
+   * have transparent backgrounds so the video shows through.
+   */
+  children: ReactNode;
+};
+
+const GRAIN_SVG =
+  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")";
+
+export function AmbientVideo({ srcs, children }: AmbientVideoProps) {
+  const setRef = useVideoFade({ srcs });
+
+  return (
+    <div className="relative isolate">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-black"
+      >
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <video
+            ref={setRef}
+            autoPlay
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              opacity: 0,
+              filter:
+                "blur(6px) brightness(0.55) saturate(0.65) contrast(1.05)",
+              transform: "scale(1.06)",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/75 to-black/80" />
+          <div
+            className="absolute inset-0 opacity-[0.05] mix-blend-screen"
+            style={{ backgroundImage: GRAIN_SVG }}
+          />
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
+        </div>
+      </div>
+      {children}
+    </div>
+  );
+}
