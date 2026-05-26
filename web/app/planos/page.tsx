@@ -20,7 +20,7 @@ const AMBIENT_VIDEOS = ["/ambient.mp4", "/ambient-2.mp4"];
 export default function PlanosPage() {
   return (
     <>
-      <AmbientVideo srcs={AMBIENT_VIDEOS}>
+      <AmbientVideo srcs={AMBIENT_VIDEOS} spotlight>
         <HeroNav />
         <PlanosHero />
         <OneTimeGrid />
