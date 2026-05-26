@@ -70,4 +70,39 @@ body {
     );
     pointer-events: none;
   }
+
+  .aurora-layer {
+    pointer-events: none;
+  }
+
+  .aurora-1 {
+    animation: aurora-drift-1 42s ease-in-out infinite;
+  }
+  .aurora-2 {
+    animation: aurora-drift-2 48s ease-in-out infinite;
+  }
+  .aurora-3 {
+    animation: aurora-drift-3 55s ease-in-out infinite;
+  }
+
+  @keyframes aurora-drift-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(6%, 4%) scale(1.08); }
+  }
+  @keyframes aurora-drift-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(-5%, -3%) scale(0.95); }
+  }
+  @keyframes aurora-drift-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(3%, -6%) scale(1.05); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora-1,
+    .aurora-2,
+    .aurora-3 {
+      animation: none !important;
+    }
+  }
 }

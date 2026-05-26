@@ -47,4 +47,15 @@ describe("AuroraBlack", () => {
     expect(wrapper.className).toMatch(/relative/);
     expect(wrapper.className).toMatch(/isolate/);
   });
+
+  it("each aurora layer carries the corresponding animation class", () => {
+    render(
+      <AuroraBlack>
+        <div />
+      </AuroraBlack>,
+    );
+    expect(screen.getByTestId("aurora-1").className).toMatch(/aurora-1/);
+    expect(screen.getByTestId("aurora-2").className).toMatch(/aurora-2/);
+    expect(screen.getByTestId("aurora-3").className).toMatch(/aurora-3/);
+  });
 });
