@@ -45,4 +45,36 @@ describe("PlanCard", () => {
     render(<PlanCard {...baseProps} featured />);
     expect(screen.getByText(/mais escolhido/i)).toBeInTheDocument();
   });
+
+  it("renders custom CTA label and href when provided", () => {
+    render(
+      <PlanCard
+        name="Teste"
+        price="R$ 1"
+        cadence="único"
+        description="d"
+        features={["f"]}
+        glow={0}
+        ctaLabel="Assinar plano"
+        ctaHref="https://example.com/sub"
+      />,
+    );
+    const link = screen.getByRole("link", { name: /assinar plano/i });
+    expect(link).toHaveAttribute("href", "https://example.com/sub");
+  });
+
+  it("falls back to default CTA when no props passed", () => {
+    render(
+      <PlanCard
+        name="Teste"
+        price="R$ 1"
+        cadence="único"
+        description="d"
+        features={["f"]}
+        glow={0}
+      />,
+    );
+    const link = screen.getByRole("link", { name: /agendar conversa/i });
+    expect(link).toHaveAttribute("href", "https://cal.com/");
+  });
 });

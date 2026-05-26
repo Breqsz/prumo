@@ -9,6 +9,8 @@ type PlanCardProps = {
   /** Glow intensity: 0 (subtle) → 2 (strongest). Communicates plan tier visually. */
   glow: 0 | 1 | 2;
   featured?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
 };
 
 const GLOW_STYLES = [
@@ -25,6 +27,8 @@ export function PlanCard({
   features,
   glow,
   featured,
+  ctaLabel = "Agendar conversa",
+  ctaHref = "https://cal.com/",
 }: PlanCardProps) {
   return (
     <div className="group relative flex w-full flex-col">
@@ -77,10 +81,10 @@ export function PlanCard({
           </ul>
 
           <a
-            href="https://cal.com/"
+            href={ctaHref}
             className="group/cta flex items-center justify-between rounded-full border border-white/12 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30"
           >
-            Agendar conversa
+            {ctaLabel}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
           </a>
         </div>
