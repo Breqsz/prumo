@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
-import { LiquidGlass } from "@/components/ui/liquid-glass";
+import { ProfileCard } from "@/components/effects/profile-card";
 
 type Social = { label: string; href: string };
 
@@ -10,6 +10,9 @@ const SOCIAL: Social[] = [
   { label: "WhatsApp", href: "#" },
 ];
 
+// TODO: dropar a foto real em web/public/avatar.jpg
+const AVATAR_URL = "/avatar.jpg";
+
 export function QuemAssina() {
   return (
     <section
@@ -17,13 +20,23 @@ export function QuemAssina() {
       className="relative px-6 py-24 md:py-32"
       aria-labelledby="quem-assina-heading"
     >
-      <Reveal className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[2fr_3fr] md:gap-16">
-        {/* TODO: substituir por <Image> real com a foto do dono */}
-        <LiquidGlass className="flex aspect-[4/5] items-center justify-center rounded-2xl">
-          <span className="text-[10px] tracking-[0.3em] text-white/30 uppercase">
-            Foto · placeholder
-          </span>
-        </LiquidGlass>
+      <Reveal className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[2fr_3fr] md:gap-16">
+        <div className="flex justify-center">
+          {/* TODO: trocar avatarUrl pela foto real (web/public/avatar.jpg) e ajustar handle/status */}
+          <ProfileCard
+            avatarUrl={AVATAR_URL}
+            name="[Seu nome aqui]"
+            title="Estúdio Prumo"
+            handle="prumo"
+            status="Disponível"
+            contactText="Falar comigo"
+            showUserInfo
+            enableTilt
+            behindGlowEnabled
+            behindGlowColor="rgba(255,255,255,0.18)"
+            innerGradient="linear-gradient(145deg,#1a1a1f 0%,#0a0a0a 100%)"
+          />
+        </div>
 
         <div className="flex flex-col justify-center">
           <span className="text-[11px] tracking-[0.3em] text-white/55 uppercase">

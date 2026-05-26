@@ -25,8 +25,9 @@ describe("QuemAssina", () => {
     expect(whatsapp).toHaveAttribute("href", "#");
   });
 
-  it("renders the photo placeholder label", () => {
+  it("renders the profile card avatar image", () => {
     render(<QuemAssina />);
-    expect(screen.getByText(/foto · placeholder/i)).toBeInTheDocument();
+    const avatars = screen.getAllByAltText(/avatar/i);
+    expect(avatars.length).toBeGreaterThan(0);
   });
 });
