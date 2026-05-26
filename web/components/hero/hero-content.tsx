@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { LiquidGlass } from "@/components/ui/liquid-glass";
+import { RotatingPhrase } from "@/components/hero/rotating-phrase";
 
 export function HeroContent() {
   return (
@@ -9,8 +10,8 @@ export function HeroContent() {
         Precisão em forma de site.
       </p>
 
-      <h1 className="font-display mb-8 max-w-5xl text-5xl leading-[1.05] tracking-tight md:text-7xl lg:text-[5.5rem]">
-        Tudo começa por <em className="font-display italic">uma linha reta.</em>
+      <h1 className="font-display mb-8 text-4xl leading-[1.05] tracking-tight whitespace-nowrap sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem]">
+        Tudo começa por <RotatingPhrase />
       </h1>
 
       <p className="mb-10 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
@@ -34,13 +35,13 @@ export function HeroContent() {
         </Link>
       </div>
 
-      <div className="flex items-center gap-6 text-[11px] tracking-widest text-white/55 uppercase">
+      <div className="flex items-center gap-6 text-[11px] tracking-widest text-white uppercase">
         <span>Estratégia</span>
-        <span className="h-1 w-1 rounded-full bg-white/40" />
+        <span className="h-1 w-1 rounded-full bg-white/70" />
         <span>Design</span>
-        <span className="h-1 w-1 rounded-full bg-white/40" />
+        <span className="h-1 w-1 rounded-full bg-white/70" />
         <span>Construção</span>
-        <span className="h-1 w-1 rounded-full bg-white/40" />
+        <span className="h-1 w-1 rounded-full bg-white/70" />
         <span>Performance</span>
       </div>
     </section>
