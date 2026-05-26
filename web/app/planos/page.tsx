@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HeroNav } from "@/components/hero/hero-nav";
 import { PlanosHero } from "@/components/planos/planos-hero";
 import { OneTimeGrid } from "@/components/planos/one-time-grid";
 import { MonthlyGrid } from "@/components/planos/monthly-grid";
@@ -20,6 +21,7 @@ export default function PlanosPage() {
   return (
     <>
       <AmbientVideo srcs={AMBIENT_VIDEOS}>
+        <HeroNav />
         <PlanosHero />
         <OneTimeGrid />
         <MonthlyGrid />
