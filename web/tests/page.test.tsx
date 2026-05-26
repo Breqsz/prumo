@@ -12,11 +12,10 @@ describe("HomePage", () => {
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
   });
 
-  it("renders the pricing section", () => {
+  it("renders the planos teaser pointing to /planos", () => {
     render(<HomePage />);
-    expect(
-      screen.getByRole("heading", { level: 2, name: /três caminhos/i }),
-    ).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: /ver todos os planos/i });
+    expect(link).toHaveAttribute("href", "/planos");
   });
 
   it("renders the FAQ section", () => {
