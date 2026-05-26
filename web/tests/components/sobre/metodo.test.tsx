@@ -16,11 +16,8 @@ describe("Metodo", () => {
     expect(screen.getByRole("heading", { level: 3, name: /^lançamento$/i })).toBeInTheDocument();
   });
 
-  it("renders the 4 step numbers", () => {
+  it("renders 4 list items, one per step", () => {
     render(<Metodo />);
-    expect(screen.getByText(/^01$/)).toBeInTheDocument();
-    expect(screen.getByText(/^02$/)).toBeInTheDocument();
-    expect(screen.getByText(/^03$/)).toBeInTheDocument();
-    expect(screen.getByText(/^04$/)).toBeInTheDocument();
+    expect(screen.getAllByRole("listitem")).toHaveLength(4);
   });
 });

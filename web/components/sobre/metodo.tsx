@@ -57,7 +57,10 @@ export function Metodo() {
               key={step.number}
               className="grid gap-4 py-8 md:grid-cols-[120px_1fr] md:gap-10 md:py-10"
             >
-              <span className="font-display text-3xl text-white/45 md:text-5xl">
+              <span
+                aria-hidden="true"
+                className="font-display text-3xl text-white/45 md:text-5xl"
+              >
                 {step.number}
               </span>
               <div>
