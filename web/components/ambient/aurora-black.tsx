@@ -78,24 +78,6 @@ export function AuroraBlack({ children }: AuroraBlackProps) {
                 "radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,0.55) 100%)",
             }}
           />
-          <div
-            data-testid="aurora-fade-top"
-            className="absolute inset-x-0 top-0"
-            style={{
-              height: 40,
-              background:
-                "linear-gradient(to bottom, #0A0A0A 0%, rgba(10,10,10,0) 100%)",
-            }}
-          />
-          <div
-            data-testid="aurora-fade-bottom"
-            className="absolute inset-x-0 bottom-0"
-            style={{
-              height: 40,
-              background:
-                "linear-gradient(to top, #0A0A0A 0%, rgba(10,10,10,0) 100%)",
-            }}
-          />
         </div>
       </div>
       {children}

@@ -22,7 +22,7 @@ describe("AuroraBlack", () => {
     expect(bg).toHaveAttribute("aria-hidden", "true");
   });
 
-  it("renders three aurora layers, grain, vignette, and two fades", () => {
+  it("renders three aurora layers, grain, and vignette", () => {
     render(
       <AuroraBlack>
         <div />
@@ -33,8 +33,6 @@ describe("AuroraBlack", () => {
     expect(screen.getByTestId("aurora-3")).toBeInTheDocument();
     expect(screen.getByTestId("aurora-grain")).toBeInTheDocument();
     expect(screen.getByTestId("aurora-vignette")).toBeInTheDocument();
-    expect(screen.getByTestId("aurora-fade-top")).toBeInTheDocument();
-    expect(screen.getByTestId("aurora-fade-bottom")).toBeInTheDocument();
   });
 
   it("wraps content in a relative isolate container", () => {
