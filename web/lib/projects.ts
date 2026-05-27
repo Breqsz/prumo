@@ -16,6 +16,8 @@ export type Project = {
   process: string;
   /** STUB: substituir por narrativa real */
   outcome: string;
+  /** Ordered screenshots used in the per-project gallery. Public-folder paths. */
+  gallery: string[];
 };
 
 /**
@@ -44,6 +46,12 @@ export const projects: Project[] = [
       "Duas frentes paralelas. Estratégia de conteúdo: o site precisava servir quatro audiências distintas no mesmo funil. PF de alta renda, PF classe média consultiva, escritórios de advocacia e contabilidade parceiros, e empresas contratando saúde coletiva. Cada uma com argumento próprio. O componente AudienceToggle nasceu como princípio, não como botão: bifurca a copy quando o argumento muda, une quando serve a todos. Design: tipografia editorial (Cormorant italic + Outfit sans + hairlines) carregando o premium, paleta navy + dourado #c9a84c como assinatura, espaço em branco como diferenciação. Stack: Next.js 14, React 18, Tailwind, shadcn na base; Framer Motion e GSAP no acabamento; EmailJS + React Hook Form + Zod no formulário sem backend pesado.",
     outcome:
       "Site no ar com WhatsApp como régua. Toda seção termina, direta ou indiretamente, num caminho de contato. WCAG AA pragmático, prefers-reduced-motion respeitado, foco visível em todos os interativos. Sucesso medido em volume e qualidade de leads, não em tempo de sessão ou alcance editorial. [Substituir por números reais de conversão quando estabilizar a baseline]",
+    gallery: [
+      "/Hold/01.png",
+      "/Hold/02.png",
+      "/Hold/03.png",
+      "/Hold/04.png",
+    ],
   },
   {
     slug: "desafog-ai",
@@ -66,6 +74,12 @@ export const projects: Project[] = [
       "App Flutter cross-platform (iOS + Android no mesmo codebase). State management com Riverpod, navegação GoRouter, dados em tempo real via Cloud Firestore. Auth com Google + email + modo demo pra reduzir fricção de teste. Camada IA integra Claude 3.5 Sonnet direto via API com rate limiter pra evitar abuso. Entrada por voz via speech_to_text (o usuário fala e cadastra despesa), gráficos com fl_chart, exportação de PDF, notificações locais. Storage seguro com flutter_secure_storage pra credenciais e dados sensíveis.",
     outcome:
       "Versão 1.1.1 em desenvolvimento ativo, builds rodando em iOS e Android. Arquitetura preparada pra Cloud Functions assumirem cálculos pesados (insights, geração de planos) no servidor. [Substituir por métricas de uso reais após lançamento público]",
+    gallery: [
+      "/Desafog/01.png",
+      "/Desafog/02.png",
+      "/Desafog/03.png",
+      "/Desafog/04.png",
+    ],
   },
   {
     slug: "todo",
@@ -88,6 +102,12 @@ export const projects: Project[] = [
       "Migração pra Next.js 14 com App Router. Todo o conteúdo do site centralizado em `siteContent.ts` como fonte única de verdade: copy, links, SEO e formulários moram num único arquivo, separados do template. Mudança editorial não exige tocar em componente. Formulários (contato + vagas) plugados em API routes internas com TODOs marcando os pontos de integração com CRM e e-mail. SEO por rota com metadata e JSON-LD estruturado. Cuidado anti-greenwashing: nenhum número entra sem fonte auditável.",
     outcome:
       "Site rebuildado, pronto pra deploy em Vercel, todas as 6 rotas (home, sobre, para empresas, parcerias, trabalhe conosco, vagas) espelhando a versão oficial em estrutura mas elevadas em hierarquia visual. [Substituir por métricas pós-deploy: Core Web Vitals, conversão de formulário, posicionamento orgânico]",
+    gallery: [
+      "/ToDo/01.png",
+      "/ToDo/02.png",
+      "/ToDo/03.png",
+      "/ToDo/04.png",
+    ],
   },
   {
     slug: "breq-dev",
@@ -110,6 +130,12 @@ export const projects: Project[] = [
       "Next.js 14 App Router + TypeScript + Tailwind + Framer Motion + Shadcn UI. Bilíngue PT/EN via i18n próprio com `highlightPhrases()` aplicando gradiente em palavras-chave (web development, backend, cloud). Ênfase visual em vez de bold. Hero com chips de identidade (FullStack · Web · Cloud · DevSecOps), seção Sobre com retrato em formato editorial (sem card, aura gradiente), Selected Work com grid 2-col pros projetos secundários (Fyora + NeuroRace lado a lado). Contact section com dois CVs (PT/EN) acima do CTA principal: recruiter encontra em um clique.",
     outcome:
       "Online em modo recruiter-ready. Refinamento posterior elevou contraste tipográfico (text-neutral-300 no body, muted-400) pra leitura confortável em monitores de baixo gamut sem comprometer a estética dark premium. [Adicionar URL pública e métricas se houver]",
+    gallery: [
+      "/Breq/01.png",
+      "/Breq/02.png",
+      "/Breq/03.png",
+      "/Breq/04.png",
+    ],
   },
   {
     slug: "bereading",
@@ -132,6 +158,12 @@ export const projects: Project[] = [
       "Quatro experiências distintas no mesmo produto. Cada perfil com sua superfície e seu nível de atenção: aluno (jornada de leitura, XP, missões, badges), professor (overview da turma com indicadores ahead/on-track/behind, criação de missões, biblioteca), família (acompanhamento da criança sem hovering, gráfico semanal, timeline) e admin/escola (métricas agregadas, performance por turma, configurações). Stack: Next.js 16 App Router, TypeScript, Tailwind 4, shadcn/ui na base, Framer Motion nos detalhes. Camada de dados em mock estruturada pra migração direta pra Supabase quando o MVP virar produto. Pricing em três tiers (Pilot, School, Network) embutido na landing pra acelerar conversa comercial.",
     outcome:
       "MVP funcional com as quatro experiências navegáveis e landing premium pronta pra conversa de piloto com escolas. Arquitetura preparada pra trocar mock por Supabase sem refatorar componentes. [Substituir por resultados de piloto real assim que entrar em escola]",
+    gallery: [
+      "/bereading/01.png",
+      "/bereading/02.png",
+      "/bereading/03.png",
+      "/bereading/04.png",
+    ],
   },
 ];
 

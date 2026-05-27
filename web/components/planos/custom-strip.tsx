@@ -33,7 +33,7 @@ export function CustomStrip() {
               </p>
             </div>
             <a
-              href="https://cal.com/"
+              href="/contato"
               className="group inline-flex items-center justify-between gap-3 rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:border-white/40"
             >
               Pedir brief

@@ -30,7 +30,7 @@ export function PlanCard({
   glow,
   featured,
   ctaLabel = "Agendar conversa",
-  ctaHref = "https://cal.com/",
+  ctaHref = "/contato",
 }: PlanCardProps) {
   const inner = (
     <div

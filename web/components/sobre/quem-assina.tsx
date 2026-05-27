@@ -1,17 +1,22 @@
 import { Reveal } from "@/components/ui/reveal";
 import { ProfileCard } from "@/components/effects/profile-card";
+import { CONTACT, buildWhatsappLink } from "@/lib/contact-config";
 
-type Social = { label: string; href: string };
+type Social = { label: string; href: string; external: boolean };
 
-// TODO: substituir hrefs por URLs reais (Instagram, LinkedIn, WhatsApp do dono)
 const SOCIAL: Social[] = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "WhatsApp", href: "#" },
+  { label: "LinkedIn", href: CONTACT.linkedin, external: true },
+  {
+    label: "WhatsApp",
+    href: buildWhatsappLink("Oi! Vim do site da Prumo."),
+    external: true,
+  },
+  ...(CONTACT.instagram
+    ? [{ label: "Instagram", href: CONTACT.instagram, external: true }]
+    : []),
 ];
 
-// TODO: dropar a foto real em web/public/avatar.jpg
-const AVATAR_URL = "/avatar.jpg";
+const AVATAR_URL = "/profile.png";
 
 export function QuemAssina() {
   return (
@@ -22,11 +27,10 @@ export function QuemAssina() {
     >
       <Reveal className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[2fr_3fr] md:gap-16">
         <div className="flex justify-center">
-          {/* TODO: trocar avatarUrl pela foto real (web/public/avatar.jpg) e ajustar handle/status */}
           <ProfileCard
             avatarUrl={AVATAR_URL}
-            name="[Seu nome aqui]"
-            title="Estúdio Prumo"
+            name="Guilherme Bianchini"
+            title="Engenheiro de Software"
             handle="prumo"
             status="Disponível"
             contactText="Falar comigo"
@@ -42,16 +46,14 @@ export function QuemAssina() {
           <span className="text-[11px] tracking-[0.3em] text-white/55 uppercase">
             Quem assina
           </span>
-          {/* TODO: trocar [Seu nome aqui] pelo nome real */}
           <h2
             id="quem-assina-heading"
             className="font-display mt-3 text-3xl font-semibold leading-[1.05] tracking-tight md:text-5xl"
           >
-            [Seu nome aqui]
+            Guilherme Rocha Bianchini
           </h2>
-          {/* TODO: trocar bio placeholder por bio real do dono */}
           <p className="mt-6 max-w-xl text-base text-white/70 md:text-lg">
-            Designer e desenvolvedor por trás do Prumo. Trabalho com sites e presença digital há [X] anos, com foco em marcas que valorizam precisão. Atendimento direto, do briefing à entrega.
+            Engenheiro de software com ênfase em desenvolvimento web. Venho construindo presenças digitais há alguns anos — sites, sistemas e produtos pensados com precisão técnica e cuidado de design. Atendimento direto, do briefing à entrega.
           </p>
 
           <ul className="mt-8 flex flex-wrap gap-6 text-sm text-white">
@@ -59,6 +61,9 @@ export function QuemAssina() {
               <li key={s.label}>
                 <a
                   href={s.href}
+                  {...(s.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className="group relative inline-block py-1 transition-transform duration-300 ease-out hover:-translate-y-0.5"
                 >
                   {s.label}

@@ -29,11 +29,11 @@ describe("PlanCard", () => {
     }
   });
 
-  it("renders a CTA link pointing to scheduling", () => {
+  it("renders a CTA link pointing to the briefing form", () => {
     render(<PlanCard {...baseProps} />);
     const cta = screen.getByRole("link", { name: /agendar conversa/i });
     expect(cta).toBeInTheDocument();
-    expect(cta).toHaveAttribute("href", expect.stringContaining("cal.com"));
+    expect(cta).toHaveAttribute("href", "/contato");
   });
 
   it('does not render the "Mais escolhido" badge by default', () => {
@@ -75,6 +75,6 @@ describe("PlanCard", () => {
       />,
     );
     const link = screen.getByRole("link", { name: /agendar conversa/i });
-    expect(link).toHaveAttribute("href", "https://cal.com/");
+    expect(link).toHaveAttribute("href", "/contato");
   });
 });

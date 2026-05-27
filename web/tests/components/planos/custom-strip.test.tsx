@@ -8,10 +8,10 @@ describe("CustomStrip", () => {
     expect(screen.getByRole("heading", { level: 2, name: /sob medida/i })).toBeInTheDocument();
   });
 
-  it("renders the briefing CTA pointing to Cal.com", () => {
+  it("renders the briefing CTA pointing to the contact form", () => {
     render(<CustomStrip />);
     const link = screen.getByRole("link", { name: /pedir brief/i });
-    expect(link).toHaveAttribute("href", "https://cal.com/");
+    expect(link).toHaveAttribute("href", "/contato");
   });
 
   it("mentions the R$ 25.000 floor", () => {

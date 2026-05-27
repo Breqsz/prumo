@@ -8,7 +8,7 @@ const NAV = {
     { href: "/planos", label: "Planos" },
   ],
   Conversar: [
-    { href: "https://cal.com/", label: "Agendar conversa" },
+    { href: "/contato", label: "Agendar conversa" },
     { href: "/contato", label: "Mandar mensagem" },
     { href: "https://wa.me/", label: "WhatsApp" },
   ],

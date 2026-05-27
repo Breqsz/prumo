@@ -3,10 +3,10 @@ import { describe, it, expect } from "vitest";
 import { QuemAssina } from "@/components/sobre/quem-assina";
 
 describe("QuemAssina", () => {
-  it("renders the section heading with the name placeholder", () => {
+  it("renders the section heading with the real name", () => {
     render(<QuemAssina />);
     expect(
-      screen.getByRole("heading", { level: 2, name: /seu nome aqui/i }),
+      screen.getByRole("heading", { level: 2, name: /guilherme rocha bianchini/i }),
     ).toBeInTheDocument();
   });
 
@@ -15,14 +15,25 @@ describe("QuemAssina", () => {
     expect(screen.getByText(/^Quem assina$/)).toBeInTheDocument();
   });
 
-  it("renders the 3 social links as placeholders", () => {
+  it("renders LinkedIn and WhatsApp social links with real URLs", () => {
     render(<QuemAssina />);
-    const instagram = screen.getByRole("link", { name: /instagram/i });
     const linkedin = screen.getByRole("link", { name: /linkedin/i });
     const whatsapp = screen.getByRole("link", { name: /whatsapp/i });
-    expect(instagram).toHaveAttribute("href", "#");
-    expect(linkedin).toHaveAttribute("href", "#");
-    expect(whatsapp).toHaveAttribute("href", "#");
+    expect(linkedin).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/guilhermebreq/",
+    );
+    expect(whatsapp).toHaveAttribute(
+      "href",
+      expect.stringContaining("wa.me/5534999194509"),
+    );
+    expect(linkedin).toHaveAttribute("target", "_blank");
+    expect(whatsapp).toHaveAttribute("target", "_blank");
+  });
+
+  it("does not render Instagram while CONTACT.instagram is null", () => {
+    render(<QuemAssina />);
+    expect(screen.queryByRole("link", { name: /instagram/i })).toBeNull();
   });
 
   it("renders the profile card avatar image", () => {

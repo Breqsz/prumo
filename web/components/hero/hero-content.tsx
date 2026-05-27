@@ -21,15 +21,17 @@ export function HeroContent() {
       <div className="mb-16 flex flex-col items-center gap-3 sm:flex-row">
         <LiquidGlass
           as="a"
-          href="https://cal.com/"
+          href="/contato"
           className="group flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium text-white"
         >
           Agendar conversa
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </LiquidGlass>
         <Link
-          href="/trabalhos"
-          className="rounded-full px-8 py-3.5 text-sm font-medium text-white/70 transition-colors hover:text-white"
+          href="#"
+          aria-disabled="true"
+          tabIndex={-1}
+          className="pointer-events-none rounded-full px-8 py-3.5 text-sm font-medium text-white/30"
         >
           Ver trabalhos →
         </Link>

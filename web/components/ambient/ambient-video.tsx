@@ -22,13 +22,33 @@ type AmbientVideoProps = {
    * Opt-in so the home stays untouched.
    */
   spotlight?: boolean;
+  /**
+   * Fade-in/out duration in ms. Default 500. Use a smaller value (e.g. 250)
+   * when looping a single clip and you want the seam barely perceptible.
+   */
+  fadeDurationMs?: number;
+  /**
+   * Time before video.duration to trigger the fade-out, in ms. Default 550.
+   * Should track fadeDurationMs so the dimming completes by clip end.
+   */
+  fadeOutLeadMs?: number;
 };
 
 const GRAIN_SVG =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")";
 
-export function AmbientVideo({ srcs, children, spotlight = false }: AmbientVideoProps) {
-  const setRef = useVideoFade({ srcs });
+export function AmbientVideo({
+  srcs,
+  children,
+  spotlight = false,
+  fadeDurationMs,
+  fadeOutLeadMs,
+}: AmbientVideoProps) {
+  const setRef = useVideoFade({
+    srcs,
+    durationMs: fadeDurationMs,
+    fadeOutLeadMs,
+  });
 
   return (
     <div className="relative isolate">

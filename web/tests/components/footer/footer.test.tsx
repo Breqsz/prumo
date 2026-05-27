@@ -31,10 +31,10 @@ describe("Footer", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the Cal.com link in the Conversar column", () => {
+  it("routes 'Agendar conversa' in the Conversar column to the briefing form", () => {
     render(<Footer />);
-    const cal = screen.getByRole("link", { name: /agendar conversa/i });
-    expect(cal).toHaveAttribute("href", expect.stringContaining("cal.com"));
+    const link = screen.getByRole("link", { name: /agendar conversa/i });
+    expect(link).toHaveAttribute("href", "/contato");
   });
 
   it("renders the current year in the copyright", () => {

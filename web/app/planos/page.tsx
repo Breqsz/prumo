@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Preço transparente. Três planos para criar (Landing, Institucional, Branded), três para manter (Base, Crescimento, Parceria) e projetos custom sob briefing.",
 };
 
-const AMBIENT_VIDEOS = ["/ambient.mp4", "/ambient-2.mp4"];
+const AMBIENT_VIDEOS = ["/planos-1.mp4", "/planos-2.mp4"];
 
 export default function PlanosPage() {
   return (

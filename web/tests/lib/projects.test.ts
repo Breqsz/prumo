@@ -22,6 +22,16 @@ describe("projects data", () => {
       expect(p.meta.entrega).toBeTruthy();
     }
   });
+
+  it("every project has exactly 4 gallery images with /public paths", () => {
+    for (const p of projects) {
+      expect(p.gallery).toHaveLength(4);
+      for (const src of p.gallery) {
+        expect(src.startsWith("/")).toBe(true);
+        expect(/\.(png|jpg|jpeg|webp|avif)$/i.test(src)).toBe(true);
+      }
+    }
+  });
 });
 
 describe("getProject", () => {

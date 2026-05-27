@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
@@ -97,16 +98,20 @@ export default async function ProjectPage({ params }: PageProps) {
 
                 <div
                   className="grid gap-4 sm:grid-cols-2"
-                  aria-label="Galeria do projeto (placeholder)"
+                  aria-label={`Galeria de ${project.title}`}
                 >
-                  {[0, 1, 2, 3].map((i) => (
+                  {project.gallery.map((src, i) => (
                     <div
-                      key={i}
-                      className="aspect-[4/3] rounded-lg border border-white/10 bg-white/[0.02]"
+                      key={src}
+                      className="relative aspect-[4/3] overflow-hidden rounded-lg border border-white/10 bg-black"
                     >
-                      <span className="sr-only">
-                        Placeholder de imagem {i + 1}, substituir
-                      </span>
+                      <Image
+                        src={src}
+                        alt={`${project.title} — captura ${i + 1}`}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover"
+                      />
                     </div>
                   ))}
                 </div>

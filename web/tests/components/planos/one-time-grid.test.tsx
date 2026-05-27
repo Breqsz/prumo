@@ -15,11 +15,11 @@ describe("OneTimeGrid", () => {
     expect(screen.getByText(/mais escolhido/i)).toBeInTheDocument();
   });
 
-  it("renders an Agendar conversa CTA per card pointing to Cal.com", () => {
+  it("renders an Agendar conversa CTA per card pointing to /contato", () => {
     render(<OneTimeGrid />);
     const ctas = screen.getAllByRole("link", { name: /agendar conversa/i });
     expect(ctas).toHaveLength(3);
-    ctas.forEach((c) => expect(c).toHaveAttribute("href", "https://cal.com/"));
+    ctas.forEach((c) => expect(c).toHaveAttribute("href", "/contato"));
   });
 
   it("renders the section heading", () => {

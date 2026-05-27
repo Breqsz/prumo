@@ -41,18 +41,12 @@ export function FinalCta() {
         <div className="anim anim-cta mt-14 flex flex-col items-center gap-3 sm:flex-row">
           <LiquidGlass
             as="a"
-            href="https://cal.com/"
+            href="/contato"
             className="group flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium text-white"
           >
             Agendar conversa
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </LiquidGlass>
-          <Link
-            href="/contato"
-            className="rounded-full px-8 py-3.5 text-sm font-medium text-white/70 transition-colors hover:text-white"
-          >
-            Mandar mensagem →
-          </Link>
         </div>
       </div>
     </section>

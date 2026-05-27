@@ -22,9 +22,9 @@ export default function SobrePage() {
       <AmbientVideo srcs={AMBIENT_VIDEOS} spotlight>
         <HeroNav />
         <SobreHero />
+        <QuemAssina />
         <Manifesto />
         <Metodo />
-        <QuemAssina />
         <FinalCta />
       </AmbientVideo>
       <Footer />

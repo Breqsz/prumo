@@ -9,16 +9,10 @@ describe("FinalCta", () => {
     expect(h).toHaveTextContent(/no prumo/i);
   });
 
-  it("renders the primary Cal.com CTA", () => {
+  it("renders the primary CTA pointing to the briefing form", () => {
     render(<FinalCta />);
     const cta = screen.getByRole("link", { name: /agendar conversa/i });
-    expect(cta).toHaveAttribute("href", expect.stringContaining("cal.com"));
-  });
-
-  it("renders the secondary contact link", () => {
-    render(<FinalCta />);
-    const link = screen.getByRole("link", { name: /mandar mensagem/i });
-    expect(link).toHaveAttribute("href", "/contato");
+    expect(cta).toHaveAttribute("href", "/contato");
   });
 
   it("renders an anchor id for in-page navigation", () => {
