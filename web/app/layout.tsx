@@ -2,11 +2,23 @@ import type { Metadata } from "next";
 import { instrumentSerif, inter } from "./fonts";
 import "./globals.css";
 import Script from "next/script";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Prumo · Sites, estratégia e presença digital",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Prumo · Sites, estratégia e presença digital",
+    template: "%s · Prumo",
+  },
   description:
     "Estúdio digital. Sites sob medida, planos de manutenção e parceria contínua.",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: "Prumo",
+    url: "/",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
