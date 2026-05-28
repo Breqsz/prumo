@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/reveal";
+import { Logo } from "@/components/ui/logo";
 
 const NAV = {
   Estúdio: [
@@ -27,13 +28,10 @@ export function Footer() {
         <Reveal className="flex flex-col gap-5">
           <Link
             href="/"
-            className="font-display flex items-center gap-2 text-2xl text-white"
+            aria-label="Prumo, página inicial"
+            className="text-white"
           >
-            <span
-              aria-hidden
-              className="inline-block h-6 w-[2px] bg-white/80"
-            />
-            Prumo
+            <Logo />
           </Link>
           <p className="max-w-xs text-sm leading-relaxed text-white/55">
             Sites, estratégia e presença digital para marcas que valorizam

@@ -3,20 +3,18 @@ import { describe, it, expect } from "vitest";
 import { Logo, PrumoMark } from "@/components/ui/logo";
 
 describe("PrumoMark", () => {
-  it("renders an aria-hidden svg using currentColor", () => {
+  it("renders an aria-hidden img of the official mark", () => {
     const { container } = render(<PrumoMark className="h-7 w-auto" />);
-    const svg = container.querySelector("svg");
-    expect(svg).not.toBeNull();
-    expect(svg).toHaveAttribute("aria-hidden", "true");
-    expect(svg).toHaveAttribute("viewBox", "0 0 24 96");
-    expect(svg?.getAttribute("class")).toContain("h-7");
+    const img = container.querySelector("img");
+    expect(img).not.toBeNull();
+    expect(img).toHaveAttribute("aria-hidden", "true");
+    expect(img?.getAttribute("src")).toContain("prumo-mark");
+    expect(img?.getAttribute("class")).toContain("h-7");
   });
 
-  it("renders the three plumb-line primitives (circle, string, weight)", () => {
+  it("is decorative (empty alt) so the wordmark carries the accessible name", () => {
     const { container } = render(<PrumoMark />);
-    expect(container.querySelector("circle")).not.toBeNull();
-    expect(container.querySelector("line")).not.toBeNull();
-    expect(container.querySelector("path")).not.toBeNull();
+    expect(container.querySelector("img")).toHaveAttribute("alt", "");
   });
 });
 

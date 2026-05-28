@@ -6,30 +6,17 @@ type LogoProps = {
 
 export function PrumoMark({ className = "" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 96"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
+    // Official Prumo logomark (brand sheet primary logomark). Raster PNG with
+    // transparent background; intrinsic size 66x220, sized for display via className.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/prumo-mark.png"
+      alt=""
       aria-hidden="true"
-    >
-      <circle
-        cx="12"
-        cy="6"
-        r="4"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-      <line
-        x1="12"
-        y1="10"
-        x2="12"
-        y2="58"
-        stroke="currentColor"
-        strokeWidth="0.8"
-      />
-      <path d="M12 58 L22 68 L12 94 L2 68 Z" fill="currentColor" />
-    </svg>
+      width={66}
+      height={220}
+      className={className}
+    />
   );
 }
 
