@@ -16,16 +16,17 @@
 **Decisão:** Umami Cloud (free tier, 10k eventos/mês, zero infra). Cookieless → **sem banner de consentimento LGPD**. Self-host fica como alternativa futura se quiser posse total dos dados.
 
 - Script carregado no root layout via `<Script>` do Next, com `src` e `data-website-id` vindos de env vars (`NEXT_PUBLIC_UMAMI_SRC`, `NEXT_PUBLIC_UMAMI_WEBSITE_ID`). Se as vars não existirem, o script não renderiza (analytics inerte, nada quebra).
-- Helper tipado em `web/lib/analytics.ts`:
+- **Tracking de cliques = declarativo.** Umami auto-rastreia elementos com atributo `data-umami-event="<nome>"` (+ `data-umami-event-<key>="<valor>"` pra payload). Funciona em anchors/botões **server-rendered** — não exige converter componente pra client. `LiquidGlass` repassa `...rest`, então os data-attrs passam direto.
+- **Helper programático** em `web/lib/analytics.ts` só pro caso que não é clique direto:
   - `track(event: string, data?: Record<string, unknown>)` → embrulha `window.umami?.track`. No-op seguro quando `umami` indefinido (SSR, script não carregado, dev sem env).
-  - Tipo `declare global { interface Window { umami?: { track: (...) => void } } }`.
+  - Tipo `declare global { interface Window { umami?: { track: (event: string, data?: Record<string, unknown>) => void } } }`.
 - **Taxonomia de eventos:**
-  | Evento | Quando | Payload |
-  |---|---|---|
-  | `cta_contato` | clique em qualquer CTA que leva a `/contato` | `{ source: "hero" \| "nav" \| "planos" \| "final-cta" }` |
-  | `form_submit` | briefing enviado com sucesso (após Resend OK) | — |
-  | `plano_click` | clique no CTA de um card de plano | `{ plano: "landing" \| "institucional" \| "branded" \| "base" \| "crescimento" \| "parceria" }` |
-  | `social_click` | clique em ícone social | `{ network: "instagram" \| "linkedin" \| "whatsapp" }` |
+  | Evento | Quando | Mecanismo | Payload |
+  |---|---|---|---|
+  | `cta_contato` | clique em CTA que leva a `/contato` | `data-umami-event` | `data-umami-event-source`: hero / nav / final-cta |
+  | `plano_click` | clique no CTA de um card de plano | `data-umami-event` | `data-umami-event-plano`: landing / institucional / branded / base / crescimento / parceria |
+  | `social_click` | clique em ícone social | `data-umami-event` | `data-umami-event-network`: instagram / linkedin / whatsapp |
+  | `form_submit` | briefing enviado com sucesso (após Resend OK) | `track()` programático (useEffect em `state.status === "ok"`) | — |
 - Pageviews são automáticos do Umami — não precisam de evento custom.
 
 ## Componente 2 — SEO foundation
