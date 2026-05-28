@@ -13,6 +13,8 @@ type PlanCardProps = {
   featured?: boolean;
   ctaLabel?: string;
   ctaHref?: string;
+  /** Umami slug for plano_click event */
+  eventSlug?: string;
 };
 
 const GLOW_STYLES = [
@@ -31,6 +33,7 @@ export function PlanCard({
   featured,
   ctaLabel = "Agendar conversa",
   ctaHref = "/contato",
+  eventSlug,
 }: PlanCardProps) {
   const inner = (
     <div
@@ -78,6 +81,8 @@ export function PlanCard({
         <a
           href={ctaHref}
           className="group/cta flex items-center justify-between rounded-full border border-white/12 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30"
+          data-umami-event="plano_click"
+          data-umami-event-plano={eventSlug}
         >
           {ctaLabel}
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />

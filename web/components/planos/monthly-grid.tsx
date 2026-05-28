@@ -15,6 +15,7 @@ const PLANS = [
       "2h de alterações por mês",
     ],
     glow: 0 as const,
+    eventSlug: "base",
   },
   {
     name: "Crescimento",
@@ -30,6 +31,7 @@ const PLANS = [
     ],
     glow: 1 as const,
     featured: true,
+    eventSlug: "crescimento",
   },
   {
     name: "Parceria",
@@ -45,6 +47,7 @@ const PLANS = [
       "A/B tests guiados",
     ],
     glow: 2 as const,
+    eventSlug: "parceria",
   },
 ];
 

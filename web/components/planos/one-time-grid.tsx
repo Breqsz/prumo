@@ -15,6 +15,7 @@ const PLANS = [
       "Domínio e deploy inclusos",
     ],
     glow: 0 as const,
+    eventSlug: "landing",
   },
   {
     name: "Institucional",
@@ -31,6 +32,7 @@ const PLANS = [
     ],
     glow: 1 as const,
     featured: true,
+    eventSlug: "institucional",
   },
   {
     name: "Branded",
@@ -46,6 +48,7 @@ const PLANS = [
       "Implantação acompanhada",
     ],
     glow: 2 as const,
+    eventSlug: "branded",
   },
 ];
 

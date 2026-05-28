@@ -48,16 +48,19 @@ const ITEMS = [
   {
     href: "https://instagram.com/",
     label: "Instagram",
+    network: "instagram",
     Icon: InstagramIcon,
   },
   {
     href: "https://linkedin.com/",
     label: "LinkedIn",
+    network: "linkedin",
     Icon: LinkedinIcon,
   },
   {
     href: "https://wa.me/",
     label: "WhatsApp",
+    network: "whatsapp",
     Icon: WhatsappIcon,
   },
 ];
@@ -65,13 +68,15 @@ const ITEMS = [
 export function HeroSocial() {
   return (
     <div className="relative z-10 flex justify-center gap-3 pb-10">
-      {ITEMS.map(({ href, label, Icon }) => (
+      {ITEMS.map(({ href, label, network, Icon }) => (
         <LiquidGlass
           key={label}
           as="a"
           href={href}
           aria-label={label}
           className="rounded-full p-3.5 text-white/70 transition-colors hover:text-white"
+          data-umami-event="social_click"
+          data-umami-event-network={network}
         >
           <Icon />
         </LiquidGlass>

@@ -35,6 +35,8 @@ export function CustomStrip() {
             <a
               href="/contato"
               className="group inline-flex items-center justify-between gap-3 rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:border-white/40"
+              data-umami-event="cta_contato"
+              data-umami-event-source="planos"
             >
               Pedir brief
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

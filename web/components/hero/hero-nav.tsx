@@ -20,6 +20,8 @@ export function HeroNav() {
           <Link
             href="/contato"
             className="rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium text-white md:hidden"
+            data-umami-event="cta_contato"
+            data-umami-event-source="nav"
           >
             Agendar
           </Link>
@@ -45,6 +47,8 @@ export function HeroNav() {
             as="a"
             href="/contato"
             className="rounded-full px-5 py-2 text-sm font-medium text-white"
+            data-umami-event="cta_contato"
+            data-umami-event-source="nav"
           >
             Agendar conversa
           </LiquidGlass>
