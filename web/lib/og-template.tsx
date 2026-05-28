@@ -10,13 +10,17 @@ export const OG_CONTENT_TYPE = "image/png";
  *
  * The doc recommends readFile + process.cwd() for Node.js runtime OG routes.
  * Only ttf/otf/woff are supported by Satori; ttf is preferred for speed.
+ *
+ * Node Buffers can be backed by a shared memory pool, so `.buffer` may include
+ * bytes beyond the file (wrong byteOffset/byteLength) and corrupt the font.
+ * We return a correctly-sliced ArrayBuffer to avoid this.
  */
 export async function loadInstrumentSerif(): Promise<ArrayBuffer> {
   const buffer = await readFile(
     join(process.cwd(), "app/_fonts/InstrumentSerif-Regular.ttf"),
   );
-  // Buffer extends Uint8Array; .buffer gives the underlying ArrayBuffer
-  return buffer.buffer as ArrayBuffer;
+  // Slice to exact file bytes — avoids shared-pool byteOffset/byteLength issues
+  return buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
 }
 
 /**
