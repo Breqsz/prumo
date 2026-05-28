@@ -1,9 +1,10 @@
 "use client";
 
-import { useActionState, useState, useTransition } from "react";
+import { useActionState, useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import { submitContactForm, type SubmitState } from "@/app/contato/actions";
 import { buildWhatsappLink } from "@/lib/contact-config";
+import { track } from "@/lib/analytics";
 
 const PROJECT_TYPES = [
   "Landing page",
@@ -124,6 +125,10 @@ export function ContatoForm() {
   const [isPending, startTransition] = useTransition();
 
   const pending = actionPending || isPending;
+
+  useEffect(() => {
+    if (state.status === "ok") track("form_submit");
+  }, [state.status]);
 
   function update<K extends keyof Fields>(key: K, value: string) {
     setFields((f) => ({ ...f, [key]: value }));
