@@ -8,9 +8,11 @@ import { ContatoForm } from "@/components/contato/contato-form";
 import { ContatoChannels } from "@/components/contato/contato-channels";
 
 export const metadata: Metadata = {
-  title: "Contato · Prumo",
+  title: "Contato",
   description:
-    "Briefing inicial. Resposta em até 24h com perguntas, cronograma e opinião honesta sobre se posso ajudar.",
+    "Conta o seu objetivo num briefing rápido. Respondo em até 24h com perguntas, cronograma e próximos passos.",
+  alternates: { canonical: "/contato" },
+  openGraph: { url: "/contato" },
 };
 
 // Single clip on loop with near-imperceptible fade at the seam (250ms).

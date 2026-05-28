@@ -10,9 +10,11 @@ import { Footer } from "@/components/footer/footer";
 import { AmbientVideo } from "@/components/ambient/ambient-video";
 
 export const metadata: Metadata = {
-  title: "Planos · Prumo",
+  title: "Planos",
   description:
-    "Preço transparente. Três planos para criar (Landing, Institucional, Branded), três para manter (Base, Crescimento, Parceria) e projetos custom sob briefing.",
+    "Sites sob medida e planos de manutenção contínua. Landing, institucional, projeto branded e mensalidades de parceria.",
+  alternates: { canonical: "/planos" },
+  openGraph: { url: "/planos" },
 };
 
 const AMBIENT_VIDEOS = ["/planos-1.mp4", "/planos-2.mp4"];

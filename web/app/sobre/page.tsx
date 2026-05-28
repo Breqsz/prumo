@@ -9,9 +9,11 @@ import { FinalCta } from "@/components/cta/final-cta";
 import { Footer } from "@/components/footer/footer";
 
 export const metadata: Metadata = {
-  title: "Sobre · Prumo",
+  title: "Sobre",
   description:
-    "Estúdio solo de sites, estratégia e presença digital. Honestidade, sobriedade e precisão — uma pessoa do briefing à entrega.",
+    "O estúdio, o método e quem assina cada projeto. Operação solo, posicionamento premium, honestidade no processo.",
+  alternates: { canonical: "/sobre" },
+  openGraph: { url: "/sobre" },
 };
 
 const AMBIENT_VIDEOS = ["/ambient.mp4", "/ambient-2.mp4"];

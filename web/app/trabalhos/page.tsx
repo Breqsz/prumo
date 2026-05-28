@@ -4,9 +4,11 @@ import { ProjectReel } from "@/components/trabalhos/project-reel";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
-  title: "Trabalhos · Prumo",
+  title: "Trabalhos",
   description:
-    "Uma seleção de projetos recentes. Identidades, sites e sistemas construídos com precisão editorial.",
+    "Projetos selecionados do estúdio Prumo — sites institucionais, apps e produtos digitais.",
+  alternates: { canonical: "/trabalhos" },
+  openGraph: { url: "/trabalhos" },
 };
 
 export default function TrabalhosPage() {

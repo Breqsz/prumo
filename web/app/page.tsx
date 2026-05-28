@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/hero/hero";
 import { PlanosTeaser } from "@/components/planos/planos-teaser";
 import { Faq } from "@/components/faq/faq";
 import { FinalCta } from "@/components/cta/final-cta";
 import { Footer } from "@/components/footer/footer";
 import { AmbientVideo } from "@/components/ambient/ambient-video";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
 
 const HERO_VIDEOS = [
   "/hero.mp4", // low-angle building exterior (Pexels 7065802)
