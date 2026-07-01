@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { HeroNav } from "@/components/hero/hero-nav";
 import { PlanosHero } from "@/components/planos/planos-hero";
-import { OneTimeGrid } from "@/components/planos/one-time-grid";
-import { MonthlyGrid } from "@/components/planos/monthly-grid";
+import { SpotlightStage } from "@/components/planos/spotlight-stage";
 import { CustomStrip } from "@/components/planos/custom-strip";
 import { PlanosFaq } from "@/components/planos/planos-faq";
 import { FinalCta } from "@/components/cta/final-cta";
@@ -25,8 +24,7 @@ export default function PlanosPage() {
       <AmbientVideo srcs={AMBIENT_VIDEOS} spotlight>
         <HeroNav />
         <PlanosHero />
-        <OneTimeGrid />
-        <MonthlyGrid />
+        <SpotlightStage />
         <CustomStrip />
         <PlanosFaq />
         <FinalCta />

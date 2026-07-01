@@ -10,14 +10,15 @@ describe("PlanosPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the one-time grid heading", () => {
+  it("renders the spotlight stage section", () => {
     render(<PlanosPage />);
-    expect(screen.getByRole("heading", { level: 2, name: /para criar/i })).toBeInTheDocument();
+    const section = document.querySelector("#planos-stage");
+    expect(section).toBeInTheDocument();
   });
 
-  it("renders the monthly grid heading", () => {
+  it("renders the plan mode tablist", () => {
     render(<PlanosPage />);
-    expect(screen.getByRole("heading", { level: 2, name: /para manter/i })).toBeInTheDocument();
+    expect(screen.getByRole("tablist", { name: /tipo de plano/i })).toBeInTheDocument();
   });
 
   it("renders the custom strip heading", () => {

@@ -23,7 +23,7 @@ export function PlanosHero() {
       </Reveal>
 
       <a
-        href="#criar"
+        href="#planos-stage"
         aria-label="Rolar para os planos"
         className="prumo-scroll-hint absolute bottom-10 left-1/2 -translate-x-1/2 text-white/55 transition-colors hover:text-white md:bottom-40"
       >
