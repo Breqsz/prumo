@@ -298,7 +298,8 @@ export function StagePlanCard({ plan, state, onFocus }: StagePlanCardProps) {
       >
         <CardShell>
           <div className="flex flex-col gap-4 p-7">
-            <h3 className="font-display text-3xl leading-none italic">{plan.name}</h3>
+            {/* span, not h3 — this is a button label; only the active plan is a document heading */}
+            <span className="font-display block text-3xl leading-none italic">{plan.name}</span>
             <div className="flex flex-col gap-1">
               <span className="font-display text-2xl leading-none">{plan.price}</span>
               <span className="text-[10px] tracking-widest text-white/45 uppercase">
@@ -566,9 +567,10 @@ import { SpotlightStage } from "@/components/planos/spotlight-stage";
 describe("SpotlightStage", () => {
   it("shows the three criar plans with Institucional active by default", () => {
     render(<SpotlightStage />);
-    expect(screen.getByRole("heading", { level: 3, name: "Landing" })).toBeInTheDocument();
+    // only the active plan is a document heading; the two side plans are focus buttons
     expect(screen.getByRole("heading", { level: 3, name: "Institucional" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 3, name: "Branded" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /focar plano landing/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /focar plano branded/i })).toBeInTheDocument();
     // exactly one CTA link exists — it belongs to the active plan
     const cta = screen.getByRole("link", { name: /agendar conversa/i });
     expect(cta).toHaveAttribute("data-umami-event-plano", "institucional");
@@ -582,7 +584,7 @@ describe("SpotlightStage", () => {
       "data-umami-event-plano",
       "crescimento",
     );
-    expect(screen.queryByRole("heading", { level: 3, name: "Landing" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /focar plano landing/i })).not.toBeInTheDocument();
   });
 
   it("focusing a side plan makes it the active one", async () => {
