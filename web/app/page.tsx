@@ -46,9 +46,9 @@ export default function HomePage() {
       <Hero videoSrcs={HERO_VIDEOS} />
       <AmbientVideo srcs={AMBIENT_VIDEOS}>
         <PlanosTeaser />
+        <FinalCta />
         {/* bgVariant: 1=marginalia, 2=blueprint, 3=halo, 4=prumo */}
         <Faq bgVariant={1} />
-        <FinalCta />
       </AmbientVideo>
       <Footer />
     </>
