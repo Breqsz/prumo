@@ -36,7 +36,7 @@ export function StagePlanCard({ plan, state, onFocus }: StagePlanCardProps) {
       >
         <CardShell>
           <div className="flex flex-col gap-4 p-7">
-            <h3 className="font-display text-3xl leading-none italic">{plan.name}</h3>
+            <span className="font-display block text-3xl leading-none italic">{plan.name}</span>
             <div className="flex flex-col gap-1">
               <span className="font-display text-2xl leading-none">{plan.price}</span>
               <span className="text-[10px] tracking-widest text-white/45 uppercase">

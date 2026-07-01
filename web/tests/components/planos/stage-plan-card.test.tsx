@@ -23,6 +23,8 @@ describe("StagePlanCard", () => {
     const onFocus = vi.fn();
     render(<StagePlanCard plan={landing} state="side" onFocus={onFocus} />);
     expect(screen.queryByRole("link", { name: /agendar conversa/i })).not.toBeInTheDocument();
+    expect(screen.getByText(landing.name)).toBeInTheDocument();
+    expect(screen.getByText(landing.price)).toBeInTheDocument();
     await userEvent.click(screen.getByRole("button", { name: /focar plano landing/i }));
     expect(onFocus).toHaveBeenCalledOnce();
   });
