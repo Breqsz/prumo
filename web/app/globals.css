@@ -207,25 +207,48 @@ body {
   place-items: center;
   min-height: 560px;
   --stage-offset: 0px;
+  /* Cinematic reveal when the plan set changes (Criar/Manter). The container is
+     keyed by `mode` in SpotlightStage, so this animation replays on each
+     category switch instead of the cards hard-cutting. */
+  animation: stage-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @media (min-width: 768px) {
   .stage {
     --stage-offset: 340px;
   }
 }
+@keyframes stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    filter: blur(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
 .stage-slot {
   grid-area: stack;
-  --stage-scale: 0.82;
-  --stage-op: 0.55;
+  --stage-scale: 0.8;
+  --stage-op: 0.5;
+  /* depth-of-field: side cards sit softly out of focus, the active one is sharp */
+  --stage-blur: 2.5px;
   transform: translateX(calc(var(--pos) * var(--stage-offset))) scale(var(--stage-scale));
   opacity: var(--stage-op);
+  filter: blur(var(--stage-blur));
+  /* longer, softly-settling transition — a focus pull, not a snap */
   transition:
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 850ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 850ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 850ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, filter;
 }
 .stage-slot[data-active="true"] {
   --stage-scale: 1;
   --stage-op: 1;
+  --stage-blur: 0px;
   z-index: 10;
 }
 /* Mobile: só o card ativo aparece; troca via prev/next */
@@ -237,7 +260,11 @@ body {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .stage {
+    animation: none;
+  }
   .stage-slot {
-    transition: opacity 120ms linear;
+    transition: opacity 160ms linear;
+    filter: none;
   }
 }

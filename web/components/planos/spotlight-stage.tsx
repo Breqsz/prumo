@@ -86,8 +86,8 @@ export function SpotlightStage() {
         ))}
       </div>
 
-      {/* Palco */}
-      <div className="stage relative mx-auto max-w-6xl">
+      {/* Palco — keyed by mode so the stage-in reveal replays on category switch */}
+      <div key={mode} className="stage relative mx-auto max-w-6xl">
         {plans.map((plan, i) => {
           const isActive = i === activeIndex;
           return (
