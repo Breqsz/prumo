@@ -44,4 +44,18 @@ describe("SpotlightStage", () => {
       "true",
     );
   });
+
+  it("uses roving tabindex on the toggle tabs", () => {
+    render(<SpotlightStage />);
+    expect(screen.getByRole("tab", { name: /criar site/i })).toHaveAttribute("tabindex", "0");
+    expect(screen.getByRole("tab", { name: /manter site/i })).toHaveAttribute("tabindex", "-1");
+  });
+
+  it("switches mode with arrow keys", async () => {
+    render(<SpotlightStage />);
+    screen.getByRole("tab", { name: /criar site/i }).focus();
+    await userEvent.keyboard("{ArrowRight}");
+    expect(screen.getByRole("tab", { name: /manter site/i })).toHaveAttribute("aria-selected", "true");
+    expect(screen.getByRole("heading", { level: 3, name: "Crescimento" })).toBeInTheDocument();
+  });
 });

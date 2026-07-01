@@ -233,6 +233,7 @@ body {
   .stage-slot:not([data-active="true"]) {
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
   }
 }
 @media (prefers-reduced-motion: reduce) {

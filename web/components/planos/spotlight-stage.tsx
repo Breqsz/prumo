@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useState, useRef, type CSSProperties } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { PLAN_SETS, featuredSlug, type PlanMode } from "@/lib/plans";
 import { StagePlanCard } from "./stage-plan-card";
@@ -14,6 +14,7 @@ const MODES: { id: PlanMode; label: string }[] = [
 export function SpotlightStage() {
   const [mode, setMode] = useState<PlanMode>("criar");
   const [activeSlug, setActiveSlug] = useState<string>(() => featuredSlug("criar"));
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const plans = PLAN_SETS[mode];
   const activeIndex = Math.max(
@@ -25,6 +26,18 @@ export function SpotlightStage() {
     if (next === mode) return;
     setMode(next);
     setActiveSlug(featuredSlug(next));
+  }
+
+  function onTabKeyDown(e: React.KeyboardEvent) {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    e.preventDefault();
+    const idx = MODES.findIndex((m) => m.id === mode);
+    const nextIdx =
+      e.key === "ArrowRight"
+        ? (idx + 1) % MODES.length
+        : (idx - 1 + MODES.length) % MODES.length;
+    switchMode(MODES[nextIdx].id);
+    tabRefs.current[nextIdx]?.focus();
   }
 
   function step(dir: -1 | 1) {
@@ -52,13 +65,16 @@ export function SpotlightStage() {
         aria-label="Tipo de plano"
         className="mx-auto mb-14 flex w-fit rounded-full border border-white/12 p-1"
       >
-        {MODES.map((m) => (
+        {MODES.map((m, i) => (
           <button
             key={m.id}
+            ref={(el) => { tabRefs.current[i] = el; }}
             type="button"
             role="tab"
             aria-selected={mode === m.id}
+            tabIndex={mode === m.id ? 0 : -1}
             onClick={() => switchMode(m.id)}
+            onKeyDown={onTabKeyDown}
             data-umami-event="plano_toggle"
             data-umami-event-mode={m.id}
             className={`rounded-full px-6 py-2 text-xs tracking-[0.16em] uppercase transition-colors ${
@@ -78,7 +94,7 @@ export function SpotlightStage() {
             <div
               key={plan.eventSlug}
               className="stage-slot"
-              data-active={isActive}
+              data-active={isActive || undefined}
               style={{ "--pos": posByIndex.get(i) ?? 0 } as CSSProperties}
             >
               <StagePlanCard
