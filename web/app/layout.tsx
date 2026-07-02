@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { instrumentSerif, inter } from "./fonts";
 import "./globals.css";
 import Script from "next/script";
 import { SITE_URL } from "@/lib/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { siteGraph } from "@/lib/schema";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -19,6 +21,13 @@ export const metadata: Metadata = {
     url: "/",
   },
   twitter: { card: "summary_large_image" },
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -32,6 +41,7 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${inter.variable} dark`}
     >
       <body className="min-h-screen bg-black text-white antialiased font-body">
+        <JsonLd data={siteGraph()} />
         {children}
         {umamiSrc && umamiId && (
           <Script
