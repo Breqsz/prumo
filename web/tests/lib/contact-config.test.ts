@@ -10,9 +10,11 @@ describe("CONTACT", () => {
     expect(CONTACT.email).toBe("guilherme@breq.com.br");
     expect(CONTACT.whatsappE164).toBe("+5534999194509");
     expect(CONTACT.linkedin).toBe(
-      "https://www.linkedin.com/in/guilhermebreq/",
+      "https://www.linkedin.com/company/prumo-digital/",
     );
-    expect(CONTACT.instagram).toBeNull();
+    expect(CONTACT.instagram).toBe(
+      "https://www.instagram.com/prumo_digital/",
+    );
   });
 });
 

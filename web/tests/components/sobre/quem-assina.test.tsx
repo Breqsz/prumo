@@ -21,7 +21,7 @@ describe("QuemAssina", () => {
     const whatsapp = screen.getByRole("link", { name: /whatsapp/i });
     expect(linkedin).toHaveAttribute(
       "href",
-      "https://www.linkedin.com/in/guilhermebreq/",
+      "https://www.linkedin.com/company/prumo-digital/",
     );
     expect(whatsapp).toHaveAttribute(
       "href",
@@ -31,9 +31,14 @@ describe("QuemAssina", () => {
     expect(whatsapp).toHaveAttribute("target", "_blank");
   });
 
-  it("does not render Instagram while CONTACT.instagram is null", () => {
+  it("renders Instagram link to the company profile", () => {
     render(<QuemAssina />);
-    expect(screen.queryByRole("link", { name: /instagram/i })).toBeNull();
+    const link = screen.getByRole("link", { name: /instagram/i });
+    expect(link).toHaveAttribute(
+      "href",
+      "https://www.instagram.com/prumo_digital/",
+    );
+    expect(link).toHaveAttribute("target", "_blank");
   });
 
   it("renders the profile card avatar image", () => {

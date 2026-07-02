@@ -30,18 +30,23 @@ describe("ContatoChannels", () => {
     );
   });
 
-  it("renders LinkedIn link to the real profile", () => {
+  it("renders LinkedIn link to the company profile", () => {
     render(<ContatoChannels />);
     const link = screen.getByRole("link", { name: /linkedin/i });
     expect(link).toHaveAttribute(
       "href",
-      "https://www.linkedin.com/in/guilhermebreq/",
+      "https://www.linkedin.com/company/prumo-digital/",
     );
     expect(link).toHaveAttribute("target", "_blank");
   });
 
-  it("does not render Instagram while CONTACT.instagram is null", () => {
+  it("renders Instagram link to the company profile", () => {
     render(<ContatoChannels />);
-    expect(screen.queryByRole("link", { name: /instagram/i })).toBeNull();
+    const link = screen.getByRole("link", { name: /instagram/i });
+    expect(link).toHaveAttribute(
+      "href",
+      "https://www.instagram.com/prumo_digital/",
+    );
+    expect(link).toHaveAttribute("target", "_blank");
   });
 });
