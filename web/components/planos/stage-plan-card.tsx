@@ -93,6 +93,19 @@ export function StagePlanCard({ plan, state, onFocus }: StagePlanCardProps) {
               ))}
             </ul>
 
+            {plan.technicalDetails && (
+              <details className="group/details">
+                <summary className="flex cursor-pointer list-none items-center gap-1.5 text-xs text-white/35 transition-colors hover:text-white/55 select-none">
+                  <span className="transition-transform duration-200 group-open/details:rotate-90">›</span>
+                  <span className="group-open/details:hidden">+ detalhes técnicos</span>
+                  <span className="hidden group-open/details:inline">− detalhes técnicos</span>
+                </summary>
+                <p className="mt-2 text-xs leading-relaxed text-white/40">
+                  {plan.technicalDetails}
+                </p>
+              </details>
+            )}
+
             <a
               href="/contato"
               className="group/cta flex items-center justify-between rounded-full border border-white/12 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30"

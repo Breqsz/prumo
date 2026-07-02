@@ -18,7 +18,7 @@ export function ContatoHero() {
         </h1>
         <p className="max-w-xl text-base text-white/70 md:text-lg">
           Me conta o projeto. Respondo em até 24h com perguntas, cronograma e
-          uma opinião honesta sobre se posso ajudar.
+          uma opinião honesta sobre como posso ajudar.
         </p>
       </Reveal>
     </section>

@@ -5,10 +5,8 @@
 export const CONTACT = {
   email: "guilherme@breq.com.br",
   whatsappE164: "+5534999194509",
-  linkedin: "https://www.linkedin.com/in/guilhermebreq/",
-  // Instagram coming soon — leaving null so callers can branch on it
-  // instead of rendering a dead `#` link.
-  instagram: null as string | null,
+  linkedin: "https://www.linkedin.com/company/prumo-digital/",
+  instagram: "https://www.instagram.com/prumo_digital/" as string | null,
 } as const;
 
 export function buildWhatsappLink(prefilledMessage?: string): string {

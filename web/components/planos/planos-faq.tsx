@@ -15,7 +15,7 @@ const ITEMS = [
   },
   {
     q: "Posso cancelar o plano mensal quando quiser?",
-    a: "Base e Crescimento: cancelamento livre a qualquer momento. Parceria: contrato mínimo de 6 meses por causa do envolvimento estratégico — após esse período, mensal sem fidelidade.",
+    a: "Manutenção e Crescimento: cancelamento livre a qualquer momento. Parceria: contrato mínimo de 6 meses por causa do envolvimento estratégico — após esse período, mensal sem fidelidade.",
   },
   {
     q: "Os mensais incluem hospedagem ou pago separado?",

@@ -78,6 +78,19 @@ const EMAIL_RE = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const BARE_DOMAIN_RE = /^[a-z0-9.-]+\.[a-z]{2,}(\/.*)?$/i;
 const URL_RE = /^https?:\/\/[^\s]+$/i;
 
+// Live BR phone mask. Strips non-digits, caps at 11 (DDD + 9 + 8), and formats
+// progressively as the user types: landline (10) -> (XX) XXXX-XXXX, mobile (11)
+// -> (XX) XXXXX-XXXX. Idempotent, so re-running on already-formatted input is safe.
+export function formatPhoneBR(value: string): string {
+  const d = value.replace(/\D/g, "").slice(0, 11);
+  if (!d) return "";
+  if (d.length <= 2) return `(${d}`;
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10)
+    return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
+
 export function validateFields(f: Fields): string | null {
   const name = f.name.trim();
   if (name.length < 2) return "Preencha seu nome (mínimo 2 caracteres).";
@@ -202,11 +215,11 @@ export function ContatoForm() {
           name="phone"
           type="tel"
           autoComplete="tel"
-          placeholder="(34) 99919-4509"
+          placeholder="(99) 99999-9999"
           inputMode="tel"
           value={fields.phone}
-          onChange={(v) => update("phone", v)}
-          maxLength={20}
+          onChange={(v) => update("phone", formatPhoneBR(v))}
+          maxLength={16}
         />
         <Field
           label="Empresa ou projeto (opcional)"

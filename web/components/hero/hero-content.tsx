@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { LiquidGlass } from "@/components/ui/liquid-glass";
 import { RotatingPhrase } from "@/components/hero/rotating-phrase";
 
@@ -30,12 +30,13 @@ export function HeroContent() {
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </LiquidGlass>
         <Link
-          href="#"
-          aria-disabled="true"
-          tabIndex={-1}
-          className="pointer-events-none rounded-full px-8 py-3.5 text-sm font-medium text-white/30"
+          href="/trabalhos"
+          className="prumo-cta-pulse group flex items-center gap-2 rounded-full border border-white/15 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:border-white/30"
+          data-umami-event="cta_trabalhos"
+          data-umami-event-source="hero"
         >
-          Ver trabalhos →
+          Ver trabalhos
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>
 

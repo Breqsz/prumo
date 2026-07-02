@@ -31,7 +31,11 @@ vi.mock("react", async () => {
   };
 });
 
-import { ContatoForm, validateFields } from "@/components/contato/contato-form";
+import {
+  ContatoForm,
+  validateFields,
+  formatPhoneBR,
+} from "@/components/contato/contato-form";
 
 describe("ContatoForm render", () => {
   beforeEach(() => {
@@ -238,5 +242,36 @@ describe("validateFields", () => {
     expect(validateFields({ ...base, message: "a".repeat(2001) })).toMatch(
       /longa/i,
     );
+  });
+});
+
+describe("formatPhoneBR", () => {
+  it("formats an 11-digit mobile as (XX) XXXXX-XXXX", () => {
+    expect(formatPhoneBR("34999194509")).toBe("(34) 99919-4509");
+  });
+
+  it("formats a 10-digit landline as (XX) XXXX-XXXX", () => {
+    expect(formatPhoneBR("3433221100")).toBe("(34) 3322-1100");
+  });
+
+  it("strips non-digits and caps at 11 digits", () => {
+    expect(formatPhoneBR("abc34 99919 4509 999")).toBe("(34) 99919-4509");
+  });
+
+  it("formats progressively while typing", () => {
+    expect(formatPhoneBR("3")).toBe("(3");
+    expect(formatPhoneBR("34")).toBe("(34");
+    expect(formatPhoneBR("349")).toBe("(34) 9");
+    expect(formatPhoneBR("349991")).toBe("(34) 9991");
+    expect(formatPhoneBR("3499919")).toBe("(34) 9991-9");
+  });
+
+  it("returns empty string when there are no digits", () => {
+    expect(formatPhoneBR("")).toBe("");
+    expect(formatPhoneBR("abc")).toBe("");
+  });
+
+  it("is idempotent on already-formatted input", () => {
+    expect(formatPhoneBR("(34) 99919-4509")).toBe("(34) 99919-4509");
   });
 });

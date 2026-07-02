@@ -34,26 +34,30 @@
 
 ---
 
-## 4. Ofertas (benchmark BR 2026, A CONFIRMAR pelo cliente)
+## 4. Ofertas (confirmado 2026-07-01)
 
 ### One-time (criação)
-| Plano | Preço | Escopo | Prazo |
-|---|---|---|---|
-| **Landing** | R$ 3.500 | Página única de alta conversão, 1 idioma | 10 dias |
-| **Institucional** | R$ 8.500 | Até 6 páginas, CMS leve, formulário | 21 dias |
-| **Branded** | a partir de R$ 18.000 | Projeto custom, identidade integrada, animações sob medida, CMS robusto | 30-45 dias |
+| Plano | Preço | Escopo | Prazo | Stack padrão |
+|---|---|---|---|---|
+| **Landing** | R$ 3.750 | Página única de alta conversão, design sob medida | 10 dias | Framer |
+| **Institucional** | R$ 8.500 | Até 5 páginas, CMS, formulário com banco de leads | 15 dias | Framer / Next.js |
+| **Branded** | a partir de R$ 18.000 | Projeto custom, identidade integrada, animações sob medida, CMS robusto | 30-45 dias | Next.js custom |
 
 ### Mensais (recorrente)
 | Plano | Preço | Escopo |
 |---|---|---|
-| **Base** | R$ 397/mês | Hospedagem + backups + atualizações + 2h de alterações/mês |
-| **Crescimento** | R$ 997/mês | Base + 6h/mês design/dev + SEO básico + suporte prioritário |
-| **Parceria** | R$ 2.500/mês | Crescimento + 12h/mês + reunião estratégica mensal + relatório métrico + A/B tests |
+| **Manutenção** | R$ 350/mês | Hospedagem + segurança + backups + 1 ajuste pontual/mês (30 min) |
+| **Crescimento** | R$ 1.350/mês | 6h/mês design/dev + SEO + relatório de conversões + suporte prioritário |
+| **Parceria** | R$ 3.000/mês | 12h/mês + reunião estratégica mensal + relatório completo + A/B tests · contrato 6 meses |
 
 ### Custom
-Projetos sob demanda. Mínimo sugerido R$ 25.000. Reunião obrigatória de briefing antes de orçar.
+Projetos sob demanda. Mínimo interno R$ 25.000 (sem preço público). Briefing obrigatório de 30 min antes de orçar.
 
-> **PENDENTE:** preços e escopos precisam ser confirmados pelo cliente.
+### Funil de recorrente
+Landing → upsell pessoal na entrega → Manutenção → Crescimento → Parceria
+
+### Milestone de pagamento (todos os projetos)
+50% na assinatura · 50% na aprovação do preview.
 
 ---
 

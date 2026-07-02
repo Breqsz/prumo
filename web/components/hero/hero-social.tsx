@@ -1,4 +1,6 @@
 import { LiquidGlass } from "@/components/ui/liquid-glass";
+import { CONTACT, buildWhatsappLink } from "@/lib/contact-config";
+import type { ComponentType } from "react";
 
 const COMMON = "h-4 w-4 fill-current";
 
@@ -44,21 +46,34 @@ function WhatsappIcon() {
   );
 }
 
-const ITEMS = [
+type SocialItem = {
+  href: string;
+  label: string;
+  network: string;
+  Icon: ComponentType;
+};
+
+// Sourced from CONTACT (single source of truth). Instagram is optional, so we
+// branch on it instead of rendering a dead link.
+const ITEMS: SocialItem[] = [
+  ...(CONTACT.instagram
+    ? [
+        {
+          href: CONTACT.instagram,
+          label: "Instagram",
+          network: "instagram",
+          Icon: InstagramIcon,
+        },
+      ]
+    : []),
   {
-    href: "https://instagram.com/",
-    label: "Instagram",
-    network: "instagram",
-    Icon: InstagramIcon,
-  },
-  {
-    href: "https://linkedin.com/",
+    href: CONTACT.linkedin,
     label: "LinkedIn",
     network: "linkedin",
     Icon: LinkedinIcon,
   },
   {
-    href: "https://wa.me/",
+    href: buildWhatsappLink(),
     label: "WhatsApp",
     network: "whatsapp",
     Icon: WhatsappIcon,
@@ -73,6 +88,8 @@ export function HeroSocial() {
           key={label}
           as="a"
           href={href}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={label}
           className="rounded-full p-3.5 text-white/70 transition-colors hover:text-white"
           data-umami-event="social_click"

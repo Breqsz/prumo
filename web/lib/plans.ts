@@ -5,6 +5,8 @@ export type Plan = {
   description: string;
   features: string[];
   featured?: boolean;
+  /** Shown in the expandable "+ detalhes técnicos" on the plan card */
+  technicalDetails?: string;
   /** Umami slug for plano_click / plano_focus events */
   eventSlug: string;
 };
@@ -14,32 +16,34 @@ export type PlanMode = "criar" | "manter";
 export const CRIAR_PLANS: Plan[] = [
   {
     name: "Landing",
-    price: "R$ 3.500",
+    price: "R$ 3.750",
     cadence: "Pagamento único · 10 dias",
     description:
-      "Página única de alta conversão para validar uma oferta ou capturar leads qualificados.",
+      "Página única focada em converter visitante em contato ou venda.",
     features: [
-      "Design e cópia sob medida",
-      "1 idioma",
-      "Performance e SEO técnico",
-      "Domínio e deploy inclusos",
+      "Carrega em segundos em qualquer dispositivo",
+      "Formulário conectado ao seu WhatsApp ou email",
+      "Aparece no Google desde o primeiro dia",
+      "Design sob medida, sem template",
     ],
+    technicalDetails: "Construída em Framer. Formulário via Resend. Hospedagem inclusa no plano Manutenção (Hostinger, Hostgator ou similar).",
     eventSlug: "landing",
   },
   {
     name: "Institucional",
     price: "R$ 8.500",
-    cadence: "Pagamento único · 21 dias",
+    cadence: "Pagamento único · 15 dias",
     description:
-      "Site multi-página para profissionalizar a marca e gerar autoridade no mercado.",
+      "Site completo para profissionalizar a marca e gerar autoridade.",
     features: [
-      "Até 6 páginas",
-      "CMS leve para conteúdo",
-      "Formulário com integração",
-      "PT-BR + EN opcional",
-      "Performance e SEO completos",
+      "Até 5 páginas com design sob medida",
+      "Você atualiza textos e imagens sozinho",
+      "Contatos do formulário nunca perdidos",
+      "Aparece bem no Google",
+      "Funciona perfeito no celular e no computador",
     ],
     featured: true,
+    technicalDetails: "Framer ou código sob medida dependendo do escopo. CMS incluso para edição autônoma. Leads do formulário salvos em banco de dados. Hospedagem em Hostinger, Hostgator ou plataforma adequada ao projeto.",
     eventSlug: "institucional",
   },
   {
@@ -47,61 +51,64 @@ export const CRIAR_PLANS: Plan[] = [
     price: "a partir de R$ 18.000",
     cadence: "Pagamento único · 30 a 45 dias",
     description:
-      "Projeto custom com identidade integrada, animações sob medida e CMS robusto.",
+      "Projeto digital construído do zero, integrado à identidade da marca.",
     features: [
-      "Escopo desenhado a quatro mãos",
-      "Identidade visual integrada",
-      "Animações e interações custom",
-      "CMS robusto",
+      "Feito no código — sem template, sem limitação",
+      "Animações e interações exclusivas",
+      "Você controla todo o conteúdo pelo painel",
+      "Base técnica para crescer",
       "Implantação acompanhada",
     ],
+    technicalDetails: "Next.js + TypeScript + Tailwind + Framer Motion. CMS Sanity para edição de conteúdo. Banco de dados Supabase. Hospedagem em plataforma dedicada (Hostinger, Hostgator ou similar).",
     eventSlug: "branded",
   },
 ];
 
 export const MANTER_PLANS: Plan[] = [
   {
-    name: "Base",
-    price: "R$ 397",
+    name: "Manutenção",
+    price: "R$ 350",
     cadence: "por mês · cancela quando quiser",
     description:
-      "Mantém o site no ar, atualizado e seguro. Para quem precisa do mínimo bem-feito.",
+      "Seu site continua no ar, seguro e funcionando sem você precisar se preocupar.",
     features: [
-      "Hospedagem e CDN",
-      "Backups automáticos",
-      "Atualizações de segurança",
-      "2h de alterações por mês",
+      "Hospedagem gerenciada",
+      "Atualizações de segurança automáticas",
+      "1 ajuste pontual por mês",
+      "Suporte via WhatsApp em até 24h",
     ],
-    eventSlug: "base",
+    technicalDetails: "Hospedagem gerenciada (Hostinger, Hostgator ou plataforma adequada ao site). SSL automático. Backups diários. Ajuste pontual de até 30 minutos por mês. Horas adicionais a R$ 200/h.",
+    eventSlug: "manutencao",
   },
   {
     name: "Crescimento",
-    price: "R$ 997",
+    price: "R$ 1.350",
     cadence: "por mês · cancela quando quiser",
     description:
-      "Mais horas, SEO técnico e suporte prioritário para quem está crescendo de verdade.",
+      "Seu site evolui todo mês com horas dedicadas de design e desenvolvimento.",
     features: [
-      "Tudo do Base",
-      "6h por mês de design/dev",
-      "SEO técnico recorrente",
+      "6 horas de design e desenvolvimento por mês",
+      "Melhorias de posicionamento no Google",
+      "Relatório mensal de visitas e conversões",
       "Suporte prioritário",
     ],
     featured: true,
+    technicalDetails: "6h de dev/design por ciclo. SEO técnico: auditoria mensal, meta tags, schema markup. Relatório via Google Analytics ou ferramenta equivalente. Horas adicionais a R$ 200/h.",
     eventSlug: "crescimento",
   },
   {
     name: "Parceria",
-    price: "R$ 2.500",
+    price: "R$ 3.000",
     cadence: "por mês · contrato 6 meses",
-    description:
-      "Parceria contínua de estratégia, métricas e iteração. Quase um head of digital sob demanda.",
+    description: "Um olho estratégico no seu digital, todo mês.",
     features: [
-      "Tudo do Crescimento",
-      "12h por mês",
-      "Reunião estratégica mensal",
-      "Relatório de métricas",
-      "A/B tests guiados",
+      "12 horas de design e desenvolvimento",
+      "Reunião mensal para definir prioridades",
+      "Relatório completo de performance",
+      "Testes de conversão baseados em dados",
+      "Suporte com resposta em até 2 horas",
     ],
+    technicalDetails: "12h de dev/design por ciclo. Reunião via Meet ou presencial. Relatório com métricas de tráfego, conversão e resultados de A/B tests. Horas adicionais a R$ 200/h.",
     eventSlug: "parceria",
   },
 ];

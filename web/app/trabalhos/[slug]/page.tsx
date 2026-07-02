@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { HeroNav } from "@/components/hero/hero-nav";
 import { Footer } from "@/components/footer/footer";
+import { ProjectGallery } from "@/components/trabalhos/project-gallery";
 import { Reveal } from "@/components/ui/reveal";
 import { AuroraBlack } from "@/components/ambient/aurora-black";
 import { getProject, getNextProject, projects } from "@/lib/projects";
@@ -114,25 +114,10 @@ export default async function ProjectPage({ params }: PageProps) {
                 <Block title="Processo" body={project.process} />
                 <Block title="Resultado" body={project.outcome} />
 
-                <div
-                  className="grid gap-4 sm:grid-cols-2"
-                  aria-label={`Galeria de ${project.title}`}
-                >
-                  {project.gallery.map((src, i) => (
-                    <div
-                      key={src}
-                      className="relative aspect-[4/3] overflow-hidden rounded-lg border border-white/10 bg-black"
-                    >
-                      <Image
-                        src={src}
-                        alt={`${project.title} — captura ${i + 1}`}
-                        fill
-                        sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
+                <ProjectGallery
+                  title={project.title}
+                  images={project.gallery}
+                />
               </div>
             </section>
           </AuroraBlack>

@@ -36,7 +36,7 @@ export function FinalCta() {
         </h2>
         <p className="anim anim-copy mt-12 max-w-md text-base text-white/70 md:text-lg">
           Uma conversa de 30 minutos é suficiente para entender o seu
-          objetivo e dizer honestamente se posso ajudar.
+          objetivo e dizer honestamente como posso ajudar.
         </p>
         <div className="anim anim-cta mt-14 flex flex-col items-center gap-3 sm:flex-row">
           <LiquidGlass
