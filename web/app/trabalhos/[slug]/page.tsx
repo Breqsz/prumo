@@ -10,6 +10,7 @@ import { AuroraBlack } from "@/components/ambient/aurora-black";
 import { getProject, getNextProject, projects } from "@/lib/projects";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_URL } from "@/lib/site";
+import { breadcrumbNode, projectCreativeWorkNode } from "@/lib/schema";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -41,18 +42,15 @@ export default async function ProjectPage({ params }: PageProps) {
   if (!project) notFound();
   const next = getNextProject(slug);
 
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Trabalhos", item: `${SITE_URL}/trabalhos` },
-      { "@type": "ListItem", position: 2, name: project.title, item: `${SITE_URL}/trabalhos/${slug}` },
-    ],
-  };
+  const breadcrumb = breadcrumbNode([
+    { name: "Trabalhos", url: `${SITE_URL}/trabalhos` },
+    { name: project.title, url: `${SITE_URL}/trabalhos/${slug}` },
+  ]);
 
   return (
     <>
-      <JsonLd data={breadcrumbLd} />
+      <JsonLd data={breadcrumb} />
+      <JsonLd data={projectCreativeWorkNode(project)} />
       <HeroNav />
       <main>
         <article className="relative">
