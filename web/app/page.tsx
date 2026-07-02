@@ -22,7 +22,6 @@ const AMBIENT_VIDEOS = [
   "/ambient-2.mp4", // ferrofluid inky (Pexels 16296848)
 ];
 
-
 export default function HomePage() {
   return (
     <>

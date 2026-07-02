@@ -67,6 +67,9 @@ export function parsePriceBRL(price: string): number | null {
 function serviceNode(plan: Plan): Record<string, unknown> {
   const amount = parsePriceBRL(plan.price);
   const recurring = /m[êe]s/i.test(plan.cadence);
+  // "a partir de R$ X" is a floor, not an exact price — emit minPrice so we
+  // don't misrepresent it (and avoid Google price-mismatch signals).
+  const fromPrice = /a partir de/i.test(plan.price);
   const offers: Record<string, unknown> = {
     "@type": "Offer",
     priceCurrency: "BRL",
@@ -78,6 +81,12 @@ function serviceNode(plan: Plan): Record<string, unknown> {
         price: amount,
         priceCurrency: "BRL",
         unitText: "MONTH",
+      };
+    } else if (fromPrice) {
+      offers.priceSpecification = {
+        "@type": "PriceSpecification",
+        minPrice: amount,
+        priceCurrency: "BRL",
       };
     } else {
       offers.price = amount;

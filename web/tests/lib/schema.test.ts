@@ -92,6 +92,15 @@ describe("servicesGraph", () => {
     expect(spec.price).toBe(350);
     expect(offerM.price).toBeUndefined();
   });
+  it("uses a minPrice priceSpecification for 'a partir de' plans (no exact price)", () => {
+    const branded = services.find((s) => String(s.name).startsWith("Branded"));
+    const offerB = branded?.offers as Record<string, unknown>;
+    expect(offerB.price).toBeUndefined();
+    const spec = offerB.priceSpecification as Record<string, unknown>;
+    expect(spec["@type"]).toBe("PriceSpecification");
+    expect(spec.minPrice).toBe(18000);
+    expect(spec.priceCurrency).toBe("BRL");
+  });
 });
 
 describe("projectCreativeWorkNode", () => {
