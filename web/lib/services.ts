@@ -26,18 +26,18 @@ export const SERVICES: Service[] = [
     navLabel: "Criação de sites",
     h1: "Criação de sites sob medida",
     subhead:
-      "Sites institucionais e projetos digitais construídos do zero — design próprio, código sob medida e foco em resultado. Atendimento em todo o Brasil, 100% remoto.",
+      "Sites institucionais e projetos digitais construídos do zero: design próprio, código sob medida e foco em resultado. Atendimento em todo o Brasil, 100% remoto.",
     metaTitle: "Criação de Sites Sob Medida | Prumo",
     metaDescription:
       "Criação de sites profissionais sob medida: institucionais, landing pages e projetos branded. Design premium, código próprio e foco em conversão. Atendimento nacional.",
     cardBlurb:
       "Sites institucionais e projetos completos, do briefing à entrega, sem template.",
     intro:
-      "A maioria dos sites de empresa cai em um de dois extremos: template genérico que parece com o do concorrente, ou uma reforma cara que continua lenta e não aparece no Google. A Prumo trabalha no meio-termo raro — sites feitos sob medida, com design original e código enxuto, que carregam rápido, ranqueiam e conduzem o visitante até o contato. Cada projeto começa entendendo o objetivo comercial antes de qualquer pixel, porque site bonito que não converte é custo, não investimento.",
+      "A maioria dos sites de empresa cai em um de dois extremos: template genérico que parece com o do concorrente, ou uma reforma cara que continua lenta e não aparece no Google. A Prumo trabalha no meio-termo raro: sites feitos sob medida, com design original e código enxuto, que carregam rápido, ranqueiam e conduzem o visitante até o contato. Cada projeto começa entendendo o objetivo comercial antes de qualquer pixel, porque site bonito que não converte é custo, não investimento.",
     benefits: [
       {
         title: "Design sob medida, nunca template",
-        body: "Cada site é desenhado do zero a partir da sua marca e do seu público. Nada de tema comprado que mil empresas usam — a identidade é sua e o resultado não parece genérico.",
+        body: "Cada site é desenhado do zero a partir da sua marca e do seu público. Nada de tema comprado que mil empresas usam. A identidade é sua e o resultado não parece genérico.",
       },
       {
         title: "Rápido em qualquer dispositivo",
@@ -49,11 +49,15 @@ export const SERVICES: Service[] = [
       },
       {
         title: "Construído para converter",
-        body: "Cada seção tem um propósito e termina num caminho de contato — formulário conectado ao seu WhatsApp ou email, CTAs claros, sem visitante perdido no meio do caminho.",
+        body: "Cada seção tem um propósito e termina num caminho de contato: formulário conectado ao seu WhatsApp ou email, CTAs claros, sem visitante perdido no meio do caminho.",
       },
       {
         title: "Você no controle do conteúdo",
         body: "Quando o projeto pede, entra um painel (CMS) pra você editar textos e imagens sozinho, sem depender de ninguém e sem custo recorrente de manutenção só pra trocar uma frase.",
+      },
+      {
+        title: "Acessível e sólido no detalhe",
+        body: "Contraste, navegação por teclado, foco visível e respeito a quem prefere menos animação — o site funciona pra mais gente e passa mais confiança. Padrão WCAG aplicado com bom senso, não como checklist decorativo.",
       },
     ],
     process: [
@@ -79,7 +83,7 @@ export const SERVICES: Service[] = [
     faq: [
       {
         q: "Quanto custa criar um site com a Prumo?",
-        a: "Depende do escopo. Um site institucional sob medida parte de um valor fixo fechado no briefing; projetos branded, construídos inteiramente em código, partem de uma faixa maior. Você vê os pontos de partida na página de planos — sempre com preço combinado antes de começar, sem surpresa.",
+        a: "Depende do escopo. Um site institucional sob medida parte de um valor fixo fechado no briefing; projetos branded, construídos inteiramente em código, partem de uma faixa maior. Você vê os pontos de partida na página de planos, sempre com preço combinado antes de começar, sem surpresa.",
       },
       {
         q: "Quanto tempo leva pra ficar pronto?",
@@ -91,7 +95,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Eu consigo atualizar o site sozinho depois?",
-        a: "Sim, quando o projeto inclui um CMS você edita textos e imagens por um painel simples, sem tocar em código. Para mudanças estruturais ou evolução contínua, existem os planos de manutenção — opcionais.",
+        a: "Sim, quando o projeto inclui um CMS você edita textos e imagens por um painel simples, sem tocar em código. Para mudanças estruturais ou evolução contínua, existem os planos de manutenção, opcionais.",
       },
       {
         q: "Já tenho um site. Dá pra reformular em vez de começar do zero?",
@@ -111,11 +115,11 @@ export const SERVICES: Service[] = [
     cardBlurb:
       "Página única de alta conversão pra campanha, lançamento ou anúncio.",
     intro:
-      "Uma landing page tem um único trabalho: converter. Diferente de um site institucional, ela não tenta contar tudo sobre a empresa — ela remove distração e conduz o visitante a uma ação: preencher o formulário, chamar no WhatsApp, comprar. É a peça certa pra quem investe em anúncios, lança um produto ou quer testar uma oferta sem construir um site inteiro. A Prumo desenha cada landing a partir do objetivo da campanha, com copy que argumenta e um caminho de conversão sem atrito.",
+      "Uma landing page tem um único trabalho: converter. Diferente de um site institucional, ela não tenta contar tudo sobre a empresa: remove distração e conduz o visitante a uma ação, seja preencher o formulário, chamar no WhatsApp ou comprar. É a peça certa pra quem investe em anúncios, lança um produto ou quer testar uma oferta sem construir um site inteiro. A Prumo desenha cada landing a partir do objetivo da campanha, com copy que argumenta e um caminho de conversão sem atrito.",
     benefits: [
       {
         title: "Um objetivo, zero distração",
-        body: "A página inteira é construída em torno de uma única ação. Sem menu que dispersa, sem link que tira o visitante do funil — só o argumento e o caminho pra converter.",
+        body: "A página inteira é construída em torno de uma única ação. Sem menu que dispersa, sem link que tira o visitante do funil: só o argumento e o caminho pra converter.",
       },
       {
         title: "Carrega antes do visitante desistir",
@@ -123,7 +127,7 @@ export const SERVICES: Service[] = [
       },
       {
         title: "Copy que argumenta, não só enfeita",
-        body: "O texto é estruturado pra levar da dor à solução até a ação — prova, objeções respondidas e um CTA claro. Design serve o argumento, não o contrário.",
+        body: "O texto é estruturado pra levar da dor à solução até a ação: prova, objeções respondidas e um CTA claro. Design serve o argumento, não o contrário.",
       },
       {
         title: "Formulário conectado ao seu contato",
@@ -131,7 +135,11 @@ export const SERVICES: Service[] = [
       },
       {
         title: "No ar em 10 dias",
-        body: "Escopo enxuto e foco em uma página só permitem entrega rápida — ideal pra campanha com data marcada ou pra validar uma oferta antes de investir mais.",
+        body: "Escopo enxuto e foco em uma página só permitem entrega rápida, ideal pra campanha com data marcada ou pra validar uma oferta antes de investir mais.",
+      },
+      {
+        title: "Medição de conversão pronta",
+        body: "A landing já sai com o rastreamento de conversão configurado pra conectar ao Google e à Meta. Você enxerga o custo por lead e otimiza a verba sem adivinhar o que funciona.",
       },
     ],
     process: [
@@ -141,7 +149,7 @@ export const SERVICES: Service[] = [
       },
       {
         step: "Copy e estrutura de conversão",
-        body: "Escrevo a sequência de argumentos — promessa, prova, objeções, CTA — e defino a ordem das seções pra guiar o visitante sem atrito.",
+        body: "Escrevo a sequência de argumentos (promessa, prova, objeções, CTA) e defino a ordem das seções pra guiar o visitante sem atrito.",
       },
       {
         step: "Design e build",
@@ -157,7 +165,7 @@ export const SERVICES: Service[] = [
     faq: [
       {
         q: "Qual a diferença entre landing page e site?",
-        a: "Um site institucional apresenta a empresa inteira e tem várias páginas. Uma landing page é uma página única focada em uma ação específica — ideal pra anúncio, campanha ou lançamento, onde cada distração custa conversão.",
+        a: "Um site institucional apresenta a empresa inteira e tem várias páginas. Uma landing page é uma página única focada em uma ação específica, ideal pra anúncio, campanha ou lançamento, onde cada distração custa conversão.",
       },
       {
         q: "Quanto custa uma landing page?",
@@ -173,7 +181,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: "Vocês fazem os anúncios também?",
-        a: "O foco da Prumo é criar a página que converte. A gestão de tráfego pode ser acompanhada dentro dos planos de parceria ou feita pelo seu time/agência de mídia — a landing é entregue pronta pra receber a campanha.",
+        a: "O foco da Prumo é criar a página que converte. A gestão de tráfego pode ser acompanhada dentro dos planos de parceria ou feita pelo seu time/agência de mídia. A landing é entregue pronta pra receber a campanha.",
       },
     ],
   },
