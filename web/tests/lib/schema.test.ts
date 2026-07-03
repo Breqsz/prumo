@@ -12,6 +12,7 @@ import {
   breadcrumbNode,
   serviceSchema,
   faqPageSchema,
+  collectionPageSchema,
 } from "@/lib/schema";
 import { CONTACT } from "@/lib/contact-config";
 import { projects } from "@/lib/projects";
@@ -155,6 +156,38 @@ describe("serviceSchema", () => {
     );
     expect(branded).toBeDefined();
     expect(branded?.price).toBeUndefined();
+  });
+  it("never emits an exact price key on any offer (floor-only)", () => {
+    const offers = node.offers as Array<Record<string, unknown>>;
+    for (const offer of offers) {
+      expect(offer.price).toBeUndefined();
+    }
+  });
+  it("institucional offer carries priceSpecification.minPrice 8500, no price", () => {
+    const offers = node.offers as Array<Record<string, unknown>>;
+    const institucional = offers.find(
+      (o) =>
+        (o.priceSpecification as Record<string, unknown> | undefined)?.[
+          "minPrice"
+        ] === 8500,
+    );
+    expect(institucional).toBeDefined();
+    expect(institucional?.price).toBeUndefined();
+    const spec = institucional?.priceSpecification as Record<string, unknown>;
+    expect(spec["@type"]).toBe("PriceSpecification");
+    expect(spec.priceCurrency).toBe("BRL");
+  });
+});
+
+describe("collectionPageSchema", () => {
+  const node = collectionPageSchema();
+  it("is a CollectionPage", () => {
+    expect(node["@type"]).toBe("CollectionPage");
+    expect(node["@context"]).toBe("https://schema.org");
+    expect(node.name).toBe("Serviços — Prumo");
+  });
+  it("isPartOf links to WEBSITE_ID", () => {
+    expect(node.isPartOf).toEqual({ "@id": WEBSITE_ID });
   });
 });
 

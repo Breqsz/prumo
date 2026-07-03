@@ -96,6 +96,25 @@ export function offerFromPlan(plan: Plan): Record<string, unknown> {
   return offers;
 }
 
+// Service-page offers must never expose an exact price (page intentionally
+// hides prices). This floor-only variant always uses priceSpecification.minPrice
+// so there is never a price-vs-page mismatch. Used only by serviceSchema.
+export function offerFloorFromPlan(plan: Plan): Record<string, unknown> {
+  const amount = parsePriceBRL(plan.price);
+  const offers: Record<string, unknown> = {
+    "@type": "Offer",
+    priceCurrency: "BRL",
+  };
+  if (amount !== null) {
+    offers.priceSpecification = {
+      "@type": "PriceSpecification",
+      minPrice: amount,
+      priceCurrency: "BRL",
+    };
+  }
+  return offers;
+}
+
 function serviceNode(plan: Plan): Record<string, unknown> {
   return {
     "@type": "Service",
@@ -159,7 +178,17 @@ export function serviceSchema(
     provider: { "@id": ORG_ID },
     areaServed: "BR",
     url: `${SITE_URL}/servicos/${service.slug}`,
-    offers: plans.map(offerFromPlan),
+    offers: plans.map(offerFloorFromPlan),
+  };
+}
+
+export function collectionPageSchema(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Serviços — Prumo",
+    url: `${SITE_URL}/servicos`,
+    isPartOf: { "@id": WEBSITE_ID },
   };
 }
 

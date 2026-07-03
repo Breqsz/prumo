@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE_URL } from "@/lib/site";
 import { SERVICES } from "@/lib/services";
-import { breadcrumbNode } from "@/lib/schema";
+import { breadcrumbNode, collectionPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Serviços",
@@ -17,16 +17,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/servicos" },
   openGraph: { url: "/servicos" },
 };
-
-function collectionSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Serviços — Prumo",
-    url: `${SITE_URL}/servicos`,
-    isPartOf: { "@id": `${SITE_URL}/#website` },
-  };
-}
 
 export default function ServicosHub() {
   const breadcrumb = breadcrumbNode([
@@ -37,7 +27,7 @@ export default function ServicosHub() {
   return (
     <>
       <JsonLd data={breadcrumb} />
-      <JsonLd data={collectionSchema()} />
+      <JsonLd data={collectionPageSchema()} />
       <HeroNav />
       <main>
         <header className="relative px-6 pt-40 pb-16">
