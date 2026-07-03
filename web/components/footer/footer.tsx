@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/reveal";
 import { Logo } from "@/components/ui/logo";
-import { CONTACT } from "@/lib/contact-config";
+import { CONTACT, buildWhatsappLink } from "@/lib/contact-config";
+
+const WHATSAPP_MESSAGE =
+  "Olá! Vim pelo site da Prumo e quero conversar sobre um projeto.";
 
 const NAV = {
   Estúdio: [
@@ -13,7 +16,7 @@ const NAV = {
   Conversar: [
     { href: "/contato", label: "Agendar conversa" },
     { href: "/contato", label: "Mandar mensagem" },
-    { href: "https://wa.me/", label: "WhatsApp" },
+    { href: buildWhatsappLink(WHATSAPP_MESSAGE), label: "WhatsApp" },
   ],
   Geral: [
     { href: "/privacidade", label: "Privacidade" },
@@ -52,16 +55,22 @@ export function Footer() {
               {title}
             </h4>
             <ul className="flex flex-col gap-3">
-              {items.map(({ href, label }) => (
-                <li key={`${href}-${label}`}>
-                  <Link
-                    href={href}
-                    className="text-sm text-white/75 transition-colors hover:text-white"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
+              {items.map(({ href, label }) => {
+                const external = href.startsWith("http");
+                return (
+                  <li key={`${href}-${label}`}>
+                    <Link
+                      href={href}
+                      {...(external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="text-sm text-white/75 transition-colors hover:text-white"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </Reveal>
         ))}

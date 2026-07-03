@@ -30,6 +30,15 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
 
+    // Já visível no mount (acima da dobra, ou scroll restaurado no footer
+    // após F5): revela na hora. O rootMargin negativo do observer cria uma
+    // zona morta no rodapé onde conteúdo do footer nunca dispararia.
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {

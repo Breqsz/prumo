@@ -51,4 +51,15 @@ describe("Footer", () => {
       screen.getByText(/CNPJ 67\.822\.658\/0001-50/),
     ).toBeInTheDocument();
   });
+
+  it("points WhatsApp to wa.me with the real number, a prefilled message and opens in a new tab", () => {
+    render(<Footer />);
+    const whats = screen.getByRole("link", { name: /whatsapp/i });
+    expect(whats).toHaveAttribute(
+      "href",
+      expect.stringContaining("wa.me/5534999194509?text="),
+    );
+    expect(whats).toHaveAttribute("target", "_blank");
+    expect(whats).toHaveAttribute("rel", expect.stringContaining("noopener"));
+  });
 });
