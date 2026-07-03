@@ -44,4 +44,11 @@ describe("Footer", () => {
       screen.getByText(new RegExp(`©\\s*${year}\\s+Prumo`)),
     ).toBeInTheDocument();
   });
+
+  it("renders the legal entity and CNPJ", () => {
+    render(<Footer />);
+    expect(
+      screen.getByText(/CNPJ 67\.822\.658\/0001-50/),
+    ).toBeInTheDocument();
+  });
 });

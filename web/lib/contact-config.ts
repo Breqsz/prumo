@@ -7,6 +7,11 @@ export const CONTACT = {
   whatsappE164: "+5534999194509",
   linkedin: "https://www.linkedin.com/company/prumo-digital/",
   instagram: "https://www.instagram.com/prumo_digital/" as string | null,
+  // Entidade legal por trás da marca Prumo. Identificação do controlador
+  // (LGPD) e prova de empresa registrada. Reusado no footer e nas páginas
+  // legais (/privacidade, /termos).
+  legalName: "Guilherme Rocha Bianchini Desenvolvimento de Software LTDA",
+  cnpj: "67.822.658/0001-50",
 } as const;
 
 export function buildWhatsappLink(prefilledMessage?: string): string {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/reveal";
 import { Logo } from "@/components/ui/logo";
+import { CONTACT } from "@/lib/contact-config";
 
 const NAV = {
   Estúdio: [
@@ -71,7 +72,12 @@ export function Footer() {
         distance={12}
         className="mx-auto mt-20 flex max-w-6xl flex-col items-start justify-between gap-4 border-t border-white/8 pt-8 text-xs text-white/45 md:flex-row md:items-center"
       >
-        <span>© {year} Prumo. Todos os direitos reservados.</span>
+        <div className="flex flex-col gap-1.5">
+          <span>© {year} Prumo. Todos os direitos reservados.</span>
+          <span className="text-white/30">
+            {CONTACT.legalName} · CNPJ {CONTACT.cnpj}
+          </span>
+        </div>
         <span className="tracking-widest uppercase">
           Estúdio digital · Brasil
         </span>
