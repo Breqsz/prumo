@@ -10,9 +10,13 @@ import {
   servicesGraph,
   projectCreativeWorkNode,
   breadcrumbNode,
+  serviceSchema,
+  faqPageSchema,
+  collectionPageSchema,
 } from "@/lib/schema";
 import { CONTACT } from "@/lib/contact-config";
 import { projects } from "@/lib/projects";
+import { SERVICES, getPlansForService } from "@/lib/services";
 
 describe("organizationNode", () => {
   const org = organizationNode();
@@ -124,5 +128,78 @@ describe("breadcrumbNode", () => {
     expect(list[1].position).toBe(2);
     expect(list[1].name).toBe("Trabalhos");
     expect(list[1].item).toBe("https://x/trabalhos");
+  });
+});
+
+describe("serviceSchema", () => {
+  const svc = SERVICES[0]; // criacao-de-sites
+  const node = serviceSchema(svc, getPlansForService(svc));
+  it("is a Service provided by the org, area BR", () => {
+    expect(node["@type"]).toBe("Service");
+    expect(node.provider).toEqual({ "@id": ORG_ID });
+    expect(node.areaServed).toBe("BR");
+    expect(String(node.url)).toMatch(/\/servicos\/criacao-de-sites$/);
+  });
+  it("carries one Offer per related plan", () => {
+    const offers = node.offers as Array<Record<string, unknown>>;
+    expect(offers.length).toBe(svc.relatedPlanSlugs.length);
+    expect(offers.every((o) => o["@type"] === "Offer")).toBe(true);
+  });
+  it("never emits an exact price for 'a partir de' plans", () => {
+    // branded é relatedPlan de criacao-de-sites e é "a partir de"
+    const offers = node.offers as Array<Record<string, unknown>>;
+    const branded = offers.find(
+      (o) =>
+        (o.priceSpecification as Record<string, unknown> | undefined)?.[
+          "minPrice"
+        ] === 18000,
+    );
+    expect(branded).toBeDefined();
+    expect(branded?.price).toBeUndefined();
+  });
+  it("never emits an exact price key on any offer (floor-only)", () => {
+    const offers = node.offers as Array<Record<string, unknown>>;
+    for (const offer of offers) {
+      expect(offer.price).toBeUndefined();
+    }
+  });
+  it("institucional offer carries priceSpecification.minPrice 8500, no price", () => {
+    const offers = node.offers as Array<Record<string, unknown>>;
+    const institucional = offers.find(
+      (o) =>
+        (o.priceSpecification as Record<string, unknown> | undefined)?.[
+          "minPrice"
+        ] === 8500,
+    );
+    expect(institucional).toBeDefined();
+    expect(institucional?.price).toBeUndefined();
+    const spec = institucional?.priceSpecification as Record<string, unknown>;
+    expect(spec["@type"]).toBe("PriceSpecification");
+    expect(spec.priceCurrency).toBe("BRL");
+  });
+});
+
+describe("collectionPageSchema", () => {
+  const node = collectionPageSchema();
+  it("is a CollectionPage", () => {
+    expect(node["@type"]).toBe("CollectionPage");
+    expect(node["@context"]).toBe("https://schema.org");
+    expect(node.name).toBe("Serviços — Prumo");
+  });
+  it("isPartOf links to WEBSITE_ID", () => {
+    expect(node.isPartOf).toEqual({ "@id": WEBSITE_ID });
+  });
+});
+
+describe("faqPageSchema", () => {
+  const node = faqPageSchema(SERVICES[0].faq);
+  it("is a FAQPage with one Question per item", () => {
+    expect(node["@type"]).toBe("FAQPage");
+    const main = node.mainEntity as Array<Record<string, unknown>>;
+    expect(main.length).toBe(SERVICES[0].faq.length);
+    expect(main[0]["@type"]).toBe("Question");
+    const answer = main[0].acceptedAnswer as Record<string, unknown>;
+    expect(answer["@type"]).toBe("Answer");
+    expect(String(answer.text).length).toBeGreaterThan(0);
   });
 });

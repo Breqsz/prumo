@@ -2,6 +2,7 @@ import { SITE_URL } from "@/lib/site";
 import { CONTACT } from "@/lib/contact-config";
 import { CRIAR_PLANS, MANTER_PLANS, type Plan } from "@/lib/plans";
 import type { Project } from "@/lib/projects";
+import type { Service } from "@/lib/services";
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -64,7 +65,7 @@ export function parsePriceBRL(price: string): number | null {
   return digits ? Number(digits) : null;
 }
 
-function serviceNode(plan: Plan): Record<string, unknown> {
+export function offerFromPlan(plan: Plan): Record<string, unknown> {
   const amount = parsePriceBRL(plan.price);
   const recurring = /m[êe]s/i.test(plan.cadence);
   // "a partir de R$ X" is a floor, not an exact price — emit minPrice so we
@@ -92,13 +93,36 @@ function serviceNode(plan: Plan): Record<string, unknown> {
       offers.price = amount;
     }
   }
+  return offers;
+}
+
+// Service-page offers must never expose an exact price (page intentionally
+// hides prices). This floor-only variant always uses priceSpecification.minPrice
+// so there is never a price-vs-page mismatch. Used only by serviceSchema.
+export function offerFloorFromPlan(plan: Plan): Record<string, unknown> {
+  const amount = parsePriceBRL(plan.price);
+  const offers: Record<string, unknown> = {
+    "@type": "Offer",
+    priceCurrency: "BRL",
+  };
+  if (amount !== null) {
+    offers.priceSpecification = {
+      "@type": "PriceSpecification",
+      minPrice: amount,
+      priceCurrency: "BRL",
+    };
+  }
+  return offers;
+}
+
+function serviceNode(plan: Plan): Record<string, unknown> {
   return {
     "@type": "Service",
     name: `${plan.name} — Prumo`,
     description: plan.description,
     provider: { "@id": ORG_ID },
     areaServed: "BR",
-    offers,
+    offers: offerFromPlan(plan),
   };
 }
 
@@ -137,6 +161,47 @@ export function breadcrumbNode(items: Crumb[]): Record<string, unknown> {
       position: i + 1,
       name: item.name,
       item: item.url,
+    })),
+  };
+}
+
+export function serviceSchema(
+  service: Service,
+  plans: Plan[],
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.h1,
+    serviceType: service.navLabel,
+    description: service.subhead,
+    provider: { "@id": ORG_ID },
+    areaServed: "BR",
+    url: `${SITE_URL}/servicos/${service.slug}`,
+    offers: plans.map(offerFloorFromPlan),
+  };
+}
+
+export function collectionPageSchema(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Serviços — Prumo",
+    url: `${SITE_URL}/servicos`,
+    isPartOf: { "@id": WEBSITE_ID },
+  };
+}
+
+export function faqPageSchema(
+  faq: { q: string; a: string }[],
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
 }
