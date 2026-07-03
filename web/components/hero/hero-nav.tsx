@@ -13,7 +13,7 @@ const NAV = [
 export function HeroNav() {
   return (
     <nav className="relative z-20 px-4 py-4 md:px-6 md:py-6">
-      <LiquidGlass className="mx-auto flex max-w-5xl flex-col items-stretch gap-3 rounded-3xl px-4 py-3 md:grid md:grid-cols-3 md:items-center md:gap-0 md:rounded-full md:px-6">
+      <LiquidGlass className="mx-auto flex max-w-5xl flex-col items-stretch gap-3 rounded-3xl px-4 py-3 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-4 md:rounded-full md:px-6">
         <div className="flex items-center justify-between md:contents">
           <Link href="/" aria-label="Prumo, página inicial" className="text-white">
             <Logo />
@@ -27,12 +27,12 @@ export function HeroNav() {
             Agendar
           </Link>
         </div>
-        <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-bold text-white md:gap-6">
+        <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-bold text-white md:flex-nowrap md:gap-6">
           {NAV.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="group relative inline-block py-1 transition-transform duration-300 ease-out hover:-translate-y-0.5"
+                className="group relative inline-block py-1 whitespace-nowrap transition-transform duration-300 ease-out hover:-translate-y-0.5"
               >
                 {label}
                 <span
@@ -43,7 +43,7 @@ export function HeroNav() {
             </li>
           ))}
         </ul>
-        <div className="hidden justify-end md:flex">
+        <div className="hidden md:flex md:items-center md:justify-end">
           <LiquidGlass
             as="a"
             href="/contato"
