@@ -144,7 +144,6 @@ export function ServicePage({ service }: { service: Service }) {
                   <h3 className="font-display text-xl text-white">
                     {plan.name}
                   </h3>
-                  <p className="mt-2 text-sm text-white/55">{plan.price}</p>
                   <p className="mt-4 flex-1 text-[0.95rem] leading-[1.55] text-white/70">
                     {plan.description}
                   </p>
