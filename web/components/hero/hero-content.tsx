@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { LiquidGlass } from "@/components/ui/liquid-glass";
 import { RotatingPhrase } from "@/components/hero/rotating-phrase";
@@ -29,15 +28,16 @@ export function HeroContent() {
           Agendar conversa
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </LiquidGlass>
-        <Link
+        <LiquidGlass
+          as="a"
           href="/trabalhos"
-          className="prumo-cta-pulse group flex items-center gap-2 rounded-full border border-white/15 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:border-white/30"
+          className="group flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium text-white"
           data-umami-event="cta_trabalhos"
           data-umami-event-source="hero"
         >
           Ver trabalhos
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </Link>
+        </LiquidGlass>
       </div>
 
       <div className="flex items-center gap-6 text-[11px] tracking-widest text-white uppercase">
