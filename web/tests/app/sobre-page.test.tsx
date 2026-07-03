@@ -22,7 +22,7 @@ describe("SobrePage", () => {
 
   it("renders the quem assina heading", () => {
     render(<SobrePage />);
-    expect(screen.getByRole("heading", { level: 2, name: /seu nome aqui/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: /guilherme rocha bianchini/i })).toBeInTheDocument();
   });
 
   it("renders the final CTA", () => {

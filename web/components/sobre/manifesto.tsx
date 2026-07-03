@@ -14,19 +14,21 @@ export function Manifesto() {
         >
           Manifesto
         </h2>
-        {/* TODO: copy final do manifesto (dono refina) */}
         <div className="mt-8 space-y-8 text-xl leading-relaxed text-white/80 md:text-2xl md:leading-relaxed">
           <p>
-            O Prumo é um <em className="font-display italic">estúdio solo</em>. Uma pessoa do briefing à entrega. Sem time inflado, sem camadas, sem teatro de agência.
+            Prumo é a linha que marca onde a parede tem que ficar. O trabalho é esse: tirar o supérfluo até sobrar só o que sustenta o negócio.
           </p>
           <p>
-            A gente faz <em className="font-display italic">poucos projetos por ano</em> e trata cada um como se carregasse o nome inteiro da marca — porque carrega.
+            Quem atende é quem constrói. Sem gerente de conta, sem repasse, sem ruído entre o que você pede e o que entra no ar.
           </p>
           <p>
-            Sites devem vender, profissionalizar ou lançar. Tudo que não serve a um desses três objetivos sai do escopo antes da primeira linha de código.
+            Todo site aqui existe por um motivo:{" "}
+            <strong className="font-semibold text-white">vender</strong>,{" "}
+            <strong className="font-semibold text-white">profissionalizar</strong> ou{" "}
+            <strong className="font-semibold text-white">lançar</strong>. O que não serve a isso não entra, nem no layout nem na conversa.
           </p>
           <p>
-            Premium aqui não é luxo. É <em className="font-display italic">precisão</em>: a peça certa, no peso certo, no lugar certo. Nada a mais.
+            Poucos projetos por ano, por escolha. É o que permite tratar o seu como se o nome da marca dependesse dele. Depende.
           </p>
         </div>
       </Reveal>

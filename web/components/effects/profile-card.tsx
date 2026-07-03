@@ -55,6 +55,7 @@ export type ProfileCardProps = {
   contactText?: string;
   showUserInfo?: boolean;
   onContactClick?: () => void;
+  contactHref?: string;
 };
 
 const ProfileCardComponent = ({
@@ -77,6 +78,7 @@ const ProfileCardComponent = ({
   contactText = "Contact",
   showUserInfo = true,
   onContactClick,
+  contactHref,
 }: ProfileCardProps) => {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const shellRef = useRef<HTMLDivElement | null>(null);
@@ -362,8 +364,14 @@ const ProfileCardComponent = ({
   );
 
   const handleContactClick = useCallback(() => {
-    onContactClick?.();
-  }, [onContactClick]);
+    if (onContactClick) {
+      onContactClick();
+      return;
+    }
+    if (contactHref) {
+      window.open(contactHref, "_blank", "noopener,noreferrer");
+    }
+  }, [onContactClick, contactHref]);
 
   return (
     <div
