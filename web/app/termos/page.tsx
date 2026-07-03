@@ -37,7 +37,7 @@ export default function TermosPage() {
 
       <LegalSection heading="3. Propriedade intelectual">
         <p className="leading-relaxed">
-          Todo o conteúdo do site — textos, identidade visual, a marca "Prumo",
+          Todo o conteúdo do site — textos, identidade visual, a marca “Prumo”,
           layout e código — pertence à Guilherme Rocha Bianchini Desenvolvimento
           de Software LTDA ou a seus licenciadores. É proibida a reprodução,
           distribuição ou uso sem autorização prévia por escrito.
@@ -75,7 +75,7 @@ export default function TermosPage() {
 
       <LegalSection heading="7. Isenção de garantias">
         <p className="leading-relaxed">
-          O site é fornecido "no estado em que se encontra". Não garantimos
+          O site é fornecido “no estado em que se encontra”. Não garantimos
           disponibilidade ininterrupta, ausência de erros ou adequação a um
           propósito específico.
         </p>
