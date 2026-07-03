@@ -9,7 +9,7 @@ describe("sitemap", () => {
 
   it("includes every static route", () => {
     const urls = entries.map((e) => e.url);
-    for (const path of ["/", "/planos", "/trabalhos", "/contato", "/sobre"]) {
+    for (const path of ["/", "/planos", "/trabalhos", "/contato", "/sobre", "/privacidade", "/termos"]) {
       expect(urls).toContain(`${SITE_URL}${path}`);
     }
   });
