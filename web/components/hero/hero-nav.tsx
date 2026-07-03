@@ -3,6 +3,7 @@ import { LiquidGlass } from "@/components/ui/liquid-glass";
 import { Logo } from "@/components/ui/logo";
 
 const NAV = [
+  { href: "/servicos", label: "Serviços" },
   { href: "/trabalhos", label: "Trabalhos" },
   { href: "/planos", label: "Planos" },
   { href: "/sobre", label: "Sobre" },

@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import sitemap from "@/app/sitemap";
 import { projects } from "@/lib/projects";
 import { SITE_URL } from "@/lib/site";
+import { SERVICES } from "@/lib/services";
 
 describe("sitemap", () => {
   const entries = sitemap();
@@ -31,5 +32,13 @@ describe("sitemap", () => {
   it("gives the home page the highest priority", () => {
     const home = entries.find((e) => e.url === `${SITE_URL}/`);
     expect(home?.priority).toBe(1);
+  });
+
+  it("includes the servicos hub and every service child", () => {
+    const urls = sitemap().map((e) => e.url);
+    expect(urls).toContain(`${SITE_URL}/servicos`);
+    for (const s of SERVICES) {
+      expect(urls).toContain(`${SITE_URL}/servicos/${s.slug}`);
+    }
   });
 });

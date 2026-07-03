@@ -4,6 +4,7 @@ import { Logo } from "@/components/ui/logo";
 
 const NAV = {
   Estúdio: [
+    { href: "/servicos", label: "Serviços" },
     { href: "/sobre", label: "Sobre" },
     { href: "/trabalhos", label: "Trabalhos" },
     { href: "/planos", label: "Planos" },
