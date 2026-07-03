@@ -121,7 +121,7 @@ export function validateFields(f: Fields): string | null {
 
   const msg = f.message.trim();
   if (msg.length < 10)
-    return "Mensagem muito curta — escreva pelo menos 10 caracteres.";
+    return "Mensagem muito curta. Escreva pelo menos 10 caracteres.";
   if (msg.length > 2000)
     return "Mensagem muito longa (máximo 2000 caracteres).";
 

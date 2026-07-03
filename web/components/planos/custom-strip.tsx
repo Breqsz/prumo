@@ -29,7 +29,7 @@ export function CustomStrip() {
                 Projeto <em className="font-display italic">sob medida</em>.
               </h2>
               <p className="mt-4 text-sm text-white/70 md:text-base">
-                Escopo fora do padrão ou orçamento acima de R$ 25.000. Brief de 30 minutos antes do orçamento — sem número chutado no email.
+                Escopo fora do padrão ou orçamento acima de R$ 25.000. Brief de 30 minutos antes do orçamento. Sem número chutado no email.
               </p>
             </div>
             <a

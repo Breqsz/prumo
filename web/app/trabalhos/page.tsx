@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Trabalhos",
   description:
-    "Projetos selecionados do estúdio Prumo — sites institucionais, apps e produtos digitais.",
+    "Projetos selecionados do estúdio Prumo: sites institucionais, apps e produtos digitais.",
   alternates: { canonical: "/trabalhos" },
   openGraph: { url: "/trabalhos" },
 };

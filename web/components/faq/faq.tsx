@@ -12,7 +12,7 @@ const ITEMS = [
   {
     question: "Quem faz o trabalho?",
     answer:
-      "Eu, sozinho. Prumo é um estúdio solo, não uma agência com vendedor na frente e estagiário atrás. Toda comunicação, design e código passa por mim. Para projetos maiores, contrato freelas pontuais e isso fica transparente no escopo.",
+      "Prumo é um estúdio solo, não uma agência com vendedor na frente e estagiário atrás. Você fala comigo do briefing à entrega, e estratégia e código passam por mim. No design, conto com o Guilherme Carvalho como parceiro recorrente; em projetos maiores, freelas pontuais. O ponto de contato é sempre um só, e isso fica transparente no escopo.",
   },
   {
     question: "Vocês usam template ou tudo é custom?",

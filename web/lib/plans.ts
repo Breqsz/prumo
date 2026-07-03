@@ -53,7 +53,7 @@ export const CRIAR_PLANS: Plan[] = [
     description:
       "Projeto digital construído do zero, integrado à identidade da marca.",
     features: [
-      "Feito no código — sem template, sem limitação",
+      "Feito no código, sem template, sem limitação",
       "Animações e interações exclusivas",
       "Você controla todo o conteúdo pelo painel",
       "Base técnica para crescer",

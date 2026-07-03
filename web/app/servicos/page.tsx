@@ -45,8 +45,8 @@ export default function ServicosHub() {
             <Reveal delay={260} distance={16}>
               <p className="mt-8 max-w-2xl text-base text-white/70 md:text-lg">
                 Sites sob medida e landing pages que convertem, do briefing à
-                publicação. Design premium, código próprio e SEO desde o dia um —
-                atendimento em todo o Brasil.
+                publicação. Design premium, código próprio e SEO desde o dia um.
+                Atendimento em todo o Brasil.
               </p>
             </Reveal>
           </div>

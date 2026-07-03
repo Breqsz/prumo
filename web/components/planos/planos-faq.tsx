@@ -7,19 +7,19 @@ import { Reveal } from "@/components/ui/reveal";
 const ITEMS = [
   {
     q: "Posso trocar de plano mensal depois?",
-    a: "Sim. Subir de nível vale a partir do próximo ciclo. Descer também — só não vale dentro do mesmo mês.",
+    a: "Sim. Subir de nível vale a partir do próximo ciclo. Descer também, só não vale dentro do mesmo mês.",
   },
   {
-    q: "O que está incluído nas horas mensais — e o que NÃO está?",
-    a: "Horas valem para alterações de conteúdo, ajustes de design, pequenos componentes novos, SEO técnico recorrente e correções. Não valem para projetos novos (nova landing, novo módulo grande) — isso entra como projeto custom à parte.",
+    q: "O que está incluído nas horas mensais, e o que NÃO está?",
+    a: "Horas valem para alterações de conteúdo, ajustes de design, pequenos componentes novos, SEO técnico recorrente e correções. Não valem para projetos novos (nova landing, novo módulo grande). Isso entra como projeto custom à parte.",
   },
   {
     q: "Posso cancelar o plano mensal quando quiser?",
-    a: "Manutenção e Crescimento: cancelamento livre a qualquer momento. Parceria: contrato mínimo de 6 meses por causa do envolvimento estratégico — após esse período, mensal sem fidelidade.",
+    a: "Manutenção e Crescimento: cancelamento livre a qualquer momento. Parceria: contrato mínimo de 6 meses por causa do envolvimento estratégico. Após esse período, mensal sem fidelidade.",
   },
   {
     q: "Os mensais incluem hospedagem ou pago separado?",
-    a: "Incluem. Hospedagem na Vercel, domínio próprio (você só paga o registro do domínio direto no registrar), CDN, SSL, backups — tudo dentro da assinatura. Sem surpresa no fim do mês.",
+    a: "Incluem. Hospedagem na Vercel, domínio próprio (você só paga o registro do domínio direto no registrar), CDN, SSL, backups, tudo dentro da assinatura. Sem surpresa no fim do mês.",
   },
   {
     q: "Como funciona o pagamento dos planos one-time?",

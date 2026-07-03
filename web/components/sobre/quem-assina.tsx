@@ -76,7 +76,7 @@ const MEMBERS: Member[] = [
     body: (
       <p className="mt-6 max-w-xl text-base text-white/70 md:text-lg">
         Engenheiro de software com ênfase em desenvolvimento web. Venho
-        construindo presenças digitais há alguns anos — sites, sistemas e
+        construindo presenças digitais há alguns anos: sites, sistemas e
         produtos pensados com precisão técnica e cuidado de design. Atendimento
         direto, do briefing à entrega.
       </p>

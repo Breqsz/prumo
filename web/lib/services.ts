@@ -57,7 +57,7 @@ export const SERVICES: Service[] = [
       },
       {
         title: "Acessível e sólido no detalhe",
-        body: "Contraste, navegação por teclado, foco visível e respeito a quem prefere menos animação — o site funciona pra mais gente e passa mais confiança. Padrão WCAG aplicado com bom senso, não como checklist decorativo.",
+        body: "Contraste, navegação por teclado, foco visível e respeito a quem prefere menos animação. O site funciona pra mais gente e passa mais confiança. Padrão WCAG aplicado com bom senso, não como checklist decorativo.",
       },
     ],
     process: [
