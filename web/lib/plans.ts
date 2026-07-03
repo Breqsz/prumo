@@ -122,3 +122,7 @@ export function featuredSlug(mode: PlanMode): string {
   const set = PLAN_SETS[mode];
   return (set.find((p) => p.featured) ?? set[0]).eventSlug;
 }
+
+export function getPlanByEventSlug(slug: string): Plan | undefined {
+  return [...CRIAR_PLANS, ...MANTER_PLANS].find((p) => p.eventSlug === slug);
+}
