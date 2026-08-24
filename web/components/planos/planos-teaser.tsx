@@ -15,9 +15,9 @@ export function PlanosTeaser() {
         </span>
         <h2
           id="planos-teaser-heading"
-          className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl"
+          className="font-editorial text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl"
         >
-          Preço transparente. <em className="font-display italic">Escopo claro.</em>
+          Preço transparente. <em className="font-editorial italic">Escopo claro.</em>
         </h2>
         <p className="max-w-xl text-base text-white/70 md:text-lg">
           Três planos para criar, três para manter, projetos custom sob briefing. Sem orçamento por email.

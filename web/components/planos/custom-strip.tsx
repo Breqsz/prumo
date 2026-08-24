@@ -24,9 +24,9 @@ export function CustomStrip() {
               </span>
               <h2
                 id="custom-heading"
-                className="font-display mt-3 text-2xl font-semibold leading-[1.1] md:text-4xl"
+                className="font-editorial mt-3 text-2xl font-semibold leading-[1.1] md:text-4xl"
               >
-                Projeto <em className="font-display italic">sob medida</em>.
+                Projeto <em className="font-editorial italic">sob medida</em>.
               </h2>
               <p className="mt-4 text-sm text-white/70 md:text-base">
                 Escopo fora do padrão ou orçamento acima de R$ 25.000. Brief de 30 minutos antes do orçamento. Sem número chutado no email.

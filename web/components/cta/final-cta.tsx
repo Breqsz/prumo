@@ -25,12 +25,12 @@ export function FinalCta() {
         <span className="anim anim-eyebrow text-[11px] tracking-[0.3em] text-white/55 uppercase">
           Próximo passo
         </span>
-        <h2 className="anim anim-headline font-display mt-10 text-6xl font-semibold leading-[0.85] tracking-[-0.04em] md:text-[8rem] lg:text-[10.5rem]">
+        <h2 className="anim anim-headline font-editorial mt-10 text-6xl font-semibold leading-[0.85] tracking-[-0.04em] md:text-[8rem] lg:text-[10.5rem]">
           Vamos colocar
           <br />
           sua marca
           <br />
-          <em className="sweep font-display font-normal italic text-white">
+          <em className="sweep font-editorial font-normal italic text-white">
             no prumo.
           </em>
         </h2>

@@ -46,9 +46,9 @@ export function Metodo() {
         </span>
         <h2
           id="metodo-heading"
-          className="font-display mt-3 text-3xl font-semibold leading-[1.05] tracking-tight md:text-5xl"
+          className="font-editorial mt-3 text-3xl font-semibold leading-[1.05] tracking-tight md:text-5xl"
         >
-          Como o Prumo <em className="font-display italic">trabalha</em>.
+          Como o Prumo <em className="font-editorial italic">trabalha</em>.
         </h2>
 
         <ol className="mt-14 divide-y divide-white/10 border-t border-white/10">
@@ -59,7 +59,7 @@ export function Metodo() {
             >
               <span
                 aria-hidden="true"
-                className="font-display text-3xl text-white/45 md:text-5xl"
+                className="font-editorial text-3xl text-white/45 md:text-5xl"
               >
                 {step.number}
               </span>

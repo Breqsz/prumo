@@ -32,11 +32,11 @@ export function StagePlanCard({ plan, state, onFocus }: StagePlanCardProps) {
         aria-label={`Focar plano ${plan.name}`}
         data-umami-event="plano_focus"
         data-umami-event-plano={plan.eventSlug}
-        className="group block w-[16rem] rounded-[28px] text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        className="group block w-[16rem] rounded-[28px] text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-plumb"
       >
         <CardShell>
           <div className="flex flex-col gap-4 p-7">
-            <span className="font-display block text-3xl leading-none italic">{plan.name}</span>
+            <span className="font-editorial block text-3xl leading-none italic">{plan.name}</span>
             <div className="flex flex-col gap-1">
               <span className="font-display text-2xl leading-none">{plan.price}</span>
               <span className="text-[10px] tracking-widest text-white/45 uppercase">
@@ -73,7 +73,7 @@ export function StagePlanCard({ plan, state, onFocus }: StagePlanCardProps) {
                   Mais escolhido
                 </span>
               )}
-              <h3 className="font-display text-5xl leading-none italic">{plan.name}</h3>
+              <h3 className="font-editorial text-5xl leading-none italic">{plan.name}</h3>
               <p className="text-sm text-white/55">{plan.description}</p>
             </header>
 

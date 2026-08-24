@@ -90,7 +90,7 @@ export function ServicePage({ service }: { service: Service }) {
           <ol className="mt-12 grid gap-8 md:grid-cols-4">
             {service.process.map((p, i) => (
               <li key={p.step} className="flex flex-col gap-3">
-                <span className="font-display text-5xl text-white/15 italic">
+                <span className="font-editorial text-5xl text-white/15 italic">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display text-lg text-white">{p.step}</h3>

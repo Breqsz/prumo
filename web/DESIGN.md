@@ -23,20 +23,55 @@
 
 ## Typography
 
-- **Display: Instrument Serif** (Google Fonts, regular + italic). Carrega a voz editorial. Heading principal, frases-âncora, números de seção.
-- **Body: Inter** (sans neutra premium). Sub-heads, parágrafos, UI labels, nav, CTAs.
+O site fala com **duas vozes** (ADR 0006). A regra abaixo não é preferência —
+sem ela o sistema degrada para "duas fontes aleatórias", que é pior do que
+qualquer uma das duas sozinha.
+
+- **`font-display` — Archivo condensada** (`wdth 74`, `wght 800`). A voz da marca.
+  Títulos que **afirmam**: nomes de serviço, títulos de seção das páginas internas,
+  preços, perguntas do FAQ, títulos legais.
+  Substituta aberta da Neue Haas Grotesk W16 do manual, que é licenciada pela
+  Monotype por pageview. Trocar a licença mexe só em `app/fonts.ts`.
+- **`font-editorial` — Instrument Serif** (regular + italic). A voz editorial.
+  Frases que carregam o **itálico assinatura** — `Preço *transparente*`,
+  `Um estúdio. *Sem teatro.*`, a frase rotativa do hero, os numerais decorativos.
+- **`font-body` — Inter.** Parágrafos, UI, labels, nav, CTAs.
+
+### Como escolher, na prática
+
+> **A frase tem um `<em>` em itálico?** Então ela é editorial, inteira — título e ênfase.
+> **É uma afirmação seca, sem ênfase?** Então é a voz da marca.
+
+Esse teste não foi inventado: é a divisão que já existia no código quando a marca
+nova chegou. O itálico da Instrument Serif é a assinatura do site, e a Archivo não
+tem itálico com esse caráter — misturar as duas dentro da mesma frase quebra as duas.
+
+**Nunca** trocar a fonte do `h1` do hero sem redesenhar o `RotatingPhrase` junto:
+ele posiciona as frases em absoluto sobre um sizer invisível e usa `whitespace-nowrap`,
+então depende da métrica exata da Instrument Serif.
 
 Pairing ratio mínimo: 1.5 entre níveis. Escala canônica para hero / sections:
 
 | Step | Token sugerido | Tailwind ref |
 |---|---|---|
-| Display XL (hero) | `text-5xl md:text-6xl lg:text-7xl` Instrument Serif | letter-spacing tight `-0.02em` |
-| Display L (section H1) | `text-4xl md:text-5xl` Instrument Serif | tight |
-| Heading | `text-2xl md:text-3xl` Instrument Serif **ou** Inter weight 500 | normal |
+| Display XL (hero) | `text-5xl md:text-6xl lg:text-7xl` **editorial** | letter-spacing tight `-0.02em` |
+| Display L (section H1) | `text-4xl md:text-5xl` **display**, ou editorial se houver itálico | tight |
+| Heading | `text-2xl md:text-3xl` **display** ou Inter weight 500 | normal |
 | Body | `text-base md:text-lg` Inter weight 400 | line-height 1.55, line-length 60–72ch |
 | Caption / label | `text-xs uppercase tracking-[0.18em]` Inter weight 500, text-35 | metadata, eyebrows |
 
 Italic Instrument Serif é arma poderosa para single-word emphasis em headings. Usar com economia.
+
+## Cor
+
+Fundo `#111111` (o preto do manual, não `#000000` puro) e branco como accent de
+hierarquia — o ADR 0001 segue valendo: hierarquia por opacidade, escala e agora
+largura de tipo, nunca por cor decorativa.
+
+O amarelo da marca `#F5B400` (`--color-plumb`) tem **um único papel: marcar estado**.
+Hoje isso significa o anel de foco de teclado. Nunca usar em texto corrido, em área
+grande, nem como enfeite — a exceção ao "accent = branco puro" foi aberta nominalmente
+para estado e só para isso.
 
 ## Layout & rhythm
 

@@ -12,9 +12,9 @@ export function ContatoHero() {
         </span>
         <h1
           id="contato-hero-heading"
-          className="font-display text-4xl font-semibold leading-[1.02] tracking-tight md:text-7xl"
+          className="font-editorial text-4xl font-semibold leading-[1.02] tracking-tight md:text-7xl"
         >
-          Briefing <em className="font-display italic">inicial.</em>
+          Briefing <em className="font-editorial italic">inicial.</em>
         </h1>
         <p className="max-w-xl text-base text-white/70 md:text-lg">
           Me conta o projeto. Respondo em até 24h com perguntas, cronograma e

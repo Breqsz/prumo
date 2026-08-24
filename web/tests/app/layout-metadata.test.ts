@@ -3,8 +3,9 @@ import { describe, it, expect, vi } from "vitest";
 // next/font/google is not available in Vitest (no Next.js runtime).
 // Mock it so layout.tsx can be imported for its metadata export.
 vi.mock("next/font/google", () => ({
-  Instrument_Serif: () => ({ variable: "--font-instrument-serif", className: "" }),
-  Inter: () => ({ variable: "--font-inter", className: "" }),
+  Archivo: () => ({ variable: "--font-display", className: "" }),
+  Instrument_Serif: () => ({ variable: "--font-editorial", className: "" }),
+  Inter: () => ({ variable: "--font-body", className: "" }),
 }));
 
 // next/script is a React component; stub it out.

@@ -9,7 +9,7 @@ export function HeroContent() {
         Precisão em forma de site.
       </p>
 
-      <h1 className="font-display mb-8 text-4xl leading-[1.05] tracking-tight sm:whitespace-nowrap sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem]">
+      <h1 className="font-editorial mb-8 text-4xl leading-[1.05] tracking-tight sm:whitespace-nowrap sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem]">
         Tudo começa por <RotatingPhrase />
       </h1>
 

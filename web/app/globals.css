@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #000000;
+  --color-bg: #111111;
   --color-bg-soft: #0a0a0a;
   --color-fg: #ffffff;
   --color-fg-70: rgba(255, 255, 255, 0.7);
@@ -9,7 +9,11 @@
   --color-fg-35: rgba(255, 255, 255, 0.35);
 
   --font-display: var(--font-display);
+  --font-editorial: var(--font-editorial);
   --font-body: var(--font-body);
+
+  /* ADR 0006: unico papel do amarelo da marca e marcar estado. */
+  --color-plumb: #f5b400;
 }
 
 :root {
@@ -19,6 +23,24 @@
 html,
 body {
   background: var(--color-bg);
+}
+
+@layer components {
+  /* ADR 0006 - voz da marca: Archivo condensada. A largura reduzida e o peso
+     alto aproximam a Neue Haas Grotesk W16 do manual. Componentes que precisam
+     de outro tracking continuam vencendo, porque utilities vem depois. */
+  .font-display {
+    font-variation-settings: "wdth" 74, "wght" 800;
+    letter-spacing: -0.01em;
+  }
+
+  /* ADR 0006 - o amarelo marca estado, e foco de teclado e estado.
+     Antes disso o site usava o anel default do browser. */
+  :focus-visible {
+    outline: 2px solid var(--color-plumb);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
 @layer components {

@@ -70,7 +70,7 @@ export function ProjectGallery({ title, images }: ProjectGalleryProps) {
             type="button"
             onClick={() => open(i)}
             aria-label={`Ampliar ${title} — captura ${i + 1}`}
-            className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+            className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-lg border border-white/10 bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-plumb"
           >
             <Image
               src={src}
