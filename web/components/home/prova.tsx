@@ -18,7 +18,7 @@ export function Prova({ cases }: { cases: Project[] }) {
           id="prova-heading"
           className="font-display mt-6 text-4xl tracking-tight text-white md:text-5xl"
         >
-          O que já está no ar
+          Trabalhos recentes
         </h2>
         <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           {cases.map((p) => (
@@ -29,10 +29,10 @@ export function Prova({ cases }: { cases: Project[] }) {
               data-umami-event="prova_case"
               data-umami-event-case={p.slug}
             >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-white/10 bg-white/5">
+              <div className="relative aspect-[2/1] overflow-hidden rounded-lg border border-white/10 bg-white/5">
                 <Image
                   src={p.gallery[0]}
-                  alt={p.title}
+                  alt=""
                   fill
                   sizes="(min-width: 768px) 25vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
