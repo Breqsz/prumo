@@ -20,7 +20,6 @@ export type Project = {
 
 /**
  * Projetos do reel /trabalhos. A ordem define a sequência do scroll.
- * Campos marcados [STUB] devem ser preenchidos com narrativa real.
  */
 export const projects: Project[] = [
   {
@@ -127,7 +126,7 @@ export const projects: Project[] = [
     process:
       "Next.js 14 App Router + TypeScript + Tailwind + Framer Motion + Shadcn UI. Bilíngue PT/EN via i18n próprio com `highlightPhrases()` aplicando gradiente em palavras-chave (web development, backend, cloud). Ênfase visual em vez de bold. Hero com chips de identidade (FullStack · Web · Cloud · DevSecOps), seção Sobre com retrato em formato editorial (sem card, aura gradiente), Selected Work com grid 2-col pros projetos secundários (Fyora + NeuroRace lado a lado). Contact section com dois CVs (PT/EN) acima do CTA principal: recruiter encontra em um clique.",
     outcome:
-      "Online em modo recruiter-ready. Refinamento posterior elevou contraste tipográfico (text-neutral-300 no body, muted-400) pra leitura confortável em monitores de baixo gamut sem comprometer a estética dark premium. [Adicionar URL pública e métricas se houver]",
+      "Online em modo recruiter-ready. Refinamento posterior elevou contraste tipográfico (text-neutral-300 no body, muted-400) pra leitura confortável em monitores de baixo gamut sem comprometer a estética dark premium.",
     gallery: [
       "/Breq/01.png",
       "/Breq/02.png",

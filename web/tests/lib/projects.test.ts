@@ -34,17 +34,19 @@ describe("projects data", () => {
   });
 
   it("no renderable copy carries draft annotations", () => {
-    const draft = /\[Substituir|\bSTUB\b|Lorem ipsum/i;
-    // Uppercase-only: a case-insensitive \bTODO\b also matches "Todo", the
-    // Portuguese word for "all" (e.g. "Todo o conteúdo..." in `todo`'s process
-    // copy) — legitimate prose, not a draft marker. Real markers are written
-    // in caps by convention.
-    const todoMarker = /\bTODO\b/;
+    // Structural, not a marker list: a finite list of known placeholder
+    // strings ("Substituir", "STUB", ...) only catches annotations someone
+    // already thought of — it missed "[Adicionar URL pública e métricas se
+    // houver]" in production because nobody had written "Adicionar" into the
+    // list yet. A square bracket has no legitimate use in this renderable
+    // copy (verified: none of summary/brief/process/outcome uses one for
+    // anything else across the current data), so any "[" is rejected
+    // outright. Do not narrow this back into a list of known words.
+    const bracket = /\[/;
     for (const p of projects) {
       const copy = [p.summary, p.brief, p.process, p.outcome ?? ""];
       for (const field of copy) {
-        const hasDraftAnnotation = draft.test(field) || todoMarker.test(field);
-        expect(hasDraftAnnotation, `${p.slug}: "${field.slice(0, 60)}…"`).toBe(
+        expect(bracket.test(field), `${p.slug}: "${field.slice(0, 60)}…"`).toBe(
           false,
         );
       }
