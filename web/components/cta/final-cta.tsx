@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { LiquidGlass } from "@/components/ui/liquid-glass";
-import { Reveal } from "@/components/ui/reveal";
 import PixelSnow from "@/components/ui/pixel-snow";
 import {
   buildWhatsappLink,
