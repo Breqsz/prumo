@@ -59,6 +59,11 @@ export function AmbientVideo({
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-black"
       >
         <div className="sticky top-0 h-dvh w-full overflow-hidden">
+          {/* `isWide` é a proteção real contra download em celular — não o
+              preload="none" abaixo. Com autoPlay + setRef chamando el.play()
+              ao montar, o navegador busca o vídeo assim que o elemento
+              existe no DOM, ignorando preload. Remover este `isWide` volta
+              o download mesmo com preload="none" intacto. */}
           {isWide && (
             <video
               ref={setRef}

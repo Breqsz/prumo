@@ -22,6 +22,11 @@ type HeroVideoProps = {
 export function HeroVideo({ srcs, translateY = "0%" }: HeroVideoProps) {
   const setRef = useVideoFade({ srcs });
   const isWide = useIsWideViewport();
+  // `isWide` aqui é a proteção real contra download em celular — não o
+  // `preload="none"` abaixo. Com autoPlay + setRef chamando el.play() ao
+  // montar, o navegador busca o vídeo assim que o elemento existe no DOM,
+  // ignorando preload. Remover `isWide` desta condição volta o download
+  // mesmo com preload="none" intacto.
   const hasSrc = isWide && !!srcs && srcs.length > 0;
   return (
     <div className="absolute inset-0 overflow-hidden bg-black">
