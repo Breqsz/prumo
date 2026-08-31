@@ -3,6 +3,10 @@ import { ArrowUpRight } from "lucide-react";
 import { LiquidGlass } from "@/components/ui/liquid-glass";
 import { Reveal } from "@/components/ui/reveal";
 import PixelSnow from "@/components/ui/pixel-snow";
+import {
+  buildWhatsappLink,
+  WHATSAPP_DEFAULT_MESSAGE,
+} from "@/lib/contact-config";
 
 export function FinalCta() {
   return (
@@ -38,17 +42,27 @@ export function FinalCta() {
           Uma conversa de 30 minutos é suficiente para entender o seu
           objetivo e dizer honestamente como posso ajudar.
         </p>
-        <div className="anim anim-cta mt-14 flex flex-col items-center gap-3 sm:flex-row">
+        <div className="anim anim-cta mt-14 flex flex-col items-center gap-4 sm:flex-row">
           <LiquidGlass
             as="a"
-            href="/contato"
+            href={buildWhatsappLink(WHATSAPP_DEFAULT_MESSAGE)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium text-white"
+            data-umami-event="cta_whatsapp"
+            data-umami-event-source="final-cta"
+          >
+            Falar no WhatsApp
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </LiquidGlass>
+          <Link
+            href="/contato"
+            className="text-sm text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline"
             data-umami-event="cta_contato"
             data-umami-event-source="final-cta"
           >
-            Agendar conversa
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </LiquidGlass>
+            prefiro escrever
+          </Link>
         </div>
       </div>
     </section>

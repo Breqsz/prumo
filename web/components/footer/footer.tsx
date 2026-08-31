@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Reveal } from "@/components/ui/reveal";
 import { Logo } from "@/components/ui/logo";
-import { CONTACT, buildWhatsappLink } from "@/lib/contact-config";
-
-const WHATSAPP_MESSAGE =
-  "Olá! Vim pelo site da Prumo e quero conversar sobre um projeto.";
+import {
+  CONTACT,
+  buildWhatsappLink,
+  WHATSAPP_DEFAULT_MESSAGE,
+} from "@/lib/contact-config";
 
 const NAV = {
   Estúdio: [
@@ -16,7 +17,7 @@ const NAV = {
   Conversar: [
     { href: "/contato", label: "Agendar conversa" },
     { href: "/contato", label: "Mandar mensagem" },
-    { href: buildWhatsappLink(WHATSAPP_MESSAGE), label: "WhatsApp" },
+    { href: buildWhatsappLink(WHATSAPP_DEFAULT_MESSAGE), label: "WhatsApp" },
   ],
   Geral: [
     { href: "/privacidade", label: "Privacidade" },

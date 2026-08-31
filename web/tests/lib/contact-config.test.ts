@@ -3,6 +3,7 @@ import {
   CONTACT,
   buildWhatsappLink,
   buildMailtoLink,
+  WHATSAPP_DEFAULT_MESSAGE,
 } from "@/lib/contact-config";
 
 describe("CONTACT", () => {
@@ -32,6 +33,18 @@ describe("buildWhatsappLink", () => {
 
   it("returns base URL when message is empty string", () => {
     expect(buildWhatsappLink("")).toBe("https://wa.me/5534999194509");
+  });
+
+  it("exposes a single default whatsapp message mentioning the studio", () => {
+    expect(WHATSAPP_DEFAULT_MESSAGE).toMatch(/Prumo/);
+    expect(WHATSAPP_DEFAULT_MESSAGE.length).toBeGreaterThan(20);
+  });
+
+  it("builds a wa.me link carrying the default message", () => {
+    const link = buildWhatsappLink(WHATSAPP_DEFAULT_MESSAGE);
+    expect(link).toContain("https://wa.me/5534999194509");
+    expect(link).toContain("text=");
+    expect(decodeURIComponent(link)).toContain("Prumo");
   });
 });
 

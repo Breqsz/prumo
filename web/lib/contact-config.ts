@@ -14,6 +14,14 @@ export const CONTACT = {
   cnpj: "67.822.658/0001-50",
 } as const;
 
+/**
+ * Mensagem única de abertura no WhatsApp. Centralizada porque a home, o
+ * footer, /sobre e /contato usavam textos diferentes (ou nenhum), e o
+ * contexto da primeira linha é o que diz de onde a pessoa veio.
+ */
+export const WHATSAPP_DEFAULT_MESSAGE =
+  "Oi, Guilherme! Vim pelo site da Prumo e queria falar sobre um projeto.";
+
 export function buildWhatsappLink(prefilledMessage?: string): string {
   const digits = CONTACT.whatsappE164.replace(/\D/g, "");
   const base = `https://wa.me/${digits}`;
