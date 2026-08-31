@@ -1,6 +1,7 @@
 "use client";
 
 import { useVideoFade } from "@/lib/hooks/use-video-fade";
+import { useIsWideViewport } from "@/lib/hooks/use-is-wide-viewport";
 
 type HeroVideoProps = {
   /**
@@ -20,7 +21,8 @@ type HeroVideoProps = {
 
 export function HeroVideo({ srcs, translateY = "0%" }: HeroVideoProps) {
   const setRef = useVideoFade({ srcs });
-  const hasSrc = !!srcs && srcs.length > 0;
+  const isWide = useIsWideViewport();
+  const hasSrc = isWide && !!srcs && srcs.length > 0;
   return (
     <div className="absolute inset-0 overflow-hidden bg-black">
       {hasSrc ? (
@@ -34,7 +36,7 @@ export function HeroVideo({ srcs, translateY = "0%" }: HeroVideoProps) {
           autoPlay
           muted
           playsInline
-          preload="auto"
+          preload="none"
           disablePictureInPicture
           // iOS-only attribute; React doesn't type it but it's required for
           // older webkit autoplay-inline behavior. Cast keeps TS strict happy.

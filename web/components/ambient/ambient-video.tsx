@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useVideoFade } from "@/lib/hooks/use-video-fade";
+import { useIsWideViewport } from "@/lib/hooks/use-is-wide-viewport";
 import { Spotlight } from "@/components/ambient/spotlight";
 
 type AmbientVideoProps = {
@@ -49,6 +50,7 @@ export function AmbientVideo({
     durationMs: fadeDurationMs,
     fadeOutLeadMs,
   });
+  const isWide = useIsWideViewport();
 
   return (
     <div className="relative isolate">
@@ -57,23 +59,25 @@ export function AmbientVideo({
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-black"
       >
         <div className="sticky top-0 h-dvh w-full overflow-hidden">
-          <video
-            ref={setRef}
-            src={srcs[0]}
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            disablePictureInPicture
-            {...({ "webkit-playsinline": "true" } as Record<string, string>)}
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{
-              opacity: 0,
-              filter:
-                "blur(6px) brightness(0.55) saturate(0.65) contrast(1.05)",
-              transform: "scale(1.06)",
-            }}
-          />
+          {isWide && (
+            <video
+              ref={setRef}
+              src={srcs[0]}
+              autoPlay
+              muted
+              playsInline
+              preload="none"
+              disablePictureInPicture
+              {...({ "webkit-playsinline": "true" } as Record<string, string>)}
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{
+                opacity: 0,
+                filter:
+                  "blur(6px) brightness(0.55) saturate(0.65) contrast(1.05)",
+                transform: "scale(1.06)",
+              }}
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/75 to-black/80" />
           <div
             className="absolute inset-0 opacity-[0.05] mix-blend-screen"
