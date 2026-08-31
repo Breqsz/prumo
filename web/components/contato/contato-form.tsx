@@ -441,6 +441,11 @@ function TextareaField({
 }
 
 function SuccessPanel() {
+  // Mensagem própria, não WHATSAPP_DEFAULT_MESSAGE: avisa que o briefing já
+  // foi enviado pelo formulário, algo que a mensagem genérica de abertura não
+  // diz — quem recebe sabe que já tem um briefing completo esperando, em vez
+  // de perguntar do zero. Deliberado, não esquecimento: não trocar pela
+  // constante ao unificar wording.
   const whatsappLink = buildWhatsappLink(
     "Oi! Acabei de enviar um briefing pelo site da Prumo.",
   );

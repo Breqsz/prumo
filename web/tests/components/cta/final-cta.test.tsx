@@ -18,6 +18,13 @@ describe("FinalCta", () => {
     );
   });
 
+  it("opens the whatsapp link safely in a new tab", () => {
+    render(<FinalCta />);
+    const wa = screen.getByRole("link", { name: /whatsapp/i });
+    expect(wa).toHaveAttribute("target", "_blank");
+    expect(wa).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
   it("keeps the form as a secondary path", () => {
     render(<FinalCta />);
     expect(
@@ -29,6 +36,7 @@ describe("FinalCta", () => {
     render(<FinalCta />);
     const wa = screen.getByRole("link", { name: /whatsapp/i });
     expect(wa).toHaveAttribute("data-umami-event", "cta_whatsapp");
+    expect(wa).toHaveAttribute("data-umami-event-source", "final-cta");
   });
 
   it("renders an anchor id for in-page navigation", () => {

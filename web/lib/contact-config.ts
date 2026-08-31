@@ -15,9 +15,12 @@ export const CONTACT = {
 } as const;
 
 /**
- * Mensagem única de abertura no WhatsApp. Centralizada porque a home, o
- * footer, /sobre e /contato usavam textos diferentes (ou nenhum), e o
- * contexto da primeira linha é o que diz de onde a pessoa veio.
+ * Mensagem única de abertura no WhatsApp, usada por todo caller que está
+ * convidando a pessoa a puxar assunto pela primeira vez (era um texto
+ * diferente — ou nenhum — em cada lugar). Um caller só deve passar a sua
+ * própria mensagem quando ela informa algo que esta não informa (ex.: que
+ * um briefing específico já foi enviado); nesses casos, deixe um comentário
+ * no call site explicando por quê.
  */
 export const WHATSAPP_DEFAULT_MESSAGE =
   "Oi, Guilherme! Vim pelo site da Prumo e queria falar sobre um projeto.";
