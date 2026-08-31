@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { HeroNav } from "@/components/hero/hero-nav";
-import { AmbientVideo } from "@/components/ambient/ambient-video";
+import { AmbientFerrofluid } from "@/components/ambient/ambient-ferrofluid";
 import { SobreHero } from "@/components/sobre/sobre-hero";
 import { Manifesto } from "@/components/sobre/manifesto";
 import { Metodo } from "@/components/sobre/metodo";
@@ -18,20 +18,19 @@ export const metadata: Metadata = {
   openGraph: { url: "/sobre" },
 };
 
-const AMBIENT_VIDEOS = ["/ambient.mp4", "/ambient-2.mp4"];
 
 export default function SobrePage() {
   return (
     <>
       <JsonLd data={personNode()} />
-      <AmbientVideo srcs={AMBIENT_VIDEOS} spotlight>
+      <AmbientFerrofluid spotlight>
         <HeroNav />
         <SobreHero />
         <QuemAssina />
         <Manifesto />
         <Metodo />
         <FinalCta />
-      </AmbientVideo>
+      </AmbientFerrofluid>
       <Footer />
     </>
   );

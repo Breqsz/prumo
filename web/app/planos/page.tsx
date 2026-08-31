@@ -6,7 +6,7 @@ import { CustomStrip } from "@/components/planos/custom-strip";
 import { PlanosFaq } from "@/components/planos/planos-faq";
 import { FinalCta } from "@/components/cta/final-cta";
 import { Footer } from "@/components/footer/footer";
-import { AmbientVideo } from "@/components/ambient/ambient-video";
+import { AmbientFerrofluid } from "@/components/ambient/ambient-ferrofluid";
 import { JsonLd } from "@/components/seo/json-ld";
 import { servicesGraph } from "@/lib/schema";
 
@@ -18,20 +18,19 @@ export const metadata: Metadata = {
   openGraph: { url: "/planos" },
 };
 
-const AMBIENT_VIDEOS = ["/planos-1.mp4", "/planos-2.mp4"];
 
 export default function PlanosPage() {
   return (
     <>
       <JsonLd data={servicesGraph()} />
-      <AmbientVideo srcs={AMBIENT_VIDEOS} spotlight>
+      <AmbientFerrofluid spotlight>
         <HeroNav />
         <PlanosHero />
         <SpotlightStage />
         <CustomStrip />
         <PlanosFaq />
         <FinalCta />
-      </AmbientVideo>
+      </AmbientFerrofluid>
       <Footer />
     </>
   );

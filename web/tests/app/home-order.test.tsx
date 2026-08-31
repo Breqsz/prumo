@@ -31,14 +31,28 @@ describe("home section order", () => {
     expect(prova).toBeLessThan(planos);
   });
 
-  it("puts the services summary between proof and pricing", () => {
+  it("keeps the services index inside the proof section, not as its own", () => {
+    // A seção "O que eu faço" existia solta entre a prova e os planos, e não
+    // se sustentava: três frases de mesmo peso num container largo. Virou o
+    // índice ao lado do título dos trabalhos. Se alguém recriar a seção solta,
+    // este teste avisa.
     const { container } = render(<HomePage />);
     const html = container.innerHTML;
-    expect(html.indexOf('id="prova"')).toBeLessThan(
-      html.indexOf('id="servicos-resumo"'),
-    );
-    expect(html.indexOf('id="servicos-resumo"')).toBeLessThan(
-      html.indexOf('id="planos-teaser"'),
-    );
+    expect(html).not.toContain('id="servicos-resumo"');
+
+    const prova = container.querySelector("#prova");
+    expect(prova).not.toBeNull();
+    expect(prova?.textContent).toContain("Sites institucionais");
+    expect(prova?.querySelector('a[href="/servicos"]')).not.toBeNull();
+  });
+
+  it("closes the page with the contact call to action", () => {
+    const { container } = render(<HomePage />);
+    const html = container.innerHTML;
+    const planos = html.indexOf('id="planos-teaser"');
+    const cta = html.indexOf('id="cta"');
+    expect(planos).toBeGreaterThan(-1);
+    expect(cta).toBeGreaterThan(-1);
+    expect(planos).toBeLessThan(cta);
   });
 });
