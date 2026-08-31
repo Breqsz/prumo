@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/reveal";
 export function PlanosTeaser() {
   return (
     <section
-      id="planos"
+      id="planos-teaser"
       className="relative flex min-h-dvh items-center justify-center px-6 py-24 md:py-40"
       aria-labelledby="planos-teaser-heading"
     >
