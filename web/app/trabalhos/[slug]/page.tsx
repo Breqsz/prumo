@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { HeroNav } from "@/components/hero/hero-nav";
 import { Footer } from "@/components/footer/footer";
 import { ProjectGallery } from "@/components/trabalhos/project-gallery";
+import { CaseBlock } from "@/components/trabalhos/case-block";
 import { Reveal } from "@/components/ui/reveal";
 import { AuroraBlack } from "@/components/ambient/aurora-black";
 import { getProject, getNextProject, projects } from "@/lib/projects";
@@ -108,9 +109,9 @@ export default async function ProjectPage({ params }: PageProps) {
               </aside>
 
               <div className="space-y-16">
-                <Block title="Brief" body={project.brief} />
-                <Block title="Processo" body={project.process} />
-                <Block title="Resultado" body={project.outcome} />
+                <CaseBlock title="Brief" body={project.brief} />
+                <CaseBlock title="Processo" body={project.process} />
+                <CaseBlock title="Resultado" body={project.outcome} />
 
                 <ProjectGallery
                   title={project.title}
@@ -183,15 +184,3 @@ function Meta({ label, value }: { label: string; value: string }) {
   );
 }
 
-function Block({ title, body }: { title: string; body: string }) {
-  return (
-    <div>
-      <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">
-        {title}
-      </h2>
-      <p className="mt-6 text-base leading-relaxed text-white/70 md:text-lg">
-        {body}
-      </p>
-    </div>
-  );
-}
