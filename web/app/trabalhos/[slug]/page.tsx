@@ -6,6 +6,7 @@ import { HeroNav } from "@/components/hero/hero-nav";
 import { Footer } from "@/components/footer/footer";
 import { ProjectGallery } from "@/components/trabalhos/project-gallery";
 import { CaseBlock } from "@/components/trabalhos/case-block";
+import { CaseVideo } from "@/components/trabalhos/case-video";
 import { Reveal } from "@/components/ui/reveal";
 import { AuroraBlack } from "@/components/ambient/aurora-black";
 import { getProject, getNextProject, projects } from "@/lib/projects";
@@ -56,15 +57,9 @@ export default async function ProjectPage({ params }: PageProps) {
       <main>
         <article className="relative">
           <header className="relative flex h-[80vh] min-h-[600px] w-full items-end overflow-hidden bg-black">
-            <video
+            <CaseVideo
               src={project.videoSrc}
-              autoPlay
-              muted
-              playsInline
-              loop
-              preload="metadata"
               className="absolute inset-0 h-full w-full object-cover opacity-50"
-              aria-hidden="true"
             />
             <div
               aria-hidden="true"
@@ -138,15 +133,9 @@ export default async function ProjectPage({ params }: PageProps) {
               href={`/trabalhos/${next.slug}`}
               className="group relative block h-[60vh] min-h-[400px] w-full overflow-hidden bg-black"
             >
-              <video
+              <CaseVideo
                 src={next.videoSrc}
-                autoPlay
-                muted
-                playsInline
-                loop
-                preload="metadata"
                 className="absolute inset-0 h-full w-full object-cover opacity-30 transition-opacity duration-700 group-hover:opacity-50"
-                aria-hidden="true"
               />
               <div
                 aria-hidden="true"
