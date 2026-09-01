@@ -36,7 +36,7 @@ export function AmbientFerrofluid({
     <div className="relative isolate">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-black"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-bg"
       >
         {/* `absolute inset-0`, não `sticky top-0 h-dvh` como no vídeo antigo:
             sticky não funciona dentro de um ancestral com `overflow: hidden`,
@@ -56,7 +56,7 @@ export function AmbientFerrofluid({
           {/* Véu leve. O anterior somava 55–70% de preto sobre um shader já
               a 55% de opacidade, e o fluido sumia. Aqui ele ainda recua para
               trás do texto, mas continua visível. */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/30 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg/25 via-bg/30 to-bg/40" />
           <div
             className="absolute inset-0 opacity-[0.05] mix-blend-screen"
             style={{ backgroundImage: GRAIN_SVG }}
@@ -64,8 +64,8 @@ export function AmbientFerrofluid({
           {/* Fades mais longos que os 160px do vídeo antigo: a entrada vem
               do hero e a saída vai pro FAQ, e a transição precisa acontecer
               devagar o bastante pra não virar uma borda. */}
-          <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-black via-black/60 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/60 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-bg via-bg/60 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-bg via-bg/60 to-transparent" />
           {spotlight && <Spotlight />}
         </div>
       </div>
