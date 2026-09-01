@@ -1,12 +1,20 @@
-import { HeroBackground } from "./hero-background";
+import { HeroVideo } from "./hero-video";
 import { HeroNav } from "./hero-nav";
 import { HeroContent } from "./hero-content";
 import { HeroSocial } from "./hero-social";
 
-export function Hero() {
+type HeroProps = {
+  /**
+   * Ordered playlist of background videos. The hero advances through them
+   * and loops back to the first when the last clip ends.
+   */
+  videoSrcs?: string[];
+};
+
+export function Hero({ videoSrcs }: HeroProps) {
   return (
     <div className="relative flex min-h-dvh flex-col overflow-hidden bg-black">
-      <HeroBackground />
+      <HeroVideo srcs={videoSrcs} />
       <HeroNav />
       <HeroContent />
       <HeroSocial />
