@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { HeroNav } from "@/components/hero/hero-nav";
-import { AmbientFerrofluid } from "@/components/ambient/ambient-ferrofluid";
+import { AmbientVideo } from "@/components/ambient/ambient-video";
 import { Footer } from "@/components/footer/footer";
 import { Reveal } from "@/components/ui/reveal";
 import { ContatoHero } from "@/components/contato/contato-hero";
@@ -17,11 +17,17 @@ export const metadata: Metadata = {
 
 // Single clip on loop with near-imperceptible fade at the seam (250ms).
 // Using the same fade infrastructure as the other pages but tuned shorter.
+const AMBIENT_VIDEOS = ["/contato.mp4"];
 
 export default function ContatoPage() {
   return (
     <>
-      <AmbientFerrofluid spotlight>
+      <AmbientVideo
+        srcs={AMBIENT_VIDEOS}
+        spotlight
+        fadeDurationMs={250}
+        fadeOutLeadMs={280}
+      >
         <HeroNav />
         <ContatoHero />
         <section
@@ -39,7 +45,7 @@ export default function ContatoPage() {
             <ContatoChannels />
           </Reveal>
         </section>
-      </AmbientFerrofluid>
+      </AmbientVideo>
       <Footer />
     </>
   );
