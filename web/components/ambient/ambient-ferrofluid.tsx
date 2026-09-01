@@ -56,8 +56,11 @@ export function AmbientFerrofluid({
             className="absolute inset-0 opacity-[0.05] mix-blend-screen"
             style={{ backgroundImage: GRAIN_SVG }}
           />
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
+          {/* Fades mais longos que os 160px do vídeo antigo: a entrada vem
+              do hero e a saída vai pro FAQ, e a transição precisa acontecer
+              devagar o bastante pra não virar uma borda. */}
+          <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-black via-black/60 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/60 to-transparent" />
           {spotlight && <Spotlight />}
         </div>
       </div>

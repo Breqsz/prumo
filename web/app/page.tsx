@@ -23,12 +23,12 @@ export default function HomePage() {
   return (
     <>
       <Hero videoSrcs={HERO_VIDEOS} />
-      {/* Cada secao com o seu proprio fundo, nao um ambient esticado por
-          cima das duas: assim cada uma abre e fecha com os proprios fades. */}
+      {/* Um ambient so para as duas secoes, de proposito. Dois ambients
+          adjacentes criam uma costura visivel no meio: o fade de base do
+          primeiro somado ao fade de topo do segundo vira uma faixa preta
+          entre eles. Continuo, o fundo atravessa a fronteira sem marca. */}
       <AmbientFerrofluid>
         <Prova cases={homeCases()} />
-      </AmbientFerrofluid>
-      <AmbientFerrofluid>
         <PlanosTeaser />
       </AmbientFerrofluid>
       {/* bgVariant: 1=marginalia, 2=blueprint, 3=halo, 4=prumo */}
