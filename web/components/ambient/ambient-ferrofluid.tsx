@@ -38,7 +38,12 @@ export function AmbientFerrofluid({
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-black"
       >
-        <div className="sticky top-0 h-dvh w-full overflow-hidden">
+        {/* `absolute inset-0`, não `sticky top-0 h-dvh` como no vídeo antigo:
+            sticky não funciona dentro de um ancestral com `overflow: hidden`,
+            e este wrapper tem. Com o ambient cobrindo uma única viewport o
+            defeito não aparecia; cobrindo duas seções, o fundo ficava preso
+            na primeira tela e a de baixo ficava preta. */}
+        <div className="absolute inset-0 h-full w-full overflow-hidden">
           <Ferrofluid
             paused={reduced}
             opacity={opacity}
