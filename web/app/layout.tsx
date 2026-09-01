@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { instrumentSerif, inter } from "./fonts";
+import { archivo, instrumentSerif, inter } from "./fonts";
 import "./globals.css";
 import Script from "next/script";
 import { SITE_URL } from "@/lib/site";
@@ -38,9 +38,9 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${instrumentSerif.variable} ${inter.variable} dark`}
+      className={`${archivo.variable} ${instrumentSerif.variable} ${inter.variable} dark`}
     >
-      <body className="min-h-screen bg-black text-white antialiased font-body">
+      <body className="bg-bg min-h-screen text-white antialiased font-body">
         <JsonLd data={siteGraph()} />
         {children}
         {umamiSrc && umamiId && (

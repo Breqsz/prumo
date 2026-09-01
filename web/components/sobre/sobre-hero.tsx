@@ -13,9 +13,9 @@ export function SobreHero() {
         </span>
         <h1
           id="sobre-hero-heading"
-          className="font-display text-4xl font-semibold leading-[1.02] tracking-tight md:text-7xl"
+          className="font-editorial text-4xl font-semibold leading-[1.02] tracking-tight md:text-7xl"
         >
-          Um estúdio. <em className="font-display italic">Sem teatro.</em>
+          Um estúdio. <em className="font-editorial italic">Sem teatro.</em>
         </h1>
         <p className="max-w-xl text-base text-white/70 md:text-lg">
           Solo, premium e sóbrio. Honestidade vale mais que tamanho.

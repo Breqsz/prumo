@@ -2,7 +2,11 @@ import type { ReactNode } from "react";
 import { Reveal } from "@/components/ui/reveal";
 import { ProfileCard } from "@/components/effects/profile-card";
 import type { ProfileCardProps } from "@/components/effects/profile-card";
-import { CONTACT, buildWhatsappLink } from "@/lib/contact-config";
+import {
+  CONTACT,
+  buildWhatsappLink,
+  WHATSAPP_DEFAULT_MESSAGE,
+} from "@/lib/contact-config";
 
 type Social = { label: string; href: string; external: boolean };
 
@@ -10,7 +14,7 @@ const BIANCHINI_SOCIAL: Social[] = [
   { label: "LinkedIn", href: CONTACT.linkedin, external: true },
   {
     label: "WhatsApp",
-    href: buildWhatsappLink("Oi! Vim do site da Prumo."),
+    href: buildWhatsappLink(WHATSAPP_DEFAULT_MESSAGE),
     external: true,
   },
   ...(CONTACT.instagram

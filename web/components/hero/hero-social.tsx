@@ -1,5 +1,9 @@
 import { LiquidGlass } from "@/components/ui/liquid-glass";
-import { CONTACT, buildWhatsappLink } from "@/lib/contact-config";
+import {
+  CONTACT,
+  buildWhatsappLink,
+  WHATSAPP_DEFAULT_MESSAGE,
+} from "@/lib/contact-config";
 import type { ComponentType } from "react";
 
 const COMMON = "h-4 w-4 fill-current";
@@ -73,7 +77,7 @@ const ITEMS: SocialItem[] = [
     Icon: LinkedinIcon,
   },
   {
-    href: buildWhatsappLink(),
+    href: buildWhatsappLink(WHATSAPP_DEFAULT_MESSAGE),
     label: "WhatsApp",
     network: "whatsapp",
     Icon: WhatsappIcon,

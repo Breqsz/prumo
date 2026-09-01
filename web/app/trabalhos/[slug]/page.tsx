@@ -5,6 +5,8 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { HeroNav } from "@/components/hero/hero-nav";
 import { Footer } from "@/components/footer/footer";
 import { ProjectGallery } from "@/components/trabalhos/project-gallery";
+import { CaseBlock } from "@/components/trabalhos/case-block";
+import { CaseVideo } from "@/components/trabalhos/case-video";
 import { Reveal } from "@/components/ui/reveal";
 import { AuroraBlack } from "@/components/ambient/aurora-black";
 import { getProject, getNextProject, projects } from "@/lib/projects";
@@ -55,15 +57,9 @@ export default async function ProjectPage({ params }: PageProps) {
       <main>
         <article className="relative">
           <header className="relative flex h-[80vh] min-h-[600px] w-full items-end overflow-hidden bg-black">
-            <video
+            <CaseVideo
               src={project.videoSrc}
-              autoPlay
-              muted
-              playsInline
-              loop
-              preload="metadata"
               className="absolute inset-0 h-full w-full object-cover opacity-50"
-              aria-hidden="true"
             />
             <div
               aria-hidden="true"
@@ -108,9 +104,9 @@ export default async function ProjectPage({ params }: PageProps) {
               </aside>
 
               <div className="space-y-16">
-                <Block title="Brief" body={project.brief} />
-                <Block title="Processo" body={project.process} />
-                <Block title="Resultado" body={project.outcome} />
+                <CaseBlock title="Brief" body={project.brief} />
+                <CaseBlock title="Processo" body={project.process} />
+                <CaseBlock title="Resultado" body={project.outcome} />
 
                 <ProjectGallery
                   title={project.title}
@@ -137,15 +133,9 @@ export default async function ProjectPage({ params }: PageProps) {
               href={`/trabalhos/${next.slug}`}
               className="group relative block h-[60vh] min-h-[400px] w-full overflow-hidden bg-black"
             >
-              <video
+              <CaseVideo
                 src={next.videoSrc}
-                autoPlay
-                muted
-                playsInline
-                loop
-                preload="metadata"
                 className="absolute inset-0 h-full w-full object-cover opacity-30 transition-opacity duration-700 group-hover:opacity-50"
-                aria-hidden="true"
               />
               <div
                 aria-hidden="true"
@@ -183,15 +173,3 @@ function Meta({ label, value }: { label: string; value: string }) {
   );
 }
 
-function Block({ title, body }: { title: string; body: string }) {
-  return (
-    <div>
-      <h2 className="font-display text-3xl tracking-tight text-white md:text-4xl">
-        {title}
-      </h2>
-      <p className="mt-6 text-base leading-relaxed text-white/70 md:text-lg">
-        {body}
-      </p>
-    </div>
-  );
-}

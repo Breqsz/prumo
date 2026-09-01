@@ -9,10 +9,34 @@ describe("FinalCta", () => {
     expect(h).toHaveTextContent(/no prumo/i);
   });
 
-  it("renders the primary CTA pointing to the briefing form", () => {
+  it("offers whatsapp as the primary path", () => {
     render(<FinalCta />);
-    const cta = screen.getByRole("link", { name: /agendar conversa/i });
-    expect(cta).toHaveAttribute("href", "/contato");
+    const wa = screen.getByRole("link", { name: /whatsapp/i });
+    expect(wa.getAttribute("href")).toContain("wa.me");
+    expect(decodeURIComponent(wa.getAttribute("href") ?? "")).toContain(
+      "Prumo",
+    );
+  });
+
+  it("opens the whatsapp link safely in a new tab", () => {
+    render(<FinalCta />);
+    const wa = screen.getByRole("link", { name: /whatsapp/i });
+    expect(wa).toHaveAttribute("target", "_blank");
+    expect(wa).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  it("keeps the form as a secondary path", () => {
+    render(<FinalCta />);
+    expect(
+      screen.getByRole("link", { name: /prefiro escrever/i }),
+    ).toHaveAttribute("href", "/contato");
+  });
+
+  it("tags the whatsapp click for analytics", () => {
+    render(<FinalCta />);
+    const wa = screen.getByRole("link", { name: /whatsapp/i });
+    expect(wa).toHaveAttribute("data-umami-event", "cta_whatsapp");
+    expect(wa).toHaveAttribute("data-umami-event-source", "final-cta");
   });
 
   it("renders an anchor id for in-page navigation", () => {

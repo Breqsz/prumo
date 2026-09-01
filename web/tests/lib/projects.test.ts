@@ -32,6 +32,43 @@ describe("projects data", () => {
       }
     }
   });
+
+  it("no renderable copy carries draft annotations", () => {
+    // Structural, not a marker list: a finite list of known placeholder
+    // strings ("Substituir", "STUB", ...) only catches annotations someone
+    // already thought of — it missed "[Adicionar URL pública e métricas se
+    // houver]" in production because nobody had written "Adicionar" into the
+    // list yet. A square bracket has no legitimate use in this renderable
+    // copy (verified: none of the eight scanned fields uses one for
+    // anything else across the current data), so any "[" is rejected
+    // outright. Do not narrow this back into a list of known words.
+    //
+    // All eight fields here render to a visitor somewhere: summary/brief/
+    // process/outcome in the case page body, title/scope in the case page
+    // header, project-reel and now the home's Prova section, and
+    // meta.cliente/meta.setor/meta.entrega in the case page's aside and the
+    // opengraph image. A field that isn't rendered anywhere doesn't belong
+    // in this list, and a field that is rendered anywhere must be in it.
+    const bracket = /\[/;
+    for (const p of projects) {
+      const copy = [
+        p.title,
+        p.scope,
+        p.summary,
+        p.brief,
+        p.process,
+        p.outcome ?? "",
+        p.meta.cliente,
+        p.meta.setor,
+        p.meta.entrega,
+      ];
+      for (const field of copy) {
+        expect(bracket.test(field), `${p.slug}: "${field.slice(0, 60)}…"`).toBe(
+          false,
+        );
+      }
+    }
+  });
 });
 
 describe("getProject", () => {

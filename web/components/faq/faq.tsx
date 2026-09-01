@@ -47,10 +47,10 @@ export function Faq({ bgVariant = 1 }: FaqProps) {
         </span>
         <h2
           id="faq-heading"
-          className="font-display max-w-3xl text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl"
+          className="font-editorial max-w-3xl text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl"
         >
           O que costumam{" "}
-          <em className="font-display italic font-normal text-white/70">
+          <em className="font-editorial italic font-normal text-white/70">
             perguntar antes
           </em>{" "}
           de fechar.
@@ -64,7 +64,7 @@ export function Faq({ bgVariant = 1 }: FaqProps) {
           >
             <span
               aria-hidden
-              className="font-display text-6xl leading-[0.85] text-white/15 italic select-none"
+              className="font-editorial text-6xl leading-[0.85] text-white/15 italic select-none"
             >
               {String(i + 1).padStart(2, "0")}
             </span>
@@ -167,7 +167,7 @@ const FAQ_BG_CSS = `
     z-index: 0;
   }
   #faq[data-bg-variant="1"] .faq-marginalia {
-    font-family: var(--font-display), "Instrument Serif", "Times New Roman", serif;
+    font-family: var(--font-editorial), "Instrument Serif", "Times New Roman", serif;
     font-style: italic;
     font-weight: 400;
     font-size: clamp(28rem, 48vw, 56rem);
@@ -349,7 +349,7 @@ const FAQ_BG_CSS = `
   #faq[data-bg-variant="4"] .faq-bg-4-tick {
     position: absolute;
     left: calc(50% + 14px);
-    font-family: var(--font-display), "Instrument Serif", serif;
+    font-family: var(--font-editorial), "Instrument Serif", serif;
     font-style: italic;
     font-size: 11px;
     letter-spacing: 0.18em;

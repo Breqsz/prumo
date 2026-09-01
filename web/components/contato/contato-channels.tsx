@@ -4,6 +4,7 @@ import {
   CONTACT,
   buildMailtoLink,
   buildWhatsappLink,
+  WHATSAPP_DEFAULT_MESSAGE,
 } from "@/lib/contact-config";
 
 type Channel = {
@@ -18,9 +19,7 @@ function getChannels(): Channel[] {
     {
       label: "WhatsApp",
       value: "Resposta direta, sem espera",
-      href: buildWhatsappLink(
-        "Oi! Vim do site da Prumo, queria conversar sobre um projeto.",
-      ),
+      href: buildWhatsappLink(WHATSAPP_DEFAULT_MESSAGE),
       external: true,
     },
     {

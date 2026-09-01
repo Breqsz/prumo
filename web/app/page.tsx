@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/hero/hero";
+import { Prova } from "@/components/home/prova";
 import { PlanosTeaser } from "@/components/planos/planos-teaser";
 import { Faq } from "@/components/faq/faq";
 import { FinalCta } from "@/components/cta/final-cta";
 import { Footer } from "@/components/footer/footer";
-import { AmbientVideo } from "@/components/ambient/ambient-video";
+import { AmbientFerrofluid } from "@/components/ambient/ambient-ferrofluid";
+import { homeCases } from "@/lib/home-content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -17,21 +19,21 @@ const HERO_VIDEOS = [
   "/hero-3.mp4", // dark hallway with light on floor (Pexels 19217895)
 ];
 
-const AMBIENT_VIDEOS = [
-  "/ambient.mp4", // dark liquid abstract shapes (Pexels 16392051)
-  "/ambient-2.mp4", // ferrofluid inky (Pexels 16296848)
-];
-
 export default function HomePage() {
   return (
     <>
       <Hero videoSrcs={HERO_VIDEOS} />
-      <AmbientVideo srcs={AMBIENT_VIDEOS}>
+      {/* Um ambient so para as duas secoes, de proposito. Dois ambients
+          adjacentes criam uma costura visivel no meio: o fade de base do
+          primeiro somado ao fade de topo do segundo vira uma faixa preta
+          entre eles. Continuo, o fundo atravessa a fronteira sem marca. */}
+      <AmbientFerrofluid>
+        <Prova cases={homeCases()} />
         <PlanosTeaser />
-        <FinalCta />
-        {/* bgVariant: 1=marginalia, 2=blueprint, 3=halo, 4=prumo */}
-        <Faq bgVariant={1} />
-      </AmbientVideo>
+      </AmbientFerrofluid>
+      {/* bgVariant: 1=marginalia, 2=blueprint, 3=halo, 4=prumo */}
+      <Faq bgVariant={1} />
+      <FinalCta />
       <Footer />
     </>
   );

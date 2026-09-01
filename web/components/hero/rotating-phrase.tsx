@@ -35,7 +35,7 @@ export function RotatingPhrase() {
           <em
             key={phrase}
             aria-hidden={!active}
-            className="font-display absolute inset-0 italic will-change-[opacity,transform]"
+            className="font-editorial absolute inset-0 italic will-change-[opacity,transform]"
             style={{
               opacity: active ? 1 : 0,
               transform: active ? "translateY(0)" : "translateY(0.25rem)",

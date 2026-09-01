@@ -13,9 +13,9 @@ export function PlanosHero() {
         </span>
         <h1
           id="planos-hero-heading"
-          className="font-display text-4xl font-semibold leading-[1.02] tracking-tight md:text-7xl"
+          className="font-editorial text-4xl font-semibold leading-[1.02] tracking-tight md:text-7xl"
         >
-          Preço <em className="font-display italic">transparente</em>. Escopo claro.
+          Preço <em className="font-editorial italic">transparente</em>. Escopo claro.
         </h1>
         <p className="max-w-xl text-base text-white/70 md:text-lg">
           Três planos para criar. Três para manter. Você sabe o número antes da call.
