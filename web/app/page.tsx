@@ -23,10 +23,9 @@ export default function HomePage() {
   return (
     <>
       <Hero videoSrcs={HERO_VIDEOS} />
-      {/* O ferrofluido cobre da prova ate os planos e para ali. FAQ e CTA
-          seguem no preto, com os efeitos proprios que ja tinham. */}
+      <Prova cases={homeCases()} />
+      {/* O ferrofluido e o fundo da secao de planos, e so dela. */}
       <AmbientFerrofluid>
-        <Prova cases={homeCases()} />
         <PlanosTeaser />
       </AmbientFerrofluid>
       {/* bgVariant: 1=marginalia, 2=blueprint, 3=halo, 4=prumo */}
