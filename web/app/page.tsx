@@ -23,8 +23,11 @@ export default function HomePage() {
   return (
     <>
       <Hero videoSrcs={HERO_VIDEOS} />
-      <Prova cases={homeCases()} />
-      {/* O ferrofluido e o fundo da secao de planos, e so dela. */}
+      {/* Cada secao com o seu proprio fundo, nao um ambient esticado por
+          cima das duas: assim cada uma abre e fecha com os proprios fades. */}
+      <AmbientFerrofluid>
+        <Prova cases={homeCases()} />
+      </AmbientFerrofluid>
       <AmbientFerrofluid>
         <PlanosTeaser />
       </AmbientFerrofluid>
