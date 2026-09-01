@@ -23,13 +23,15 @@ export default function HomePage() {
   return (
     <>
       <Hero videoSrcs={HERO_VIDEOS} />
+      {/* O ferrofluido cobre da prova ate os planos e para ali. FAQ e CTA
+          seguem no preto, com os efeitos proprios que ja tinham. */}
       <AmbientFerrofluid>
         <Prova cases={homeCases()} />
         <PlanosTeaser />
-        {/* bgVariant: 1=marginalia, 2=blueprint, 3=halo, 4=prumo */}
-        <Faq bgVariant={1} />
-        <FinalCta />
       </AmbientFerrofluid>
+      {/* bgVariant: 1=marginalia, 2=blueprint, 3=halo, 4=prumo */}
+      <Faq bgVariant={1} />
+      <FinalCta />
       <Footer />
     </>
   );
