@@ -28,7 +28,7 @@ type AmbientFerrofluidProps = {
 export function AmbientFerrofluid({
   children,
   spotlight = false,
-  opacity = 0.55,
+  opacity = 0.95,
 }: AmbientFerrofluidProps) {
   const reduced = usePrefersReducedMotion();
 
@@ -42,13 +42,16 @@ export function AmbientFerrofluid({
           <Ferrofluid
             paused={reduced}
             opacity={opacity}
-            speed={0.32}
-            scale={1.9}
-            glow={1.5}
+            speed={0.3}
+            scale={1.7}
+            glow={2.4}
             mouseInteraction={false}
             className="absolute inset-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/62 to-black/70" />
+          {/* Véu leve. O anterior somava 55–70% de preto sobre um shader já
+              a 55% de opacidade, e o fluido sumia. Aqui ele ainda recua para
+              trás do texto, mas continua visível. */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/30 to-black/40" />
           <div
             className="absolute inset-0 opacity-[0.05] mix-blend-screen"
             style={{ backgroundImage: GRAIN_SVG }}

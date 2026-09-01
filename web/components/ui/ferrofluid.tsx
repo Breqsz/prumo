@@ -268,6 +268,14 @@ export const Ferrofluid = ({
         antialias: true,
       });
     } catch {
+      // Silencioso em produção, mas nunca em desenvolvimento: sem este
+      // aviso, um WebGL indisponível vira "o fundo está preto e ninguém
+      // sabe por quê" — que foi exatamente o que aconteceu uma vez.
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(
+          "[Ferrofluid] contexto WebGL indisponível: o fundo fica só com as camadas estáticas.",
+        );
+      }
       return;
     }
     rendererRef.current = renderer;
@@ -415,7 +423,11 @@ export const Ferrofluid = ({
     <div
       ref={containerRef}
       aria-hidden="true"
-      className={`relative h-full w-full overflow-hidden ${className ?? ""}`.trim()}
+      // Sem `relative` aqui de proposito: quem chama posiciona. Com uma
+      // classe de position embutida, um `absolute inset-0` vindo de fora
+      // perde — no CSS do Tailwind `.relative` é declarada depois de
+      // `.absolute`, então a de dentro vencia e o inset ficava inerte.
+      className={`h-full w-full overflow-hidden ${className ?? ""}`.trim()}
       style={mixBlendMode ? { mixBlendMode } : undefined}
     />
   );
