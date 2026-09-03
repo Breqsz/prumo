@@ -172,3 +172,25 @@ export function getNextProject(slug: string): Project {
   const index = projects.findIndex((p) => p.slug === slug);
   return projects[(index + 1) % projects.length];
 }
+
+/** Segmento de transformação de uma URL de vídeo do Cloudinary. */
+const CLOUDINARY_VIDEO_UPLOAD = /\/video\/upload\/[^/]+\//;
+
+/**
+ * Primeiro frame do vídeo do projeto, servido como imagem pelo Cloudinary.
+ *
+ * O reel usa isto no lugar do <video> em telas estreitas: mesma imagem que o
+ * vídeo abre, ~56 KB em vez dos ~7,5 MB do mp4. `so_0` pega o frame do segundo
+ * zero e `f_auto,q_auto` deixa o Cloudinary escolher formato e compressão — por
+ * isso a imagem entra por <img> e não por next/image, que só reotimizaria o que
+ * já veio otimizado.
+ *
+ * Retorna null para qualquer URL que não seja um upload de vídeo do Cloudinary,
+ * para que a chamada degrade em fundo preto em vez de numa imagem quebrada.
+ */
+export function projectPosterSrc(videoSrc: string, width = 828): string | null {
+  if (!CLOUDINARY_VIDEO_UPLOAD.test(videoSrc)) return null;
+  return videoSrc
+    .replace(CLOUDINARY_VIDEO_UPLOAD, `/video/upload/so_0,w_${width},f_auto,q_auto/`)
+    .replace(/\.(mp4|webm|mov)$/i, ".jpg");
+}

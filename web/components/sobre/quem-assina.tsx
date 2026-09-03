@@ -71,7 +71,7 @@ const MEMBERS: Member[] = [
     headingId: "quem-assina-heading",
     card: {
       ...SHARED_CARD,
-      avatarUrl: "/profile.png",
+      avatarUrl: "/profile.webp",
       name: "Guilherme Bianchini",
       title: "Engenheiro de Software",
       handle: "prumo_digital",
@@ -91,7 +91,7 @@ const MEMBERS: Member[] = [
     name: "Guilherme Carvalho Guimarães",
     card: {
       ...SHARED_CARD,
-      avatarUrl: "/profile-carvalho.jpg",
+      avatarUrl: "/profile-carvalho.webp",
       name: "Guilherme Carvalho",
       title: "Designer",
       handle: "dsguilherme",
