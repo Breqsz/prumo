@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUp, ArrowUpRight } from "lucide-react";
-import type { Project } from "@/lib/projects";
+import { projectPosterSrc, type Project } from "@/lib/projects";
+import { useIsWideViewport } from "@/lib/hooks/use-is-wide-viewport";
 
 type ProjectReelProps = {
   projects: Project[];
@@ -150,6 +151,9 @@ function ReelSlide({ project, index, total, isCurrent }: ReelSlideProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [active, setActive] = useState(index === 0);
   const isFirst = index === 0;
+  // Gate só o JSX, nunca o hook — mesmo padrão de HeroVideo/AmbientVideo/CaseVideo.
+  const isWide = useIsWideViewport();
+  const posterSrc = projectPosterSrc(project.videoSrc);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -196,18 +200,40 @@ function ReelSlide({ project, index, total, isCurrent }: ReelSlideProps) {
       className="relative flex h-full w-full snap-start items-end overflow-hidden bg-black"
       aria-label={`${project.title} · ${project.scope}`}
     >
-      <video
-        ref={videoRef}
-        src={project.videoSrc}
-        muted
-        playsInline
-        loop
-        preload="none"
-        className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out ${
-          isCurrent ? "scale-100 opacity-60" : "scale-[1.04] opacity-0"
-        }`}
-        aria-hidden="true"
-      />
+      {isWide ? (
+        <video
+          ref={videoRef}
+          src={project.videoSrc}
+          muted
+          playsInline
+          loop
+          preload="none"
+          className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out ${
+            isCurrent ? "scale-100 opacity-60" : "scale-[1.04] opacity-0"
+          }`}
+          aria-hidden="true"
+        />
+      ) : (
+        posterSrc && (
+          /*
+            O Cloudinary já entrega f_auto/q_auto no tamanho pedido; next/image
+            só reotimizaria o que veio otimizado e gastaria transformação na
+            Vercel — por isso a tag crua.
+          */
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={posterSrc}
+            alt=""
+            loading={isFirst ? "eager" : "lazy"}
+            fetchPriority={isFirst ? "high" : "auto"}
+            decoding="async"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out ${
+              isCurrent ? "opacity-60" : "opacity-0"
+            }`}
+            aria-hidden="true"
+          />
+        )
+      )}
 
       <div
         aria-hidden="true"
